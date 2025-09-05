@@ -1,0 +1,148 @@
+'use client';
+
+import { MapPin, Phone, Mail, Globe, Clock } from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image';
+import navItemsMap from '../Navbar/navItemsMap';
+
+const ACCENT = "#fbab18"; // สีขีดและ hover
+
+const Footer = () => {
+
+  const content = {
+    about: "บริษัท เอสเจ อิเลคทริคอล เอ็นจิเนียริ่ง จำกัด\nผู้ให้บริการงานติดตั้งระบบไฟฟ้าแรงสูง–แรงต่ำ ครอบคลุมโครงการอุตสาหกรรมและที่อยู่อาศัย\nมุ่งมั่นส่งมอบงานคุณภาพ มาตรฐานสูง และปลอดภัย",
+    contact: {
+      address: "99/165 หมู่ 5 ตำบลบ้านสวน อำเภอเมืองชลบุรี จังหวัดชลบุรี 20000",
+      phone: "09-1941-4262",
+      email: "sj_narongdech@hotmail.com",
+      website: "www.รับเหมาติดตั้งไฟฟ้าแรงสูง.com",
+      additionalWebsite: "www.eecsearch.co.th",
+      workingHours: "วันจันทร์ - วันเสาร์ เวลา 09.00 - 18.00 น.",
+    }
+  };
+
+
+  return (
+    <footer className="bg-white text-gray-800 px-6 md:px-20 lg:px-32 py-16">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+
+        {/* คอลัมน์ 1: โลโก้ + Social */}
+        <div className="flex flex-col items-center justify-center gap-6 text-center">
+          <Image
+            src={"/logo_FN.png"}
+            alt="FN Logo"
+            width={180}
+            height={180}
+            className="object-contain rounded-full"
+          />
+          <div className="flex space-x-6">
+            <a
+              href="https://www.facebook.com/profile.php?id=100041323733259"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center gap-2 transition duration-300 hover:text-[${ACCENT}] hover:scale-110`}
+            >
+              <Image src={"/Facebook_icon.png"} alt="Facebook" width={24} height={24} />
+              Facebook
+            </a>
+            <a
+              href="https://line.me/ti/p/[LINE_ID]"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center gap-2 transition duration-300 hover:text-[${ACCENT}] hover:scale-110`}
+            >
+              <Image src={"/LINE_icon.png"} alt="Line" width={24} height={24} />
+              Line
+            </a>
+          </div>
+        </div>
+
+        {/* คอลัมน์ 2: เกี่ยวกับเรา */}
+        <div>
+          <h3 className={`text-lg font-bold border-b-2 border-[${ACCENT}] inline-block pb-1 mb-4`}>
+            เกี่ยวกับเรา
+          </h3>
+          <p className="text-sm leading-relaxed whitespace-pre-line">
+            {content.about}
+          </p>
+        </div>
+
+        {/* คอลัมน์ 3: ติดต่อเรา */}
+        <div>
+          <h3 className={`text-lg font-bold border-b-2 border-[${ACCENT}] inline-block pb-1 mb-4`}>
+            ติดต่อเรา
+          </h3>
+          <div className="text-sm space-y-3">
+            <p className="flex gap-2">
+              <MapPin className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0 mt-0.5`} />
+              <span>{content.contact.address}</span>
+            </p>
+            <p className="flex gap-2">
+              <Phone className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0`} />
+              <a href={`tel:${content.contact.phone}`} className={`hover:underline hover:text-[${ACCENT}] transition-colors`}>
+                {content.contact.phone}
+              </a>
+            </p>
+            <p className="flex gap-2">
+              <Mail className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0`} />
+              <a href={`mailto:${content.contact.email}`} className={` hover:underline hover:text-[${ACCENT}] transition-colors`}>
+                {content.contact.email}
+              </a>
+            </p>
+            <p className="flex gap-2">
+              <Globe className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0`} />
+              <a href={`https://${content.contact.website}`} target="_blank" rel="noopener noreferrer" className={`hover:underline hover:text-[${ACCENT}] transition-colors`}>
+                {content.contact.website}
+              </a>
+            </p>
+            <p className="pl-6">
+              <a href={`https://${content.contact.additionalWebsite}`} target="_blank" rel="noopener noreferrer" className={`hover:underline hover:text-[${ACCENT}] transition-colors`}>
+                {content.contact.additionalWebsite}
+              </a>
+            </p>
+            <p className="flex gap-2">
+              <Clock className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0`} />
+              <span>{content.contact.workingHours}</span>
+            </p>
+          </div>
+        </div>
+
+        {/* คอลัมน์ 4: เมนูหลัก */}
+        <div>
+          <h3
+            className="text-lg font-bold inline-block pb-1 mb-4"
+            style={{ borderBottom: `2px solid ${ACCENT}` }}
+          >
+            เมนูหลัก
+          </h3>
+          <ul className="space-y-2 text-sm">
+            {navItemsMap.th
+              .filter(item => item.title !== "Download" && item.title !== "ดาวน์โหลด")
+              .map(item => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    title={item.title}
+                    className="transition duration-300 inline-block"
+                    style={{ color: "#333" }}
+                    onMouseEnter={e => (e.currentTarget.style.color = ACCENT)}
+                    onMouseLeave={e => (e.currentTarget.style.color = "#333")}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+          </ul>
+        </div>
+
+      </div>
+
+      {/* Copyright */}
+      <div className="mt-10 text-center text-xs text-gray-500 border-t border-gray-300 pt-6">
+        Copyright &copy; {new Date().getFullYear()} - eecsearch.co.th
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
