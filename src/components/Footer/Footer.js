@@ -29,7 +29,7 @@ const Footer = () => {
         {/* คอลัมน์ 1: โลโก้ + Social */}
         <div className="flex flex-col items-center justify-center gap-6 text-center">
           <Image
-            src={"/logo_FN.png"}
+            src={"/image/logo_FN.png"}
             alt="FN Logo"
             width={180}
             height={180}
@@ -42,7 +42,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className={`flex items-center gap-2 transition duration-300 hover:text-[${ACCENT}] hover:scale-110`}
             >
-              <Image src={"/Facebook_icon.png"} alt="Facebook" width={24} height={24} />
+              <Image src={"/image/Facebook_icon.png"} alt="Facebook" width={24} height={24} />
               Facebook
             </a>
             <a
@@ -51,7 +51,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className={`flex items-center gap-2 transition duration-300 hover:text-[${ACCENT}] hover:scale-110`}
             >
-              <Image src={"/LINE_icon.png"} alt="Line" width={24} height={24} />
+              <Image src={"/image/LINE_icon.png"} alt="Line" width={24} height={24} />
               Line
             </a>
           </div>

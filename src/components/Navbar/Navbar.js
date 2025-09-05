@@ -19,7 +19,7 @@ const Navbar = () => {
             {/* โลโก้ */}
             <Link href={`/`} title="Home Page" className="inline-flex items-center">
               <Image
-                src={"/logo_FN.png"}
+                src={"/image/logo_FN.png"}
                 alt="FN"
                 width={48}
                 height={48}
