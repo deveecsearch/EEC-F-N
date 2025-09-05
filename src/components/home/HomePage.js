@@ -4,43 +4,35 @@ import { useEffect, useState } from "react";
 import LoadingOverlay from "@/components/LoadingOverlay";
 import BannerSection from "./BannerSection";
 import HeroSection from "./HeroSection";
+import { getCompanySections } from "../lib/APIservice";
 
-
-export default function HomePage({ }) {
-  const [bannerImages, setBannerImages] = useState({ desktop: "", mobile: "" });
-
-  // ใช้ธงโหลดแยก แล้วรวมตอนแสดง
+export default function HomePage() {
+  // const [bannerImages, setBannerImages] = useState({ desktop: "", mobile: "" });
+  const [homeSections, setHomeSections] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch banner images
   useEffect(() => {
-    (async () => {
-      try {
-        const res = await fetch(
-          "https://eec-cms.vercel.app/api/company/info?id=sj-electrical-engineering-kgqh-mekyj8m1"
+    getCompanySections()
+      .then((allSections) => {
+        const homeSectionId = "ef0afe36-14c2-41ae-9a27-56bd5bee886b";
+        const filtered = allSections.filter(
+          (section) => section.sectionId === homeSectionId
         );
-        if (!res.ok) throw new Error("Failed to fetch banner images");
-        const data = await res.json();
-        setBannerImages({
-          desktop: data?.bannerImage?.desktop || [],
-          mobile: data?.bannerImage?.mobile || [],
-        });
-      } catch (err) {
-        console.error("Error fetching banner images:", err);
-      } finally {
-        setLoading(false);
-      }
-    })();
+        console.log("Filtered sections:", filtered);
+        setHomeSections(filtered);
+      })
+      .finally(() => setLoading(false));
   }, []);
 
-  if (loading) {
-    return <LoadingOverlay />;
-  }
+  
+
+  if (loading) return <LoadingOverlay />;
 
   return (
-    <div className=" bg-white text-black">
+    <div className="bg-white text-black">
+      {/* ถ้ามี BannerSection */}
       {/* <BannerSection images={bannerImages} /> */}
-      <HeroSection data={""} />
+      <HeroSection data={homeSections} />
     </div>
   );
 }
