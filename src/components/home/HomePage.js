@@ -9,7 +9,7 @@ import { getCompanySections, getCompanyInfo } from "../lib/APIservice";
 export default function HomePage() {
   // const [bannerImages, setBannerImages] = useState({ desktop: "", mobile: "" });
   const [homeSections, setHomeSections] = useState([]);
-  const [bannerImages , setBannerImages] = useState([]);
+  const [bannerImages, setBannerImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const COMPANY_ID = process.env.NEXT_PUBLIC_COMPANY_ID;
 
@@ -26,19 +26,16 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
-  getCompanyInfo()
-    .then((companyInfo) => {
-      const companyId = process.env.NEXT_PUBLIC_COMPANY_ID;
-      if (companyInfo.companyId === companyId) {
-        console.log("Banner images:", companyInfo.bannerImage);
-        setBannerImages(companyInfo.bannerImage);
-      }
-    })
-    .finally(() => setLoading(false));
-}, []);
-
-
-  
+    getCompanyInfo()
+      .then((companyInfo) => {
+        const companyId = process.env.NEXT_PUBLIC_COMPANY_ID;
+        if (companyInfo.companyId === companyId) {
+          console.log("Banner images:", companyInfo.bannerImage);
+          setBannerImages(companyInfo.bannerImage);
+        }
+      })
+      .finally(() => setLoading(false));
+  }, []);
 
   if (loading) return <LoadingOverlay />;
 
