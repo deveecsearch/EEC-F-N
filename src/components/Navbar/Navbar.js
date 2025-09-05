@@ -31,7 +31,7 @@ const Navbar = () => {
                 loading="lazy"
               />
             </Link>
-
+ 
             {/* เมนูเดสก์ท็อป */}
             <div className="hidden lg:flex items-center gap-4">
               {navItems.map((item) => (
