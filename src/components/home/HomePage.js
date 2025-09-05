@@ -42,6 +42,9 @@ export default function HomePage() {
 
   if (loading) return <LoadingOverlay />;
 
+
+
+  
   return (
     <div className="bg-white text-black">
       {/* ถ้ามี BannerSection */}
