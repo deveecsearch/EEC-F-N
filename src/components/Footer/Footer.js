@@ -9,13 +9,22 @@ const ACCENT = "#fbab18"; // สีขีดและ hover
 
 const Footer = () => {
   const content = {
-    about:
-      "บริษัท เอฟแอนด์เอ็น เทคโน จำกัด ################################# \n ################################# \n #################################",
+    about: "บริษัท เอฟแอนด์เอ็น เทคโน จำกัด \n ผู้นำเข้าชั้นนำของน้ำยา Helamin BRW150H จากประเทศฝรั่งเศส \n เป็นมิตรต่อสิ่งเเวดล้อม พร้อมเทคโนโลยีฟิล์มโพลีเอมีนเฉพาะตัว ",
     contact: {
-      address: "#################################",
-      phone: "#################################",
-      email: "#################################",
-      website: "#################################",
+      address: "123/45 หมู่ที่ 8 ตำบลห้วยใหญ่ อำเภอบางละมุง จังหวัดชลบุรี 20150",
+      people: [
+        {
+          name: "คุณณัชชา",
+          phone: "098-285-8746",
+          email: "natcha.p2558.nn@gmail.com",
+        },
+        {
+          name: "Frank Berghaeuser",
+          phone: "089-488-5798",
+          email: "f.berghaeuser@gmail.com",
+        },
+      ],
+      website: "https://www.helamin.com/",
       additionalWebsite: "#################################",
       workingHours: "#################################",
     },
@@ -76,7 +85,7 @@ const Footer = () => {
             {content.about}
           </p>
         </div>
-
+ 
         {/* คอลัมน์ 3: ติดต่อเรา */}
         <div>
           <h3
@@ -85,57 +94,57 @@ const Footer = () => {
             ติดต่อเรา
           </h3>
           <div className="text-sm space-y-3">
-            <p className="flex gap-2">
-              <MapPin
-                className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0 mt-0.5`}
-              />
+            {/* People */}
+            {content.contact.people.map((person, idx) => (
+              <div key={idx} className="space-y-2">
+                {/* ชื่อ (ตัวหนา) */}
+                <p className="font-bold text-gray-800">{person.name}</p>
+
+                {/* เบอร์โทร */}
+                <p className="flex gap-2">
+                  <Phone className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0`} />
+                  <a
+                    href={`tel:${person.phone}`}
+                    className={`hover:underline hover:text-[${ACCENT}] transition-colors`}
+                  >
+                    {person.phone}
+                  </a>
+                </p>
+
+                {/* อีเมล */}
+                <p className="flex gap-2">
+                  <Mail className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0`} />
+                  <a
+                    href={`mailto:${person.email}`}
+                    className={`hover:underline hover:text-[${ACCENT}] transition-colors`}
+                  >
+                    {person.email}
+                  </a>
+                </p>
+              </div>
+            ))}
+
+            {/* Address */}
+            <p className="flex gap-2 ">
+              <MapPin className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0 mt-0.5`} />
               <span>{content.contact.address}</span>
             </p>
-            <p className="flex gap-2">
-              <Phone className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0`} />
-              <a
-                href={`tel:${content.contact.phone}`}
-                className={`hover:underline hover:text-[${ACCENT}] transition-colors`}
-              >
-                {content.contact.phone}
-              </a>
-            </p>
-            <p className="flex gap-2">
-              <Mail className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0`} />
-              <a
-                href={`mailto:${content.contact.email}`}
-                className={` hover:underline hover:text-[${ACCENT}] transition-colors`}
-              >
-                {content.contact.email}
-              </a>
-            </p>
+
+            {/* Website */}
             <p className="flex gap-2">
               <Globe className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0`} />
               <a
-                href={`https://${content.contact.website}`}
+                href={content.contact.website}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`hover:underline hover:text-[${ACCENT}] transition-colors`}
               >
-                {content.contact.website}
+                {content.contact.website.replace(/^https?:\/\//, '')}
               </a>
-            </p>
-            <p className="pl-6">
-              <a
-                href={`https://${content.contact.additionalWebsite}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`hover:underline hover:text-[${ACCENT}] transition-colors`}
-              >
-                {content.contact.additionalWebsite}
-              </a>
-            </p>
-            <p className="flex gap-2">
-              <Clock className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0`} />
-              <span>{content.contact.workingHours}</span>
             </p>
           </div>
         </div>
+
 
         {/* คอลัมน์ 4: เมนูหลัก */}
         <div>
