@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { MapPin, Phone, Mail, Globe, Clock } from 'lucide-react';
-import Link from 'next/link';
-import Image from 'next/image';
-import navItemsMap from '../Navbar/navItemsMap';
+import { MapPin, Phone, Mail, Globe, Clock } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import navItemsMap from "../Navbar/navItemsMap";
 
 const ACCENT = "#fbab18"; // สีขีดและ hover
 
 const Footer = () => {
-
   const content = {
-    about: "บริษัท เอฟแอนด์เอ็น เทคโน จำกัด ################################# \n ################################# \n #################################",
+    about:
+      "บริษัท เอฟแอนด์เอ็น เทคโน จำกัด ################################# \n ################################# \n #################################",
     contact: {
       address: "#################################",
       phone: "#################################",
@@ -18,18 +18,16 @@ const Footer = () => {
       website: "#################################",
       additionalWebsite: "#################################",
       workingHours: "#################################",
-    }
+    },
   };
-
 
   return (
     <footer className="bg-white text-gray-800 px-6 md:px-20 lg:px-32 py-16">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-
         {/* คอลัมน์ 1: โลโก้ + Social */}
         <div className="flex flex-col items-center justify-center gap-6 text-center">
           <Image
-            src={"/image/logo_FN.png"}
+            src={"/image/Logo_FN.png"}
             alt="FN Logo"
             width={180}
             height={180}
@@ -42,7 +40,12 @@ const Footer = () => {
               rel="noopener noreferrer"
               className={`flex items-center gap-2 transition duration-300 hover:text-[${ACCENT}] hover:scale-110`}
             >
-              <Image src={"/image/Facebook_icon.png"} alt="Facebook" width={24} height={24} />
+              <Image
+                src={"/image/Facebook_icon.png"}
+                alt="Facebook"
+                width={24}
+                height={24}
+              />
               Facebook
             </a>
             <a
@@ -51,7 +54,12 @@ const Footer = () => {
               rel="noopener noreferrer"
               className={`flex items-center gap-2 transition duration-300 hover:text-[${ACCENT}] hover:scale-110`}
             >
-              <Image src={"/image/LINE_icon.png"} alt="Line" width={24} height={24} />
+              <Image
+                src={"/image/LINE_icon.png"}
+                alt="Line"
+                width={24}
+                height={24}
+              />
               Line
             </a>
           </div>
@@ -59,7 +67,9 @@ const Footer = () => {
 
         {/* คอลัมน์ 2: เกี่ยวกับเรา */}
         <div>
-          <h3 className={`text-lg font-bold border-b-2 border-[${ACCENT}] inline-block pb-1 mb-4`}>
+          <h3
+            className={`text-lg font-bold border-b-2 border-[${ACCENT}] inline-block pb-1 mb-4`}
+          >
             เกี่ยวกับเรา
           </h3>
           <p className="text-sm leading-relaxed whitespace-pre-line">
@@ -69,34 +79,54 @@ const Footer = () => {
 
         {/* คอลัมน์ 3: ติดต่อเรา */}
         <div>
-          <h3 className={`text-lg font-bold border-b-2 border-[${ACCENT}] inline-block pb-1 mb-4`}>
+          <h3
+            className={`text-lg font-bold border-b-2 border-[${ACCENT}] inline-block pb-1 mb-4`}
+          >
             ติดต่อเรา
           </h3>
           <div className="text-sm space-y-3">
             <p className="flex gap-2">
-              <MapPin className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0 mt-0.5`} />
+              <MapPin
+                className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0 mt-0.5`}
+              />
               <span>{content.contact.address}</span>
             </p>
             <p className="flex gap-2">
               <Phone className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0`} />
-              <a href={`tel:${content.contact.phone}`} className={`hover:underline hover:text-[${ACCENT}] transition-colors`}>
+              <a
+                href={`tel:${content.contact.phone}`}
+                className={`hover:underline hover:text-[${ACCENT}] transition-colors`}
+              >
                 {content.contact.phone}
               </a>
             </p>
             <p className="flex gap-2">
               <Mail className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0`} />
-              <a href={`mailto:${content.contact.email}`} className={` hover:underline hover:text-[${ACCENT}] transition-colors`}>
+              <a
+                href={`mailto:${content.contact.email}`}
+                className={` hover:underline hover:text-[${ACCENT}] transition-colors`}
+              >
                 {content.contact.email}
               </a>
             </p>
             <p className="flex gap-2">
               <Globe className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0`} />
-              <a href={`https://${content.contact.website}`} target="_blank" rel="noopener noreferrer" className={`hover:underline hover:text-[${ACCENT}] transition-colors`}>
+              <a
+                href={`https://${content.contact.website}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`hover:underline hover:text-[${ACCENT}] transition-colors`}
+              >
                 {content.contact.website}
               </a>
             </p>
             <p className="pl-6">
-              <a href={`https://${content.contact.additionalWebsite}`} target="_blank" rel="noopener noreferrer" className={`hover:underline hover:text-[${ACCENT}] transition-colors`}>
+              <a
+                href={`https://${content.contact.additionalWebsite}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`hover:underline hover:text-[${ACCENT}] transition-colors`}
+              >
                 {content.contact.additionalWebsite}
               </a>
             </p>
@@ -117,16 +147,19 @@ const Footer = () => {
           </h3>
           <ul className="space-y-2 text-sm">
             {navItemsMap.th
-              .filter(item => item.title !== "Download" && item.title !== "ดาวน์โหลด")
-              .map(item => (
+              .filter(
+                (item) =>
+                  item.title !== "Download" && item.title !== "ดาวน์โหลด"
+              )
+              .map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     title={item.title}
                     className="transition duration-300 inline-block"
                     style={{ color: "#333" }}
-                    onMouseEnter={e => (e.currentTarget.style.color = ACCENT)}
-                    onMouseLeave={e => (e.currentTarget.style.color = "#333")}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = ACCENT)}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#333")}
                   >
                     {item.label}
                   </Link>
@@ -134,7 +167,6 @@ const Footer = () => {
               ))}
           </ul>
         </div>
-
       </div>
 
       {/* Copyright */}
