@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 import LoadingOverlay from "@/components/LoadingOverlay";
 import BannerSection from "./BannerSection";
 import HeroSection from "./HeroSection";
-import { getCompanySections } from "../lib/APIservice";
+import { getCompanySections, getCompanyInfo } from "../lib/APIservice";
 
 export default function HomePage() {
   // const [bannerImages, setBannerImages] = useState({ desktop: "", mobile: "" });
   const [homeSections, setHomeSections] = useState([]);
+  const [bannerImages , setBannerImages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const COMPANY_ID = process.env.NEXT_PUBLIC_COMPANY_ID;
 
   useEffect(() => {
     getCompanySections()
@@ -18,11 +20,23 @@ export default function HomePage() {
         const filtered = allSections.filter(
           (section) => section.sectionId === homeSectionId
         );
-        console.log("Filtered sections:", filtered);
         setHomeSections(filtered);
       })
       .finally(() => setLoading(false));
   }, []);
+
+  useEffect(() => {
+  getCompanyInfo()
+    .then((companyInfo) => {
+      const companyId = process.env.NEXT_PUBLIC_COMPANY_ID;
+      if (companyInfo.companyId === companyId) {
+        console.log("Banner images:", companyInfo.bannerImage);
+        setBannerImages(companyInfo.bannerImage);
+      }
+    })
+    .finally(() => setLoading(false));
+}, []);
+
 
   
 
@@ -31,7 +45,7 @@ export default function HomePage() {
   return (
     <div className="bg-white text-black">
       {/* ถ้ามี BannerSection */}
-      {/* <BannerSection images={bannerImages} /> */}
+      <BannerSection images={bannerImages} />
       <HeroSection data={homeSections} />
     </div>
   );
