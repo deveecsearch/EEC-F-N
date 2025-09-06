@@ -125,25 +125,20 @@ export default function GoodSection({ data }) {
                 initial="animate"
                 animate="animate"
             ></motion.div>
-           <div className="relative z-10 w-full">
-    {/* Section title - ตรงกลาง */}
-    <div className="max-w-4xl mx-auto flex justify-center text-white space-y-4 mb-8 md:mb-12">
-        <h2 className="text-3xl md:text-4xl font-extrabold pb-3 drop-shadow-md">
-            {mainTitle}
-        </h2>
-    </div>
+            <div className="relative z-10 w-full">
+                {/* Section title - ตรงกลาง */}
+                <div className="max-w-4xl mx-auto flex justify-center text-white space-y-4 mb-8 md:mb-12">
+                    <h2 className="text-3xl md:text-4xl font-extrabold pb-3 drop-shadow-md">
+                        {mainTitle}
+                    </h2>
+                </div>
 
-    {/* Main content area for two columns - ขยับไปขวา 80% */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-[80%] ml-auto">
-        <GoodSectionColumn boxItem={leftBoxData} listItems={leftListItems} />
-        <GoodSectionColumn boxItem={rightBoxData} listItems={rightListItems} />
-    </div>
-</div>
-
-
-
-
-
+                {/* Main content area for two columns - ขยับไปขวา 80% */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-[80%] ml-auto">
+                    <GoodSectionColumn boxItem={leftBoxData} listItems={leftListItems} />
+                    <GoodSectionColumn boxItem={rightBoxData} listItems={rightListItems} />
+                </div>
+            </div>
         </section>
     );
 }
