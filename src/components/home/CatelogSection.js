@@ -5,9 +5,10 @@ import Image from 'next/image';
 
 export default function CatelogSection({ data }){
     return (
-        <section className="relative bg-[#0081ca] text-white flex flex-col items-center justify-center overflow-hidden py-24 md:py-32">
+         <section className="relative bg-white flex flex-col items-center justify-center overflow-hidden py-24 md:py-32">
            {/* Product Catalog Section */}
-            <div className="absolute inset-0 bg-black/30"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-[#00b4f4]/90 via-[#0081ca]/60 to-white/20 z-0"></div>
+
 
                 <div className="mt-20 text-white/90">
                     <h2 className="text-2xl md:text-3xl font-bold text-center mb-10 border-b-2 border-white/40 pb-2">แคตตาล็อกผลิตภัณฑ์</h2>
