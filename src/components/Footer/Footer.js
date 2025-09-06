@@ -24,9 +24,7 @@ const Footer = () => {
           email: "f.berghaeuser@gmail.com",
         },
       ],
-      website: "https://www.helamin.com/",
-      additionalWebsite: "#################################",
-      workingHours: "#################################",
+      website: "https://www.helamin.com/"
     },
   };
 

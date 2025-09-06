@@ -1,37 +1,36 @@
 "use client";
 
 import Image from "next/image";
-import { Phone, Mail, Facebook, Globe } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 
-export default function Person2Section({ image, data }) {
+export default function Person1Section({ image, data }) {
   const items = data[0]?.data?.bulletsItems?.slice(2, 4) || [];
   const secondImage = image[0]?.data?.galleryItems?.[1];
 
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoaded(true), 100); // delay เพื่อให้อนิเมชันเห็น effect
+    const timer = setTimeout(() => setLoaded(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
   const getIcon = (title) => {
-    if (title.includes("โทร")) return <Phone className="w-5 h-5 text-[#0081c9]" />;
-    if (title.toLowerCase().includes("เมล") || title.toLowerCase().includes("email"))
-      return <Mail className="w-5 h-5 text-[#0081c9]" />;
-    if (title.toLowerCase().includes("facebook")) return <Facebook className="w-5 h-5 text-[#0081c9]" />;
-    return <Globe className="w-5 h-5 text-[#0081c9]" />;
+    if (!title) return null;
+    title = title.toLowerCase();
+    if (title.includes("tell")) return <Phone className="w-6 h-6 text-[#0081c9]" />;
+    if (title.includes("e-mail") || title.includes("email")) return <Mail className="w-6 h-6 text-[#0081c9]" />;
+    return null;
   };
 
   return (
-    <div className="flex flex-col md:flex-row justify-center items-center gap-6 p-8 bg-gradient-to-r from-gray-100 via-gray-50 to-gray-100 rounded-2xl shadow-xl">
-      
+    <div className="flex flex-col justify-center items-center gap-8 p-8 rounded-3xl shadow-2xl bg-white border border-[#0081c9] max-w-md mx-auto">
+
       {/* รูปภาพ */}
       {secondImage && (
         <div
-          className={`flex-shrink-0 w-full md:w-1/3 max-w-sm bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-700 ease-out
-            ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
-            hover:scale-105`}
+          className={`w-full max-w-sm rounded-2xl overflow-hidden shadow-lg transform transition-all duration-700 ease-out
+            ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
         >
           <Image
             src={secondImage.image}
@@ -44,18 +43,20 @@ export default function Person2Section({ image, data }) {
       )}
 
       {/* ข้อมูลติดต่อ */}
-      <div className="flex flex-col gap-4 w-full md:w-1/2 max-w-xs">
+      <div className="flex flex-col gap-5 w-full max-w-sm">
         {items.map((item, idx) => (
           <div
             key={idx}
-            className={`flex items-center space-x-3 p-4 bg-white rounded-xl shadow-md border-l-4 border-[#fbab18] transform transition-all duration-700 ease-out
+            className={`flex items-center space-x-4 p-5 bg-[#f0f8ff] rounded-2xl shadow-md border-l-4 border-[#0684ca] transform transition-all duration-700 ease-out
               ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
-              hover:shadow-xl hover:scale-105`}
+              hover:scale-105 hover:shadow-xl`}
           >
-            <div className="flex-shrink-0">{getIcon(item.title.th)}</div>
+            <div className="flex-shrink-0 bg-white p-3 rounded-full shadow-sm">
+              {getIcon(item.title.th)}
+            </div>
             <div>
-              <h3 className="font-semibold text-gray-900 text-sm">{item.title.th}</h3>
-              <p className="text-gray-700 text-sm">{item.description.th}</p>
+              <h3 className="font-semibold text-[#0081c9] text-base md:text-lg">{item.title.th}</h3>
+              <p className="text-gray-700 text-sm md:text-base leading-relaxed">{item.description.th}</p>
             </div>
           </div>
         ))}
