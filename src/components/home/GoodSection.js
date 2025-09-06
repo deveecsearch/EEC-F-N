@@ -120,6 +120,7 @@ export default function GoodSection({ data }) {
     const leftItems3 = allBulletItems.slice(currentIndex + 1, currentIndex + 6);
     currentIndex += 6;
 
+    
     return (
         <section className="relative bg-gradient-to-br from-indigo-100 via-blue-50 to-slate-50 flex flex-col items-center justify-center overflow-hidden py-24 md:py-32">
 

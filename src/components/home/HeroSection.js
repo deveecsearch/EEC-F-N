@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 export default function HeroSection({ data }) {
     const herodata1 = data?.herodata1;
     const herodata2 = data?.herodata2;
+    const herodata3 = data?.herodata3; // This data source is not used in this specific implementation.
 
     // Animation variants for Framer Motion
     const containerVariants = {
@@ -24,7 +25,7 @@ export default function HeroSection({ data }) {
         visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } }
     };
 
-    // Variants สำหรับ floating elements
+    // Variants for floating elements
     const floatingVariants = {
         animate: {
             y: [-10, 10, -10],
@@ -44,7 +45,7 @@ export default function HeroSection({ data }) {
             <div className="absolute inset-0 z-0">
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/60 via-blue-50/40 to-indigo-100/30" />
-                
+
                 {/* Floating geometric shapes with golden yellow tones */}
                 <motion.div
                     className="absolute top-20 left-10 w-20 h-20 rounded-2xl rotate-12"
@@ -127,7 +128,7 @@ export default function HeroSection({ data }) {
                                 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 hover:border-blue-200/50
                             `}
                             variants={itemVariants}
-                            whileHover={{ 
+                            whileHover={{
                                 y: -5,
                                 transition: { type: "spring", stiffness: 300 }
                             }}
@@ -142,7 +143,7 @@ export default function HeroSection({ data }) {
                     className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-6 rounded-2xl border-2 border-blue-200/40 shadow-2xl shadow-blue-500/15 mx-auto w-fit
                                transition-all duration-500 transform hover:scale-105 hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 relative overflow-hidden group"
                     variants={itemVariants}
-                    whileHover={{ 
+                    whileHover={{
                         y: -5,
                         transition: { type: "spring", stiffness: 300 }
                     }}
@@ -152,7 +153,7 @@ export default function HeroSection({ data }) {
                         <div className="absolute top-3 right-3 w-8 h-8 border border-blue-300 rounded-full"></div>
                         <div className="absolute bottom-3 left-3 w-6 h-6 border border-indigo-300 rounded-lg rotate-45"></div>
                     </div>
-                    
+
                     <p className="text-base sm:text-lg text-gray-800 font-medium drop-shadow-sm relative z-10">
                         {herodata1?.bulletsItems[3]?.description?.th}
                     </p>
@@ -183,6 +184,137 @@ export default function HeroSection({ data }) {
                         </div>
                     </motion.div>
                 </div>
+                {/* Container สำหรับทุกการ์ด */}
+                <div className="flex flex-wrap justify-center mt-6 gap-6">
+                    {/* Card 14 */}
+                    {herodata1?.bulletsItems[14] && (
+                        <motion.div
+                            className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-6 rounded-2xl border border-blue-200/40 shadow-2xl shadow-blue-500/15 text-center
+                 transition-all duration-500 transform hover:scale-105 hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 w-full sm:w-1/2 max-w-md"
+                            variants={itemVariants}
+                            whileHover={{ y: -5, transition: { type: "spring", stiffness: 300 } }}
+                        >
+                            <h3 className="text-lg sm:text-xl font-bold mb-2 text-gray-800">
+                                {herodata1?.bulletsItems[14]?.description?.th}
+                            </h3>
+                            <p className="text-sm sm:text-base text-gray-700">
+                                {herodata1?.bulletsItems[15]?.description?.th}
+                            </p>
+                            <p className="text-sm sm:text-base text-gray-700">
+                                {herodata1?.bulletsItems[16]?.description?.th}
+                            </p>
+                        </motion.div>
+                    )}
+
+                    {/* Card 17 */}
+                    {herodata1?.bulletsItems[17] && (
+                        <motion.div
+                            className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-6 rounded-2xl border border-blue-200/40 shadow-2xl shadow-blue-500/15 text-center
+                 transition-all duration-500 transform hover:scale-105 hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 w-full sm:w-1/2 max-w-md"
+                            variants={itemVariants}
+                            whileHover={{ y: -5, transition: { type: "spring", stiffness: 300 } }}
+                        >
+                            <h3 className="text-lg sm:text-xl font-bold mb-2 text-gray-800">
+                                {herodata1?.bulletsItems[17]?.description?.th}
+                            </h3>
+                            <p className="text-sm sm:text-base text-gray-700">
+                                {herodata1?.bulletsItems[18]?.description?.th}
+                            </p>
+                            <p className="text-sm sm:text-base text-gray-700">
+                                {herodata1?.bulletsItems[19]?.description?.th}
+                            </p>
+                            <p className="text-sm sm:text-base text-gray-700">
+                                {herodata1?.bulletsItems[20]?.description?.th}
+                            </p>
+                        </motion.div>
+                    )}
+
+                    {/* Card 21 */}
+                    {herodata1?.bulletsItems[21] && (
+                        <motion.div
+                            className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-6 rounded-2xl border border-blue-200/40 shadow-2xl shadow-blue-500/15 text-center
+                 transition-all duration-500 transform hover:scale-105 hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 w-full sm:w-1/2 max-w-md"
+                            variants={itemVariants}
+                            whileHover={{ y: -5, transition: { type: "spring", stiffness: 300 } }}
+                        >
+                            <h3 className="text-lg sm:text-xl font-bold mb-2 text-gray-800">
+                                {herodata1?.bulletsItems[21]?.description?.th}
+                            </h3>
+                            <p className="text-sm sm:text-base text-gray-700">
+                                {herodata1?.bulletsItems[22]?.description?.th}
+                            </p>
+                        </motion.div>
+                    )}
+
+                    {/* Card 23 */}
+                    {herodata1?.bulletsItems[23] && (
+                        <motion.div
+                            className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-6 rounded-2xl border border-blue-200/40 shadow-2xl shadow-blue-500/15 text-center
+                 transition-all duration-500 transform hover:scale-105 hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 w-full sm:w-1/2 max-w-md"
+                            variants={itemVariants}
+                            whileHover={{ y: -5, transition: { type: "spring", stiffness: 300 } }}
+                        >
+                            <h3 className="text-lg sm:text-xl font-bold mb-2 text-gray-800">
+                                {herodata1?.bulletsItems[23]?.description?.th}
+                            </h3>
+                            <p className="text-sm sm:text-base text-gray-700">
+                                {herodata1?.bulletsItems[24]?.description?.th}
+                            </p>
+                        </motion.div>
+                    )}
+
+                    {/* Card 25 */}
+                    {herodata1?.bulletsItems[25] && (
+                        <motion.div
+                            className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-6 rounded-2xl border border-blue-200/40 shadow-2xl shadow-blue-500/15 text-center
+                 transition-all duration-500 transform hover:scale-105 hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 w-full sm:w-1/2 max-w-md"
+                            variants={itemVariants}
+                            whileHover={{ y: -5, transition: { type: "spring", stiffness: 300 } }}
+                        >
+                            <h3 className="text-lg sm:text-xl font-bold mb-2 text-gray-800">
+                                {herodata1?.bulletsItems[25]?.description?.th}
+                            </h3>
+                            <p className="text-sm sm:text-base text-gray-700">
+                                {herodata1?.bulletsItems[26]?.description?.th}
+                            </p>
+                        </motion.div>
+                    )}
+
+                    {/* Card 27 */}
+                    {herodata1?.bulletsItems[27] && (
+                        <motion.div
+                            className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-6 rounded-2xl border border-blue-200/40 shadow-2xl shadow-blue-500/15 text-center
+                 transition-all duration-500 transform hover:scale-105 hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 w-full sm:w-1/2 max-w-md"
+                            variants={itemVariants}
+                            whileHover={{ y: -5, transition: { type: "spring", stiffness: 300 } }}
+                        >
+                            <h3 className="text-lg sm:text-xl font-bold mb-2 text-gray-800">
+                                {herodata1?.bulletsItems[27]?.description?.th}
+                            </h3>
+                            <p className="text-sm sm:text-base text-gray-700">
+                                {herodata1?.bulletsItems[28]?.description?.th}
+                            </p>
+                        </motion.div>
+                    )}
+
+                    {/* Card 29 */}
+                    {herodata1?.bulletsItems[29] && (
+                        <motion.div
+                            className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-6 rounded-2xl border border-blue-200/40 shadow-2xl shadow-blue-500/15 text-center
+                 transition-all duration-500 transform hover:scale-105 hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 w-full sm:w-1/2 max-w-md"
+                            variants={itemVariants}
+                            whileHover={{ y: -5, transition: { type: "spring", stiffness: 300 } }}
+                        >
+                            <h3 className="text-lg sm:text-xl font-bold mb-2 text-gray-800">
+                                {herodata1?.bulletsItems[29]?.description?.th}
+                            </h3>
+                            <p className="text-sm sm:text-base text-gray-700">
+                                {herodata1?.bulletsItems[30]?.description?.th}
+                            </p>
+                        </motion.div>
+                    )}
+                </div>
+
             </motion.div>
         </section>
     );

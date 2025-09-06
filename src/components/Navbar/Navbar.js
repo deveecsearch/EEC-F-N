@@ -22,14 +22,7 @@ const Navbar = () => {
               title="Home Page"
               className="inline-flex items-center"
             >
-              <Image
-                src={"/image/Logo_FN.png"}
-                alt="FN"
-                width={48}
-                height={48}
-                className="rounded-full object-cover"
-                loading="lazy"
-              />
+             
             </Link>
  
             {/* เมนูเดสก์ท็อป */}
