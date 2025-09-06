@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Link from "next/link";
 import { useState } from "react";
@@ -17,9 +17,13 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* โลโก้ */}
-            <Link href={`/`} title="Home Page" className="inline-flex items-center">
+            <Link
+              href={`/`}
+              title="Home Page"
+              className="inline-flex items-center"
+            >
               <Image
-                src={"/logo_FN.png"}
+                src={"/image/Logo_FN.png"}
                 alt="FN"
                 width={48}
                 height={48}
@@ -27,7 +31,7 @@ const Navbar = () => {
                 loading="lazy"
               />
             </Link>
-
+ 
             {/* เมนูเดสก์ท็อป */}
             <div className="hidden lg:flex items-center gap-4">
               {navItems.map((item) => (
