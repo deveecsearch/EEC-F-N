@@ -35,12 +35,8 @@ export default function ContactPage({ }) {
 
   return (
     <>
-      <div
-        className="text-black"
-        style={{
-          background: "linear-gradient(135deg, #f0f9ff 0%, #c0e4ff 50%, #0081c9 100%)"
-        }}
-      >
+      <div className="text-black bg-gradient-to-b from-[#f0f9ff] via-[#c0e4ff] to-[#0081c9]">
+
         <div className="h-1"></div>
 
         <div className=" max-w-4xl mx-auto text-center px-4">
