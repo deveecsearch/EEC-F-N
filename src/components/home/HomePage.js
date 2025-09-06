@@ -130,16 +130,17 @@ export default function HomePage() {
           polyaminedata2: polyamineSection2?.data,
           beforedata: beforeSection?.data,
           afterdata: afterSection?.data,
-          HELAMIN_BRW150H: HELAMIN_BRW150H_Section?.data,
-          HELAMIN906H: HELAMIN906H_Section?.data,
-          HELAMIN906HTURB: HELAMIN906HTURB_Section?.data,
-          HELAMINHALAQ: HELAMINHALAQ_Section?.data,
-          HELAMINHS190H: HELAMINHS190H_Section?.data,
-          HELAMIN9100MK: HELAMIN9100MK_Section?.data,
-          HELAMIN9800CT: HELAMIN9800CT_Section?.data,
-          HELAMINRW47H: HELAMINRW47H_Section?.data,
+          hBRW150Hdata: HELAMIN_BRW150H_Section?.data,
+          h906Hdata: HELAMIN906H_Section?.data,
+          h906HTURBdata: HELAMIN906HTURB_Section?.data,
+          hHALAQdata: HELAMINHALAQ_Section?.data,
+          hHS190Hdata: HELAMINHS190H_Section?.data,
+          h9100MKdata: HELAMIN9100MK_Section?.data,
+          h9800CTdata: HELAMIN9800CT_Section?.data,
+          hRW47Hdata: HELAMINRW47H_Section?.data,
           howworkdata: howworkSection?.data,
         });
+
 
         if (companyInfo.companyId === COMPANY_ID) {
           setBannerImages(companyInfo.bannerImage);
