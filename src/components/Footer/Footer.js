@@ -1,6 +1,6 @@
 "use client";
 
-import { MapPin, Phone, Mail, Globe, Clock, Facebook } from "lucide-react";
+import { MapPin, Phone, Mail, Globe, Facebook } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import navItemsMap from "../Navbar/navItemsMap";
@@ -60,7 +60,7 @@ const Footer = () => {
             {content.about}
           </p>
         </div>
-
+ 
         {/* คอลัมน์ 3: ติดต่อเรา */}
         <div>
           <h3
