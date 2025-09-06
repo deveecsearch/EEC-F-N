@@ -31,7 +31,7 @@ export default function HowWorkSection({ data }) {
             }
         }
     };
-    
+
     // Variants for the container to orchestrate staggered animations
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -40,6 +40,19 @@ export default function HowWorkSection({ data }) {
             transition: {
                 staggerChildren: 0.1,
                 delayChildren: 0.2
+            }
+        }
+    };
+
+    // Variants for floating elements
+    const floatingVariants = {
+        animate: {
+            y: [-10, 10, -10],
+            rotate: [0, 5, -5, 0],
+            transition: {
+                duration: 4,
+                ease: "easeInOut",
+                repeat: Infinity,
             }
         }
     };
@@ -57,10 +70,10 @@ export default function HowWorkSection({ data }) {
             }
         }
     };
-    
+
     // Extracting data for the title and all bullet points
-    const mainTitle = "หลักการทำงาน";
-    
+    const mainTitle = "HELAMIN® ทำงานอย่างไร: หลักการ";
+
     // Check if data.bulletsItems exists before slicing to prevent errors
     const allBulletItems = data?.bulletsItems || [];
 
@@ -72,89 +85,167 @@ export default function HowWorkSection({ data }) {
     const rightListItems = allBulletItems.slice(7, 11); // Items 7 to 10 for the right list
 
     return (
-        <section className="relative bg-[#0085cd] flex flex-col items-center justify-center overflow-hidden pt-0 pb-0">
-            {/* Animated line at the top */}
+        <section className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex flex-col items-center justify-center overflow-hidden py-16 md:py-24">
+            {/* Animated top line */}
             <motion.div
-                className="absolute top-0 mx-auto w-190 h-1 bg-gradient-to-r from-transparent via-white/70 to-transparent z-20 shadow-md"
+                className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[90%] h-1 bg-gradient-to-r from-transparent via-blue-500/80 to-transparent z-30 shadow-lg"
                 variants={lineVariants}
-                initial={{ scaleX: 0.7, opacity: 0.5 }}
-                animate="animate"
-            ></motion.div>
-
-            {/* Gradient background overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#33c2f6] to-[#0085cd] z-0"></div>
-            
-            {/* Animated sparkle lines in the background */}
-            <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-[#33c2f6] to-transparent w-full h-full opacity-20"
-                variants={sparkleVariants}
                 initial="animate"
                 animate="animate"
-            ></motion.div>
-            <motion.div
-                className="absolute inset-0 bg-gradient-to-tl from-[#0085cd] to-transparent w-full h-full opacity-20"
-                variants={sparkleVariants}
-                initial="animate"
-                animate="animate"
-            ></motion.div>
+            />
+            {/* Modern background effects */}
+            <div className="absolute inset-0 z-0">
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/60 via-blue-50/40 to-indigo-100/30" />
 
-            <div className="relative z-10 max-w-6xl w-full px-6 py-24 md:py-32">
-                {/* Section title */}
-                <div className="max-w-4xl mx-auto flex justify-center text-white space-y-4 mb-8 md:mb-12">
-                    <h2 className="text-3xl md:text-4xl font-extrabold mb-4 pb-3 drop-shadow-md">{mainTitle}</h2>
-                </div>
-                
+                {/* Floating geometric shapes */}
+                <motion.div
+                    className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-2xl rotate-12"
+                    variants={floatingVariants}
+                    animate="animate"
+                />
+                <motion.div
+                    className="absolute top-40 right-16 w-16 h-16 bg-gradient-to-r from-indigo-400/15 to-purple-400/15 rounded-full"
+                    variants={floatingVariants}
+                    animate="animate"
+                    style={{ animationDelay: '1s' }}
+                />
+                <motion.div
+                    className="absolute bottom-32 left-20 w-12 h-12 bg-gradient-to-r from-cyan-400/25 to-blue-500/25 rounded-lg rotate-45"
+                    variants={floatingVariants}
+                    animate="animate"
+                    style={{ animationDelay: '2s' }}
+                />
+                <motion.div
+                    className="absolute bottom-20 right-32 w-24 h-24 bg-gradient-to-r from-blue-300/10 to-indigo-300/10 rounded-3xl -rotate-12"
+                    variants={floatingVariants}
+                    animate="animate"
+                    style={{ animationDelay: '0.5s' }}
+                />
+                <motion.div
+                    className="absolute top-1/2 left-1/4 w-14 h-14 bg-gradient-to-r from-violet-400/20 to-indigo-400/20 rounded-xl rotate-30"
+                    variants={floatingVariants}
+                    animate="animate"
+                    style={{ animationDelay: '1.5s' }}
+                />
+                <motion.div
+                    className="absolute top-1/3 right-1/4 w-18 h-18 bg-gradient-to-r from-cyan-300/15 to-blue-400/15 rounded-2xl -rotate-45"
+                    variants={floatingVariants}
+                    animate="animate"
+                    style={{ animationDelay: '3s' }}
+                />
+            </div>
+
+            <motion.div
+                className="relative z-30 max-w-6xl w-full px-6 py-24 md:py-32"
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+            >
+                {/* Section title with enhanced styling */}
+                <motion.div
+                    className="max-w-4xl mx-auto flex justify-center text-center space-y-4 mb-12 md:mb-16"
+                    variants={itemVariants}
+                >
+                    <div className="relative">
+                        <h2 className="text-3xl md:text-5xl font-extrabold pb-3 drop-shadow-lg bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent">
+                            {mainTitle}
+                        </h2>
+                        {/* Enhanced decorative underline */}
+                        <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-blue-600/80 to-transparent rounded-full"></div>
+                        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-0.5 bg-gradient-to-r from-transparent via-indigo-500/60 to-transparent rounded-full"></div>
+                    </div>
+                </motion.div>
+
                 {/* Main content area for two columns */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
                     {/* Left Column Content */}
-                    <motion.div variants={containerVariants} initial="hidden" animate="visible" className="flex flex-col gap-4">
-                        {/* Animated paragraph box (Left) */}
+                    <motion.div variants={containerVariants} className="flex flex-col gap-6">
+                        {/* Enhanced animated paragraph box (Left) */}
                         {leftBoxData && (
                             <motion.div
-                                className="bg-white/20 p-4 rounded-xl border border-white/50 backdrop-blur-sm shadow-lg w-fit transition duration-300 transform hover:scale-105 hover:bg-white/30 hover:shadow-2xl"
+                                className="bg-gradient-to-br from-white/70 via-blue-50/50 to-indigo-50/30 backdrop-blur-xl p-6 rounded-2xl border border-white/30 shadow-xl shadow-blue-500/10 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 hover:border-blue-200/50 relative overflow-hidden group"
                                 variants={itemVariants}
+                                whileHover={{
+                                    y: -5,
+                                    transition: { type: "spring", stiffness: 300 }
+                                }}
                             >
-                                <p className="text-base sm:text-lg text-white/90 drop-shadow">
+                                {/* Subtle background pattern */}
+                                <div className="absolute inset-0 opacity-5">
+                                    <div className="absolute top-3 right-3 w-8 h-8 border border-blue-300 rounded-full"></div>
+                                    <div className="absolute bottom-3 left-3 w-6 h-6 border border-indigo-300 rounded-lg rotate-45"></div>
+                                </div>
+                                <p className="text-base sm:text-lg text-gray-800 font-medium drop-shadow-sm relative z-10 leading-relaxed">
                                     {leftBoxData.description?.th}
                                 </p>
                             </motion.div>
                         )}
-                        
-                        {/* Feature Details (Left List) */}
-                        <div className="flex flex-col gap-2">
-                            {leftListItems.map((item, index) => (
-                                <motion.p key={`left-${index}`} className="text-base sm:text-lg text-white/90 drop-shadow pl-4" variants={itemVariants}>
-                                    {item?.description?.th}
-                                </motion.p>
-                            ))}
+
+                        {/* Enhanced Feature Details (Left List) */}
+                        <div className="bg-gradient-to-br from-white/60 via-blue-50/40 to-indigo-50/20 backdrop-blur-lg p-8 rounded-2xl border border-white/40 shadow-xl shadow-blue-500/10">
+                            <div className="flex flex-col gap-4">
+                                {leftListItems.map((item, index) => (
+                                    <motion.div
+                                        key={`left-${index}`}
+                                        className="flex items-start space-x-3 group hover:bg-blue-50/50 p-2 rounded-lg transition-all duration-300"
+                                        variants={itemVariants}
+                                        whileHover={{ x: 5 }}
+                                    >
+                                        <div className="w-3 h-3 rounded-full flex-shrink-0 mt-2 shadow-sm group-hover:shadow-md transition-all duration-300 bg-gradient-to-r from-blue-500 to-indigo-500"></div>
+                                        <p className="text-base sm:text-lg text-gray-700 font-medium drop-shadow-sm group-hover:text-gray-800 transition-colors duration-300">
+                                            {item?.description?.th}
+                                        </p>
+                                    </motion.div>
+                                ))}
+                            </div>
                         </div>
                     </motion.div>
 
                     {/* Right Column Content */}
-                    <motion.div variants={containerVariants} initial="hidden" animate="visible" className="flex flex-col gap-4">
-                        {/* Animated paragraph box (Right) */}
+                    <motion.div variants={containerVariants} className="flex flex-col gap-6">
+                        {/* Enhanced animated paragraph box (Right) */}
                         {rightBoxData && (
                             <motion.div
-                                className="bg-white/20 p-4 rounded-xl border border-white/50 backdrop-blur-sm shadow-lg w-fit mr-auto transition duration-300 transform hover:scale-105 hover:bg-white/30 hover:shadow-2xl"
+                                className="bg-gradient-to-br from-white/70 via-blue-50/50 to-indigo-50/30 backdrop-blur-xl p-6 rounded-2xl border border-white/30 shadow-xl shadow-blue-500/10 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 hover:border-blue-200/50 relative overflow-hidden group"
                                 variants={itemVariants}
+                                whileHover={{
+                                    y: -5,
+                                    transition: { type: "spring", stiffness: 300 }
+                                }}
                             >
-                                <p className="text-base sm:text-lg text-white/90 drop-shadow">
+                                {/* Subtle background pattern */}
+                                <div className="absolute inset-0 opacity-5">
+                                    <div className="absolute top-3 left-3 w-8 h-8 border border-blue-300 rounded-full"></div>
+                                    <div className="absolute bottom-3 right-3 w-6 h-6 border border-indigo-300 rounded-lg -rotate-45"></div>
+                                </div>
+                                <p className="text-base sm:text-lg text-gray-800 font-medium drop-shadow-sm relative z-10 leading-relaxed">
                                     {rightBoxData.description?.th}
                                 </p>
                             </motion.div>
                         )}
-                        
-                        {/* Feature Details (Right List) */}
-                        <div className="flex flex-col gap-2">
-                            {rightListItems.map((item, index) => (
-                                <motion.p key={`right-${index}`} className="text-base sm:text-lg text-white/90 drop-shadow pl-4" variants={itemVariants}>
-                                    {item?.description?.th}
-                                </motion.p>
-                            ))}
+
+                        {/* Enhanced Feature Details (Right List) */}
+                        <div className="bg-gradient-to-br from-white/60 via-blue-50/40 to-indigo-50/20 backdrop-blur-lg p-8 rounded-2xl border border-white/40 shadow-xl shadow-blue-500/10">
+                            <div className="flex flex-col gap-4">
+                                {rightListItems.map((item, index) => (
+                                    <motion.div
+                                        key={`right-${index}`}
+                                        className="flex items-start space-x-3 group hover:bg-blue-50/50 p-2 rounded-lg transition-all duration-300"
+                                        variants={itemVariants}
+                                        whileHover={{ x: 5 }}
+                                    >
+                                        <div className="w-3 h-3 rounded-full flex-shrink-0 mt-2 shadow-sm group-hover:shadow-md transition-all duration-300 bg-gradient-to-r from-blue-500 to-indigo-500"></div>
+                                        <p className="text-base sm:text-lg text-gray-700 font-medium drop-shadow-sm group-hover:text-gray-800 transition-colors duration-300">
+                                            {item?.description?.th}
+                                        </p>
+                                    </motion.div>
+                                ))}
+                            </div>
                         </div>
                     </motion.div>
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 }

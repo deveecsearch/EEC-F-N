@@ -21,7 +21,6 @@ const SECTION_IDS = {
   good1: "416071e4-a4aa-4faf-ba0f-ac8e857c33d3",
   polyamine: "cc3ba68a-cd6f-4da6-a19f-5b71dee81829",
   testSection: "155a78c3-8e1b-405b-ae73-38f5ec21dfca",
-  polyamine2: "c82806c2-c241-4d35-9518-8f3ea8672ac3",
 };
 
 export default function HomePage() {
@@ -58,9 +57,7 @@ export default function HomePage() {
         const testSection = allSections.find(
           (section) => section.sectionId === SECTION_IDS.testSection
         );
-        const polyamineSection2 = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.polyamine2
-        );
+
 
         setSectionsData({
           herodata1: heroSection1?.data,
@@ -68,7 +65,6 @@ export default function HomePage() {
           gooddata1: goodSection1?.data,
           polyaminedata: polyamineSection?.data,
           testSection: testSection?.data,
-          polyaminedata2: polyamineSection2?.data,
         });
 
         if (companyInfo.companyId === COMPANY_ID) {
