@@ -18,8 +18,8 @@ export default function CatelogSection({
         <section className="relative bg-white flex flex-col items-center justify-center overflow-hidden py-24 md:py-32">
             <div className="absolute inset-0 bg-gradient-to-b from-[#0085cd] to-[#33c2f6] z-0"></div>
             <div className="relative z-10 max-w-6xl w-full px-6 py-12">
-                <div className="mt-20">
-                    <h2 className="text-2xl md:text-3xl font-bold text-center mb-10 border-b-2 border-white/40 pb-2 text-white">
+                <div>
+                    <h2 className="text-4xl md:text-5xl font-bold text-center mb-10 border-b-2 border-white/40 pb-2 text-white">
                         แคตตาล็อกผลิตภัณฑ์
                     </h2>
                     <div className="space-y-12">
