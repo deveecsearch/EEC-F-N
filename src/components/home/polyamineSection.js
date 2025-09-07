@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function PolyamineSection({ data }) {
     // กำหนดค่าเริ่มต้นให้กับ data เพื่อป้องกัน error
@@ -178,17 +179,20 @@ export default function PolyamineSection({ data }) {
                         viewport={{ once: true, amount: 0.3 }}
                     >
                         <div className="relative group">
-                            {/* Image container with modern styling */}
                             <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-blue-500/20 border border-white/20 backdrop-blur-sm">
                                 {polyaminedata?.bulletsItems?.[0]?.image ? (
-                                    <img
-                                        src={polyaminedata?.bulletsItems?.[0]?.image}
-                                        alt={polyaminedata?.bulletsItems?.[0]?.title?.th || "Polyamine Image"}
-                                        className="w-full h-auto rounded-2xl shadow-lg"
-                                    />
-
+                                    <div className="relative w-full h-64 md:h-80">
+                                        <Image
+                                            src={polyaminedata?.bulletsItems?.[0]?.image}
+                                            alt={polyaminedata?.bulletsItems?.[0]?.title?.th || "Polyamine Image"}
+                                            fill
+                                            className="object-cover rounded-2xl shadow-lg"
+                                            sizes="(max-width: 768px) 100vw, 32rem"
+                                            priority
+                                        />
+                                    </div>
                                 ) : (
-                                    /* Placeholder ถ้าไม่มีรูป */
+                                    // Placeholder ถ้าไม่มีรูป
                                     <div className="w-full h-64 md:h-80 bg-gradient-to-br from-blue-100 via-indigo-50 to-cyan-100 flex items-center justify-center rounded-3xl border-2 border-dashed border-blue-300/50">
                                         <div className="text-center">
                                             <svg className="w-16 h-16 text-blue-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -198,13 +202,11 @@ export default function PolyamineSection({ data }) {
                                         </div>
                                     </div>
                                 )}
-
-
                                 {/* Decorative overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 via-transparent to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                             </div>
 
-                            {/* Floating decoration around image */}
+                            {/* Floating decoration */}
                             <div className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full shadow-lg"></div>
                             <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full shadow-lg"></div>
                         </div>
