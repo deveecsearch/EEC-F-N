@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
+import Image from 'next/image'; // <-- Next Image
 
 const lineVariants = {
   animate: {
@@ -48,11 +49,11 @@ export default function BeforeSection({ data }) {
   useEffect(() => {
     if (scrollWidth > 0) {
       controls.start({
-        x: [-0, -scrollWidth],   // จากซ้ายไปขวา
+        x: [0, -scrollWidth],
         transition: {
-          duration: scrollWidth / 40, // ความเร็ว
+          duration: scrollWidth / 40,
           ease: "linear",
-          repeat: Infinity, // วนตลอด
+          repeat: Infinity,
         }
       });
     }
@@ -114,10 +115,13 @@ export default function BeforeSection({ data }) {
               className="min-w-[16rem] h-64 rounded-2xl overflow-hidden border border-blue-200/30 shadow-xl shadow-blue-500/10 flex-shrink-0 relative hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300"
               whileHover={{ y: -5 }}
             >
-              <img
+              <Image
                 src={item.image}
-                alt={`Image ${index + 1}`}
-                className="w-full h-full object-cover"
+                alt={item.title?.th || `Image ${index + 1}`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 16rem"
+                priority={true}
               />
               <div className="absolute inset-0 bg-black/20"></div>
             </motion.div>
