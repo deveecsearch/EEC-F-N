@@ -44,17 +44,20 @@ const floatingVariants = {
 // --- Animated top line variant ---
 const lineVariants = {
     animate: {
-        scaleX: [0, 1],
-        transition: { duration: 1.5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }
+        scaleX: [0.7, 1.2, 0.7],
+        opacity: [0.5, 1, 0.5],
+        transition: {
+            duration: 4,
+            repeat: Infinity,
+            ease: 'easeInOut'
+        }
     }
 };
-
 // --- Content Card Component ---
 function ContentCard({ headerItem, items }) {
     return (
         <motion.div variants={itemVariants} className="w-full">
             <div className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-6 rounded-2xl border border-blue-200/30 shadow-xl shadow-blue-500/10 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20">
-
                 {/* Header */}
                 {headerItem && (
                     <div className="mb-6 p-4 bg-gradient-to-r from-blue-100/50 to-indigo-100/50 rounded-xl border border-blue-200/30">
@@ -71,11 +74,7 @@ function ContentCard({ headerItem, items }) {
                             key={index}
                             variants={{
                                 hidden: { opacity: 0, x: -20 },
-                                visible: {
-                                    opacity: 1,
-                                    x: 0,
-                                    transition: { delay: index * 0.1 }
-                                }
+                                visible: { opacity: 1, x: 0, transition: { delay: index * 0.1 } }
                             }}
                             className="flex items-start text-base sm:text-lg text-gray-700 drop-shadow-sm hover:translate-x-1 transition-transform duration-300"
                         >
@@ -94,7 +93,6 @@ export default function GoodSection({ data }) {
     const mainTitle = "ทำไมควรเลือก HELAMIN®";
     const allBulletItems = Array.isArray(data?.bulletsItems) ? data.bulletsItems : [];
 
-    // Separate items like original structure
     let currentIndex = 0;
 
     const leftHeaderItem = allBulletItems[currentIndex];
@@ -120,14 +118,12 @@ export default function GoodSection({ data }) {
     return (
         <section className="relative bg-gradient-to-br from-indigo-100 via-blue-50 to-slate-50 flex flex-col items-center justify-center overflow-hidden py-24 md:py-32">
 
-            {/* Animated top line */}
             <motion.div
                 className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[90%] h-1 bg-gradient-to-r from-transparent via-blue-500/80 to-transparent z-30 shadow-lg"
                 variants={lineVariants}
                 initial="animate"
                 animate="animate"
             />
-
 
             {/* Background floating objects */}
             <div className="absolute inset-0 z-0">
