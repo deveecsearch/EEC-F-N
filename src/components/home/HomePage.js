@@ -143,7 +143,13 @@ export default function HomePage() {
           <HeroSection data={sectionsData} />
         </div>
       </section>
-
+      {/* Catalog Section */}
+      <section className="relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
+        <div className="relative z-10">
+          <CatelogSection hBRW150Hdata={sectionsData.hBRW150Hdata} newcatalogdata={sectionsData.newcatalogdata} />
+        </div>
+      </section>
       {/* Good Section + Overlay */}
       <section className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-200/80 to-white/80"></div>
@@ -166,7 +172,7 @@ export default function HomePage() {
       <section className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
         <div className="relative z-10">
-          <HowWorkSection data = {sectionsData} />
+          <HowWorkSection data={sectionsData} />
         </div>
       </section>
 
@@ -191,14 +197,6 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
         <div className="relative z-10">
           <AfterSection data={sectionsData.afterdata} />
-        </div>
-      </section>
-
-      {/* Catalog Section */}
-      <section className="relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
-        <div className="relative z-10">
-          <CatelogSection hBRW150Hdata={sectionsData.hBRW150Hdata} newcatalogdata = {sectionsData.newcatalogdata} />
         </div>
       </section>
 
