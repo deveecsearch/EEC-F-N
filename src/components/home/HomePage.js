@@ -151,7 +151,7 @@ export default function HomePage() {
           <GoodSection data={sectionsData.gooddata1} />
         </div>
       </section>
-
+ 
       {/* Polyamine Section */}
       <section className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
