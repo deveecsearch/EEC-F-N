@@ -29,13 +29,6 @@ const SECTION_IDS = {
   before: "c5db1f11-6786-47a2-9127-b9fb802fc4df",
   after: "b585b2bf-0f7d-4ea3-8323-02bed2a13142",
   HELAMIN_BRW150H: "4bc48cb0-af4f-45b3-a6a5-073951df2d56",
-  HELAMIN_906H: "7cd24941-ad13-406a-ab01-3a4143ee15c9",
-  HELAMIN_906HTURB: "e367af51-4a51-4749-b78b-ec23b1609ca2",
-  HELAMIN_HALAQ: "d59c0495-dad4-46da-88d2-82fcf09bf163",
-  HELAMIN_HS190H: "76d5819b-5b97-4ace-9b5c-f14a95df82e3",
-  HELAMIN_9100MK: "6c0a90c5-9902-45d3-82b7-aca6b905a205",
-  HELAMIN_9800CT: "858a6dff-0f7e-4edb-aa32-17f3e8d1e60c",
-  HELAMIN_RW47H: "e1e361b6-df2a-4983-a15d-cf7e9e67d002",
   howwork: "ee71dc36-5cd8-4a48-9346-e5c85722bbfe",
   newCatalog: "a016580b-16e2-494c-9873-e40c3dd6c4fa" // ตัวอย่าง ID ใหม่
 };
@@ -52,13 +45,6 @@ export default function HomePage() {
     beforedata: null,
     afterdata: null,
     hBRW150Hdata: null,
-    h906Hdata: null,
-    h906HTURBdata: null,
-    hHALAQdata: null,
-    hHS190Hdata: null,
-    h9100MKdata: null,
-    h9800CTdata: null,
-    hRW47Hdata: null,
     howworkdata: null,
     newCatalogdata: null,
   });
@@ -99,27 +85,6 @@ export default function HomePage() {
         const HELAMIN_BRW150H_Section = allSections.find(
           (section) => section.sectionId === SECTION_IDS.HELAMIN_BRW150H
         );
-        const HELAMIN906H_Section = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.HELAMIN_906H
-        );
-        const HELAMIN906HTURB_Section = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.HELAMIN_906HTURB
-        );
-        const HELAMINHALAQ_Section = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.HELAMIN_HALAQ
-        );
-        const HELAMINHS190H_Section = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.HELAMIN_HS190H
-        );
-        const HELAMIN9100MK_Section = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.HELAMIN_9100MK
-        );
-        const HELAMIN9800CT_Section = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.HELAMIN_9800CT
-        );
-        const HELAMINRW47H_Section = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.HELAMIN_RW47H
-        );
         const howworkSection = allSections.find(
           (section) => section.sectionId === SECTION_IDS.howwork
         );
@@ -137,13 +102,6 @@ export default function HomePage() {
           beforedata: beforeSection?.data,
           afterdata: afterSection?.data,
           hBRW150Hdata: HELAMIN_BRW150H_Section?.data,
-          h906Hdata: HELAMIN906H_Section?.data,
-          h906HTURBdata: HELAMIN906HTURB_Section?.data,
-          hHALAQdata: HELAMINHALAQ_Section?.data,
-          hHS190Hdata: HELAMINHS190H_Section?.data,
-          h9100MKdata: HELAMIN9100MK_Section?.data,
-          h9800CTdata: HELAMIN9800CT_Section?.data,
-          hRW47Hdata: HELAMINRW47H_Section?.data,
           howworkdata: howworkSection?.data,
           newCatalogdata: newCatalogSection?.data,
         });
@@ -231,17 +189,8 @@ export default function HomePage() {
       <section className="relative">
         <div className="absolute inset-0 bg-[#e6f7ff] z-0"></div> {/* พื้นหลังสีเดียว */}
         <div className="relative z-10">
-          {/*<CatelogSection
-            hBRW150Hdata={sectionsData.HELAMIN_BRW150H}
-            h906Hdata={sectionsData.HELAMIN906H}
-            h906HTURBdata={sectionsData.HELAMIN906HTURB}
-            hHALAQdata={sectionsData.HELAMINHALAQ}
-            hHS190Hdata={sectionsData.HELAMINHS190H}
-            h9100MKdata={sectionsData.HELAMIN9100MK}
-            h9800CTdata={sectionsData.HELAMIN9800CT}
-            hRW47Hdata={sectionsData.HELAMINRW47H}
-          />*/}
-          <NewCatalogSection data={sectionsData.newCatalogdata} />
+          <CatelogSection hBRW150Hdata={sectionsData.hBRW150Hdata} />
+          {/*<NewCatalogSection data={sectionsData.newCatalogdata}>*/}
         </div>
       </section>
 
