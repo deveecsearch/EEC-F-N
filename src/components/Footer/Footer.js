@@ -60,7 +60,7 @@ const Footer = () => {
             {content.about}
           </p>
         </div>
- 
+
         {/* คอลัมน์ 3: ติดต่อเรา */}
         <div>
           <h3
@@ -137,11 +137,11 @@ const Footer = () => {
         {/* คอลัมน์ 4: เมนูหลัก */}
         <div>
           <h3
-            className="text-lg font-bold inline-block pb-1 mb-4"
-            style={{ borderBottom: `2px solid ${ACCENT}` }}
+            className={`text-lg font-bold border-b-2 border-[${ACCENT}] inline-block pb-1 mb-4 text-black`}
           >
             เมนูหลัก
           </h3>
+
           <ul className="space-y-2 text-sm">
             {navItemsMap.th
               .filter(
@@ -153,13 +153,14 @@ const Footer = () => {
                   <Link
                     href={item.href}
                     title={item.title}
-                    className="transition duration-300 inline-block"
+                    className="transition duration-300 inline-block hover:underline"
                     style={{ color: "#333" }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = ACCENT)}
                     onMouseLeave={(e) => (e.currentTarget.style.color = "#333")}
                   >
                     {item.label}
                   </Link>
+
                 </li>
               ))}
           </ul>
