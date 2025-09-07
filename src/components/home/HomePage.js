@@ -14,8 +14,6 @@ import BeforeSection from "./BeforeSection";
 import AfterSection from "./AFterSection";
 import PolyamineSection from "./polyamineSection";
 
-
-
 // สร้าง object สำหรับเก็บ section IDs เพื่อไม่ให้ hardcode
 const SECTION_IDS = {
   home: "ef0afe36-14c2-41ae-9a27-56bd5bee886b",
@@ -31,6 +29,7 @@ const SECTION_IDS = {
   howworkimage: "9c7e0a4e-4a3f-45bc-8006-2f23480d0863",
   howworkdata: "ee71dc36-5cd8-4a48-9346-e5c85722bbfe",
   howwokimage2: "ef287191-8f35-467e-abb7-86b84bd839e7",
+  newcatalog: "a016580b-16e2-494c-9873-e40c3dd6c4fa"
 };
 
 export default function HomePage() {
@@ -48,6 +47,7 @@ export default function HomePage() {
     howworkimagedata: null,
     howworkdata: null,
     howwokimage2: null,
+    newcatalogdata: null,
   });
   const [loading, setLoading] = useState(true);
   const COMPANY_ID = process.env.NEXT_PUBLIC_COMPANY_ID;
@@ -95,6 +95,9 @@ export default function HomePage() {
         const howwokimage2Section = allSections.find(
           (section) => section.sectionId === SECTION_IDS.howwokimage2
         );
+        const newcatalogdataSection = allSections.find(
+          (section) => section.sectionId === SECTION_IDS.newcatalog
+        );
 
         setSectionsData({
           herodata1: heroSection1?.data,
@@ -109,6 +112,7 @@ export default function HomePage() {
           howworkimagedata: howworkSection?.data,
           howworkdata: howworkdataSection?.data,
           herodata3: howwokimage2Section?.data,
+          newcatalogdata: newcatalogdataSection?.data,
         });
 
 
@@ -139,7 +143,13 @@ export default function HomePage() {
           <HeroSection data={sectionsData} />
         </div>
       </section>
-
+      {/* Catalog Section */}
+      <section className="relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
+        <div className="relative z-10">
+          <CatelogSection hBRW150Hdata={sectionsData.hBRW150Hdata} newcatalogdata={sectionsData.newcatalogdata} />
+        </div>
+      </section>
       {/* Good Section + Overlay */}
       <section className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-200/80 to-white/80"></div>
@@ -162,7 +172,7 @@ export default function HomePage() {
       <section className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
         <div className="relative z-10">
-          <HowWorkSection data = {sectionsData} />
+          <HowWorkSection data={sectionsData} />
         </div>
       </section>
 
@@ -187,14 +197,6 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
         <div className="relative z-10">
           <AfterSection data={sectionsData.afterdata} />
-        </div>
-      </section>
-
-      {/* Catalog Section */}
-      <section className="relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
-        <div className="relative z-10">
-          <CatelogSection hBRW150Hdata={sectionsData.hBRW150Hdata} />
         </div>
       </section>
 
