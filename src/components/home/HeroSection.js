@@ -45,7 +45,7 @@ export default function HeroSection({ data }) {
             <div className="absolute inset-0 z-0">
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/60 via-blue-50/40 to-indigo-100/30" />
-
+ 
                 {/* Floating geometric shapes with golden yellow tones */}
                 <motion.div
                     className="absolute top-20 left-10 w-20 h-20 rounded-2xl rotate-12"
