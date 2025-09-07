@@ -13,7 +13,6 @@ import TestSection from "./testSection";
 import BeforeSection from "./BeforeSection";
 import AfterSection from "./AFterSection";
 import PolyamineSection from "./polyamineSection";
-import NewCatalogSection from "./NewCatalog";
 
 
 
@@ -29,8 +28,7 @@ const SECTION_IDS = {
   before: "c5db1f11-6786-47a2-9127-b9fb802fc4df",
   after: "b585b2bf-0f7d-4ea3-8323-02bed2a13142",
   HELAMIN_BRW150H: "4bc48cb0-af4f-45b3-a6a5-073951df2d56",
-  howwork: "ee71dc36-5cd8-4a48-9346-e5c85722bbfe",
-  newCatalog: "a016580b-16e2-494c-9873-e40c3dd6c4fa" // ตัวอย่าง ID ใหม่
+  howworkimage: "9c7e0a4e-4a3f-45bc-8006-2f23480d0863",
 };
 
 export default function HomePage() {
@@ -45,8 +43,7 @@ export default function HomePage() {
     beforedata: null,
     afterdata: null,
     hBRW150Hdata: null,
-    howworkdata: null,
-    newCatalogdata: null,
+    howworkimagedata: null,
   });
   const [loading, setLoading] = useState(true);
   const COMPANY_ID = process.env.NEXT_PUBLIC_COMPANY_ID;
@@ -86,10 +83,7 @@ export default function HomePage() {
           (section) => section.sectionId === SECTION_IDS.HELAMIN_BRW150H
         );
         const howworkSection = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.howwork
-        );
-        const newCatalogSection = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.newCatalog
+          (section) => section.sectionId === SECTION_IDS.howworkimage
         );
 
         setSectionsData({
@@ -102,8 +96,7 @@ export default function HomePage() {
           beforedata: beforeSection?.data,
           afterdata: afterSection?.data,
           hBRW150Hdata: HELAMIN_BRW150H_Section?.data,
-          howworkdata: howworkSection?.data,
-          newCatalogdata: newCatalogSection?.data,
+          howworkimagedata: howworkSection?.data,
         });
 
 
@@ -157,7 +150,7 @@ export default function HomePage() {
       <section className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
         <div className="relative z-10">
-          <HowWorkSection data={sectionsData.howworkdata} />
+          <HowWorkSection data = {sectionsData.howworkimagedata} />
         </div>
       </section>
 
@@ -187,10 +180,9 @@ export default function HomePage() {
 
       {/* Catalog Section */}
       <section className="relative">
-        <div className="absolute inset-0 bg-[#e6f7ff] z-0"></div> {/* พื้นหลังสีเดียว */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
         <div className="relative z-10">
           <CatelogSection hBRW150Hdata={sectionsData.hBRW150Hdata} />
-          {/*<NewCatalogSection data={sectionsData.newCatalogdata}>*/}
         </div>
       </section>
 

@@ -26,7 +26,8 @@ export default function TestSection({ data }) {
     const mainTitle = "ทดลอง";
 
     return (
-        <section className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+        <section className="relative pt-6 md:pt-8 pb-6 md:pb-8 overflow-hidden bg-gradient-to-br from-indigo-100 via-blue-50 to-slate-50">
+
 
             {/* Animated top line */}
             <motion.div
@@ -66,15 +67,9 @@ export default function TestSection({ data }) {
 
             <div className="flex flex-col items-center w-full">
                 {/* Section title */}
-                <motion.div
-                    className="text-center mb-12 z-10"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 12 } }}
-                >
-                    <h2 className="text-4xl md:text-5xl font-extrabold pb-3 bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-lg">
-                        {mainTitle}
-                    </h2>
-                </motion.div>
+                <h2 className="text-4xl md:text-5xl font-extrabold mt-4 pb-10 bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-lg">
+                    {mainTitle}
+                </h2>
 
 
                 {/* Grid */}
