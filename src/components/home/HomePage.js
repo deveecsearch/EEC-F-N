@@ -13,6 +13,7 @@ import TestSection from "./testSection";
 import BeforeSection from "./BeforeSection";
 import AfterSection from "./AFterSection";
 import PolyamineSection from "./polyamineSection";
+import NewCatalogSection from "./NewCatalog";
 
 
 
@@ -34,7 +35,9 @@ const SECTION_IDS = {
   HELAMIN_HS190H: "76d5819b-5b97-4ace-9b5c-f14a95df82e3",
   HELAMIN_9100MK: "6c0a90c5-9902-45d3-82b7-aca6b905a205",
   HELAMIN_9800CT: "858a6dff-0f7e-4edb-aa32-17f3e8d1e60c",
-  HELAMIN_RW47H: "e1e361b6-df2a-4983-a15d-cf7e9e67d002"
+  HELAMIN_RW47H: "e1e361b6-df2a-4983-a15d-cf7e9e67d002",
+  howwork: "ee71dc36-5cd8-4a48-9346-e5c85722bbfe",
+  newCatalog: "a016580b-16e2-494c-9873-e40c3dd6c4fa" // ตัวอย่าง ID ใหม่
 };
 
 export default function HomePage() {
@@ -55,7 +58,9 @@ export default function HomePage() {
     hHS190Hdata: null,
     h9100MKdata: null,
     h9800CTdata: null,
-    hRW47Hdata: null
+    hRW47Hdata: null,
+    howworkdata: null,
+    newCatalogdata: null,
   });
   const [loading, setLoading] = useState(true);
   const COMPANY_ID = process.env.NEXT_PUBLIC_COMPANY_ID;
@@ -81,6 +86,7 @@ export default function HomePage() {
         const testSection = allSections.find(
           (section) => section.sectionId === SECTION_IDS.testSection
         );
+
         const polyamineSection2 = allSections.find(
           (section) => section.sectionId === SECTION_IDS.polyamine2
         );
@@ -114,6 +120,12 @@ export default function HomePage() {
         const HELAMINRW47H_Section = allSections.find(
           (section) => section.sectionId === SECTION_IDS.HELAMIN_RW47H
         );
+        const howworkSection = allSections.find(
+          (section) => section.sectionId === SECTION_IDS.howwork
+        );
+        const newCatalogSection = allSections.find(
+          (section) => section.sectionId === SECTION_IDS.newCatalog
+        );
 
         setSectionsData({
           herodata1: heroSection1?.data,
@@ -124,15 +136,18 @@ export default function HomePage() {
           polyaminedata2: polyamineSection2?.data,
           beforedata: beforeSection?.data,
           afterdata: afterSection?.data,
-          HELAMIN_BRW150H: HELAMIN_BRW150H_Section?.data,
-          HELAMIN906H: HELAMIN906H_Section?.data,
-          HELAMIN906HTURB: HELAMIN906HTURB_Section?.data,
-          HELAMINHALAQ: HELAMINHALAQ_Section?.data,
-          HELAMINHS190H: HELAMINHS190H_Section?.data,
-          HELAMIN9100MK: HELAMIN9100MK_Section?.data,
-          HELAMIN9800CT: HELAMIN9800CT_Section?.data,
-          HELAMINRW47H: HELAMINRW47H_Section?.data
+          hBRW150Hdata: HELAMIN_BRW150H_Section?.data,
+          h906Hdata: HELAMIN906H_Section?.data,
+          h906HTURBdata: HELAMIN906HTURB_Section?.data,
+          hHALAQdata: HELAMINHALAQ_Section?.data,
+          hHS190Hdata: HELAMINHS190H_Section?.data,
+          h9100MKdata: HELAMIN9100MK_Section?.data,
+          h9800CTdata: HELAMIN9800CT_Section?.data,
+          hRW47Hdata: HELAMINRW47H_Section?.data,
+          howworkdata: howworkSection?.data,
+          newCatalogdata: newCatalogSection?.data,
         });
+
 
         if (companyInfo.companyId === COMPANY_ID) {
           setBannerImages(companyInfo.bannerImage);
@@ -174,9 +189,7 @@ export default function HomePage() {
       <section className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
         <div className="relative z-10">
-          <PolyamineSection
-            data={sectionsData.polyaminedata}
-
+          <PolyamineSection data={sectionsData.polyaminedata}
           />
 
         </div>
@@ -186,7 +199,7 @@ export default function HomePage() {
       <section className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
         <div className="relative z-10">
-          <HowWorkSection data={sectionsData.gooddata1} />
+          <HowWorkSection data={sectionsData.howworkdata} />
         </div>
       </section>
 
@@ -218,7 +231,7 @@ export default function HomePage() {
       <section className="relative">
         <div className="absolute inset-0 bg-[#e6f7ff] z-0"></div> {/* พื้นหลังสีเดียว */}
         <div className="relative z-10">
-          <CatelogSection
+          {/*<CatelogSection
             hBRW150Hdata={sectionsData.HELAMIN_BRW150H}
             h906Hdata={sectionsData.HELAMIN906H}
             h906HTURBdata={sectionsData.HELAMIN906HTURB}
@@ -227,7 +240,8 @@ export default function HomePage() {
             h9100MKdata={sectionsData.HELAMIN9100MK}
             h9800CTdata={sectionsData.HELAMIN9800CT}
             hRW47Hdata={sectionsData.HELAMINRW47H}
-          />
+          />*/}
+          <NewCatalogSection data={sectionsData.newCatalogdata} />
         </div>
       </section>
 

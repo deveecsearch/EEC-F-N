@@ -29,6 +29,11 @@ export default function ContactPage() {
     }
   };
 
+  const titleVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
   useEffect(() => {
     getCompanySections()
       .then((allSections) => {
@@ -93,7 +98,14 @@ export default function ContactPage() {
       <div className="relative z-10 flex flex-col items-center w-full px-4">
         {/* Section header */}
         <div className="max-w-4xl text-center">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#0081c9] mb-4">Contact Us</h2>
+          <motion.h2
+            className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-lg  pb-3  text-center z-10"
+            variants={titleVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            Contact Us
+          </motion.h2>
           <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
             ติดต่อเราได้ผ่านช่องทางด้านล่าง ทีมงานพร้อมตอบกลับคุณ
           </p>
