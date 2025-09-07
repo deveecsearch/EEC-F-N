@@ -29,6 +29,8 @@ const SECTION_IDS = {
   after: "b585b2bf-0f7d-4ea3-8323-02bed2a13142",
   HELAMIN_BRW150H: "4bc48cb0-af4f-45b3-a6a5-073951df2d56",
   howworkimage: "9c7e0a4e-4a3f-45bc-8006-2f23480d0863",
+  howworkdata: "ee71dc36-5cd8-4a48-9346-e5c85722bbfe",
+  howwokimage2: "ef287191-8f35-467e-abb7-86b84bd839e7",
 };
 
 export default function HomePage() {
@@ -44,6 +46,8 @@ export default function HomePage() {
     afterdata: null,
     hBRW150Hdata: null,
     howworkimagedata: null,
+    howworkdata: null,
+    howwokimage2: null,
   });
   const [loading, setLoading] = useState(true);
   const COMPANY_ID = process.env.NEXT_PUBLIC_COMPANY_ID;
@@ -85,6 +89,12 @@ export default function HomePage() {
         const howworkSection = allSections.find(
           (section) => section.sectionId === SECTION_IDS.howworkimage
         );
+        const howworkdataSection = allSections.find(
+          (section) => section.sectionId === SECTION_IDS.howworkdata
+        );
+        const howwokimage2Section = allSections.find(
+          (section) => section.sectionId === SECTION_IDS.howwokimage2
+        );
 
         setSectionsData({
           herodata1: heroSection1?.data,
@@ -97,6 +107,8 @@ export default function HomePage() {
           afterdata: afterSection?.data,
           hBRW150Hdata: HELAMIN_BRW150H_Section?.data,
           howworkimagedata: howworkSection?.data,
+          howworkdata: howworkdataSection?.data,
+          herodata3: howwokimage2Section?.data,
         });
 
 
@@ -150,7 +162,7 @@ export default function HomePage() {
       <section className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
         <div className="relative z-10">
-          <HowWorkSection data = {sectionsData.howworkimagedata} />
+          <HowWorkSection data = {sectionsData} />
         </div>
       </section>
 
