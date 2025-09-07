@@ -135,7 +135,7 @@ export default function HomePage() {
     <div className="bg-white text-black">
       {/* Banner Section */}
       <BannerSection images={bannerImages} />
-
+ 
       {/* Hero Section + Overlay */}
       <section className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0081ca]/90 to-[#00b4f4]/90"></div>
