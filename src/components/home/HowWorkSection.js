@@ -1,17 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-
-const lineVariants = {
-    animate: {
-        scaleX: [0.7, 1.2, 0.7],
-        opacity: [0.5, 1, 0.5],
-        transition: {
-            duration: 4,
-            repeat: Infinity,
-            ease: 'easeInOut'
-        }
-    }
-};
 
 export default function HowWorkSection({ data }) {
     const mainTitle = "หลักการทำงานของ HELAMIN®";
@@ -27,63 +14,61 @@ export default function HowWorkSection({ data }) {
             <div className="absolute inset-0 z-0">
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/60 via-blue-50/40 to-indigo-100/30" />
-
+ 
                 {/* Floating geometric shapes with golden yellow tones */}
                 <div
                     className="absolute top-20 left-10 w-20 h-20 rounded-2xl rotate-12 animate-pulse"
-                    style={{
+                    style={{ 
                         background: 'linear-gradient(45deg, rgba(250, 204, 27, 0.2), rgba(251, 208, 30, 0.2))',
                         animation: 'float1 4s ease-in-out infinite'
                     }}
                 />
                 <div
                     className="absolute top-40 right-16 w-16 h-16 rounded-full animate-pulse"
-                    style={{
+                    style={{ 
                         background: 'linear-gradient(45deg, rgba(250, 204, 27, 0.15), rgba(251, 207, 29, 0.15))',
                         animation: 'float2 4s ease-in-out infinite 1s'
                     }}
                 />
                 <div
                     className="absolute bottom-32 left-20 w-12 h-12 rounded-lg rotate-45 animate-pulse"
-                    style={{
+                    style={{ 
                         background: 'linear-gradient(45deg, rgba(250, 204, 27, 0.25), rgba(250, 201, 24, 0.25))',
                         animation: 'float3 4s ease-in-out infinite 2s'
                     }}
                 />
                 <div
                     className="absolute bottom-20 right-32 w-24 h-24 rounded-3xl -rotate-12 animate-pulse"
-                    style={{
+                    style={{ 
                         background: 'linear-gradient(45deg, rgba(250, 204, 27, 0.1), rgba(251, 205, 28, 0.1))',
                         animation: 'float4 4s ease-in-out infinite 0.5s'
                     }}
                 />
                 <div
                     className="absolute top-1/2 left-1/4 w-14 h-14 rounded-xl rotate-30 animate-pulse"
-                    style={{
+                    style={{ 
                         background: 'linear-gradient(45deg, rgba(250, 204, 27, 0.2), rgba(250, 202, 25, 0.2))',
                         animation: 'float5 4s ease-in-out infinite 1.5s'
                     }}
                 />
                 <div
                     className="absolute top-1/3 right-1/4 w-18 h-18 rounded-2xl -rotate-45 animate-pulse"
-                    style={{
+                    style={{ 
                         background: 'linear-gradient(45deg, rgba(250, 204, 27, 0.15), rgba(250, 206, 26, 0.15))',
                         animation: 'float6 4s ease-in-out infinite 3s'
                     }}
                 />
             </div>
 
-             {/* Animated top line */}
-            <motion.div
-                className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[90%] h-1 bg-gradient-to-r from-transparent via-blue-500/80 to-transparent z-30 shadow-lg"
-                variants={lineVariants}
-                initial="animate"
-                animate="animate"
+            {/* Animated top line */}
+            <div
+                className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[90%] h-1 bg-gradient-to-r from-transparent via-blue-500/80 to-transparent z-30 shadow-lg animate-pulse"
+                style={{ animation: 'lineAnimate 2.5s ease-in-out infinite' }}
             />
 
             <div className="relative z-30 flex flex-col items-center w-full">
                 {/* กรอบภาพใหญ่ */}
-                <div
+                <div 
                     className="inline-block bg-gradient-to-br from-white/70 via-blue-50/50 to-indigo-50/30 backdrop-blur-xl border-2 border-blue-200/40 rounded-3xl mb-12 overflow-hidden w-[80%] md:w-[900px] shadow-2xl shadow-blue-500/15 transition-all duration-300 hover:scale-102 hover:shadow-3xl hover:shadow-blue-500/25"
                 >
                     {firstImage ? (
@@ -107,7 +92,7 @@ export default function HowWorkSection({ data }) {
                         </h2>
 
                         {/* เส้นคั่น */}
-                        <div className="w-40 sm:w-52 md:w-64 lg:w-72 xl:w-80 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mt-4 mb-6 rounded-full shadow-sm" />
+                        <div className="w-5 sm:w-40 md:w-48 lg:w-56 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mt-4 mb-6 rounded-full shadow-sm" />
 
                         <div className="space-y-4">
                             <p className="text-gray-700 text-base md:text-lg leading-relaxed font-medium">
@@ -131,11 +116,14 @@ export default function HowWorkSection({ data }) {
                             {mainTitle2}
                         </h2>
 
-                        {/* เส้นคั่น */}
-                        <div className="w-40 sm:w-52 md:w-64 lg:w-72 xl:w-80 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mt-4 mb-6 rounded-full shadow-sm" />
+                          {/* เส้นคั่น */}
+                        <div className="w-55 sm:w-40 md:w-48 lg:w-56 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mt-4 mb-6 rounded-full shadow-sm" />
 
                         <p className="text-gray-700 text-base md:text-lg leading-relaxed font-medium">
                             {data?.howworkdata?.bulletsItems?.[0]?.description?.th}
+                        </p><br></br>
+                        <p className="text-gray-700 text-base md:text-lg leading-relaxed font-medium">
+                            {data?.howworkdata?.bulletsItems?.[5]?.description?.th}
                         </p>
                     </div>
                 </div>
