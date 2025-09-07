@@ -97,7 +97,7 @@ export default function PolyamineSection({ data }) {
     const titleText = getTitle();
 
     return (
-        <section className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+        <section className="relative pt-6 md:pt-8 pb-6 md:pb-8 overflow-hidden bg-gradient-to-br from-indigo-100 via-blue-50 to-slate-50">
             {/* Animated top line */}
             <motion.div
                 className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[90%] h-1 bg-gradient-to-r from-transparent via-blue-500/80 to-transparent z-30 shadow-lg"
@@ -159,7 +159,7 @@ export default function PolyamineSection({ data }) {
                         </div>
                     ) : (
                         <div className="relative inline-block">
-                            <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent mb-4">
+                            <h2 className="text-4xl md:text-5xl font-extrabold mt-4 pb-10 bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-lg">
                                 การสร้างฟิล์มด้วยโพลีเอมีน (HELAMIN®)
                             </h2>
                             <p className="text-gray-500 mt-2">
