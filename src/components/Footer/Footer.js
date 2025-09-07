@@ -1,6 +1,6 @@
 "use client";
 
-import { MapPin, Phone, Mail, Globe, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Globe, Facebook } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import navItemsMap from "../Navbar/navItemsMap";
@@ -25,8 +25,7 @@ const Footer = () => {
         },
       ],
       website: "https://www.helamin.com/",
-      additionalWebsite: "#################################",
-      workingHours: "#################################",
+      facebook: "https://www.facebook.com/profile.php?id=61562620145591#"
     },
   };
 
@@ -34,7 +33,7 @@ const Footer = () => {
     <footer className="bg-white text-gray-800 px-6 md:px-20 lg:px-32 py-16">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
         {/* คอลัมน์ 1: โลโก้ + Social */}
-        <div className="flex flex-col items-center justify-center gap-6 text-center">
+        <div className="flex flex-col items-center justify-center gap-2 text-center">
           <Image
             src={"/image/Logo_FN.png"}
             alt="FN Logo"
@@ -42,37 +41,13 @@ const Footer = () => {
             height={180}
             className="object-contain rounded-full"
           />
-          <div className="flex space-x-6">
-            <a
-              href="https://www.facebook.com/profile.php?id=100041323733259"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center gap-2 transition duration-300 hover:text-[${ACCENT}] hover:scale-110`}
-            >
-              <Image
-                src={"/image/Facebook_icon.png"}
-                alt="Facebook"
-                width={24}
-                height={24}
-              />
-              Facebook
-            </a>
-            <a
-              href="https://line.me/ti/p/[LINE_ID]"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center gap-2 transition duration-300 hover:text-[${ACCENT}] hover:scale-110`}
-            >
-              <Image
-                src={"/image/LINE_icon.png"}
-                alt="Line"
-                width={24}
-                height={24}
-              />
-              Line
-            </a>
-          </div>
+          {/* ข้อความ F&N Techno Co., Ltd. */}
+          <p className="font-bold text-[#fbab18] text-base md:text-lg">
+            F&N Techno Co., Ltd.
+          </p>
+
         </div>
+
 
         {/* คอลัมน์ 2: เกี่ยวกับเรา */}
         <div>
@@ -140,6 +115,19 @@ const Footer = () => {
                 className={`hover:underline hover:text-[${ACCENT}] transition-colors`}
               >
                 {content.contact.website.replace(/^https?:\/\//, '')}
+              </a>
+            </p>
+
+            {/* Facebook */}
+            <p className="flex gap-2">
+              <Facebook className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0`} />
+              <a
+                href={content.contact.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`hover:underline hover:text-[${ACCENT}] transition-colors`}
+              >
+                F&N Techno co.,ltd.
               </a>
             </p>
           </div>

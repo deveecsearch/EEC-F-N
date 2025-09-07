@@ -16,7 +16,7 @@ export default function ContactSection({ data }) {
     };
 
     return (
-        <div className="flex flex-wrap justify-center mt-10 gap-6">
+        <div className="flex flex-wrap justify-center mt-5 gap-6">
             {filteredItems.map((item, idx) => {
                 const isHelamin = item.title.th === "Helamin";
                 const href = isHelamin ? "https://www.helamin.com/" : item.description.th;
