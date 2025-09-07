@@ -40,7 +40,7 @@ export default function HeroSection({ data }) {
 
     return (
         <section className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex flex-col items-center justify-center overflow-hidden py-16 md:py-24">
-
+ 
             {/* Modern background effects */}
             <div className="absolute inset-0 z-0">
                 {/* Gradient overlay */}
