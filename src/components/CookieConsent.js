@@ -90,7 +90,7 @@ export default function CookieConsent() {
                                     </div>
                                     <div className="flex-1">
                                         <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
-                                            🍪 การใช้คุกกี้ (Cookie Consent)
+                                            🍪 การใช้คุกกี้ (Cookie Consent)   
                                         </h3>
                                         <div className="text-white/90 text-sm sm:text-base leading-relaxed space-y-2">
                                             <p>
