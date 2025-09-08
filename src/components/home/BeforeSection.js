@@ -5,24 +5,37 @@ import Image from 'next/image';
 import { m, motion } from 'framer-motion';
 
 export default function BeforeSection({ data }) {
-  const mainTitle = "ก่อนใช้ HELAMIN®";
+  const mainTitle = data?.galleryItems?.[0]?.title?.th;
   const galleryItems = data?.galleryItems || [];
 
-  const lineVariants = {
-    animate: {
-      scaleX: [0.7, 1.2, 0.7],
-      opacity: [0.5, 1, 0.5],
-      transition: { duration: 2.5, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" },
-    },
-  };
+    // Top line animation
+    const lineVariants = {
+        animate: {
+            scaleX: [0.7, 1.2, 0.7],
+            opacity: [0.5, 1, 0.5],
+            transition: { duration: 2.5, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }
+        },
+    };
 
-  const floatingVariants = {
-    animate: {
-      y: [-10, 10, -10],
-      rotate: [0, 5, -5, 0],
-      transition: { duration: 4, ease: "easeInOut", repeat: Infinity },
-    },
-  };
+    // Floating shapes animation with delay support
+    const floatingVariants = {
+        animate: (customDelay = 0) => ({
+            y: [-10, 10, -10],
+            rotate: [0, 5, -5, 0],
+            transition: { duration: 4, ease: "easeInOut", repeat: Infinity, delay: customDelay }
+        })
+    };
+
+    // Card scroll animation
+    const cardVariants = {
+        hidden: { opacity: 0, y: 50, scale: 0.9 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: { duration: 0.8, ease: "easeOut" }
+        }
+    };
 
   return (
     <section className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex flex-col items-center justify-center overflow-hidden py-16 md:py-24">
@@ -73,22 +86,25 @@ export default function BeforeSection({ data }) {
         {/* Grid */}
         <div className="flex flex-wrap justify-center items-center gap-6 max-w-[90%]">
           {galleryItems.map((item, index) => (
-            <div
+            <motion.div
               key={index}
-              className="relative w-64 h-64 rounded-2xl overflow-hidden border border-white/30 shadow-lg backdrop-blur-md hover:scale-105 transition-transform duration-300"
+              className="w-full sm:w-[400px] md:w-[600px] aspect-[4/3] rounded-2xl overflow-hidden border border-white/30 shadow-lg backdrop-blur-md relative"
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
             >
               <Image
                 src={item.image}
                 alt={item.title?.th || `Image ${index + 1}`}
-                width={256}
-                height={256}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
-              <div className="absolute inset-0 bg-black/20"></div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
+
     </section>
   );
 }

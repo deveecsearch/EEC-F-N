@@ -6,7 +6,9 @@ import { motion } from 'framer-motion';
 
 export default function TestSection({ data }) {
     const galleryItems = data?.galleryItems || [];
+    const mainTitle = data?.galleryItems?.[0]?.title?.th;
 
+    // Top line animation
     const lineVariants = {
         animate: {
             scaleX: [0.7, 1.2, 0.7],
@@ -15,26 +17,34 @@ export default function TestSection({ data }) {
         },
     };
 
+    // Floating shapes animation with delay support
     const floatingVariants = {
-        animate: {
+        animate: (customDelay = 0) => ({
             y: [-10, 10, -10],
             rotate: [0, 5, -5, 0],
-            transition: { duration: 4, ease: "easeInOut", repeat: Infinity }
+            transition: { duration: 4, ease: "easeInOut", repeat: Infinity, delay: customDelay }
+        })
+    };
+
+    // Card scroll animation
+    const cardVariants = {
+        hidden: { opacity: 0, y: 50, scale: 0.9 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: { duration: 0.8, ease: "easeOut" }
         }
     };
 
-    const mainTitle = "ทดลอง";
-
     return (
         <section className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex flex-col items-center justify-center overflow-hidden py-16 md:py-24">
-
-
 
             {/* Animated top line */}
             <motion.div
                 className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[90%] h-1 bg-gradient-to-r from-transparent via-blue-500/80 to-transparent z-30 shadow-lg"
                 variants={lineVariants}
-                initial="animate"
+                initial={false}
                 animate="animate"
             />
 
@@ -42,27 +52,31 @@ export default function TestSection({ data }) {
             <div className="absolute inset-0 z-0">
                 <motion.div
                     className="absolute top-20 left-10 w-20 h-20 rounded-2xl rotate-12"
-                    style={{ background: 'linear-gradient(45deg, #facc1b20, #fbd01e20)' }}
+                    style={{ background: 'linear-gradient(45deg, rgba(250,204,27,0.2), rgba(251,208,30,0.2))' }}
                     variants={floatingVariants}
                     animate="animate"
+                    custom={0}
                 />
                 <motion.div
                     className="absolute top-40 right-16 w-16 h-16 rounded-full"
+                    style={{ background: 'linear-gradient(45deg, rgba(250,204,27,0.15), rgba(251,207,29,0.15))' }}
                     variants={floatingVariants}
                     animate="animate"
-                    style={{ animationDelay: '1s', background: 'linear-gradient(45deg, #facc1b15, #fbcf1d15)' }}
+                    custom={1}
                 />
                 <motion.div
                     className="absolute bottom-32 left-20 w-12 h-12 rounded-lg rotate-45"
+                    style={{ background: 'linear-gradient(45deg, rgba(250,204,27,0.25), rgba(250,201,24,0.25))' }}
                     variants={floatingVariants}
                     animate="animate"
-                    style={{ animationDelay: '2s', background: 'linear-gradient(45deg, #facc1b25, #fac91825)' }}
+                    custom={2}
                 />
                 <motion.div
                     className="absolute bottom-20 right-32 w-24 h-24 rounded-3xl -rotate-12"
+                    style={{ background: 'linear-gradient(45deg, rgba(250,204,27,0.1), rgba(251,205,28,0.1))' }}
                     variants={floatingVariants}
                     animate="animate"
-                    style={{ animationDelay: '0.5s', background: 'linear-gradient(45deg, #facc1b10, #fbcd1c10)' }}
+                    custom={0.5}
                 />
             </div>
 
@@ -72,23 +86,24 @@ export default function TestSection({ data }) {
                     {mainTitle}
                 </h2>
 
-
                 {/* Grid */}
                 <div className="flex flex-wrap justify-center items-center gap-6 max-w-[90%]">
                     {galleryItems.map((item, index) => (
-                        <div
+                        <motion.div
                             key={index}
-                            className="w-64 h-64 rounded-2xl overflow-hidden border border-white/30 shadow-lg backdrop-blur-md relative hover:scale-105 transition-transform duration-300"
+                            className="w-full sm:w-[400px] md:w-[600px] aspect-[4/3] rounded-2xl overflow-hidden border border-white/30 shadow-lg backdrop-blur-md relative"
+                            variants={cardVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.2 }}
                         >
                             <Image
                                 src={item.image}
                                 alt={item.title?.th || `Image ${index + 1}`}
-                                width={400}
-                                height={300}
-                                className="w-full h-full object-cover"
+                                fill
+                                className="object-cover"
                             />
-                            <div className="absolute inset-0 bg-black/20"></div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

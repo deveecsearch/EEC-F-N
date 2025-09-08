@@ -23,10 +23,10 @@ const Navbar = () => {
               className="inline-flex items-center"
             >
                <Image
-                src={"/image/Logo_FN.png"}
+                src={"/image/new Logo F&N2.jpg"}
                 alt="FN"
-                width={50}
-                height={50}
+                width={200}
+                height={200}
                 className="rounded-full object-cover"
                 loading="lazy"
               />

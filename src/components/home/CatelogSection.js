@@ -6,7 +6,6 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from "next/link";
 
-
 export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const galleryItems = newcatalogdata?.galleryItems || [];
@@ -30,6 +29,12 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
     },
   };
 
+  // --- Fade-in up variant for scroll effect ---
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  };
+
   return (
     <section className="relative bg-gradient-to-br from-indigo-100 via-blue-50 to-slate-50 flex flex-col items-center justify-center overflow-hidden py-20 md:py-24">
 
@@ -42,14 +47,26 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
       />
 
       {/* Title */}
-      <h2 className="text-4xl md:text-5xl font-extrabold pb-10 text-center bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-lg z-10 ">
+      <motion.h2
+        className="text-4xl md:text-5xl font-extrabold pb-10 text-center bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-lg z-10"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         แคตตาล็อกผลิตภัณฑ์
-      </h2>
+      </motion.h2>
 
       {/* Two-column layout */}
       <div className="flex flex-col md:flex-row items-center justify-center gap-10 w-full max-w-6xl px-6">
         {/* Left: Carousel */}
-        <div className="w-full md:w-1/2 h-[40rem] relative overflow-hidden rounded-3xl">
+        <motion.div
+          className="w-full md:w-1/2 h-[40rem] relative overflow-hidden rounded-3xl"
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {imageUrl && (
             <Image
               src={imageUrl}
@@ -73,18 +90,24 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
           >
             <ChevronRight size={28} />
           </button>
-        </div>
+        </motion.div>
 
         {/* Right: HELAMIN BRW150H details + logo */}
-        <div className="w-full md:w-1/2 flex flex-col items-center">
-          <div className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl rounded-2xl p-6 md:p-8 shadow-2xl shadow-blue-500/15 border border-blue-200/40 transition-all duration-500 transform hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 w-full">
+        <motion.div
+          className="w-full md:w-1/2 flex flex-col items-center"
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <div className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl rounded-2xl p-6 md:p-8 shadow-2xl shadow-blue-500/15 border border-blue-200/40 transition-all duration-500 w-full">
             {hBRW150Hdata?.bulletsItems?.length > 0 && (
               <>
                 <h3 className="text-2xl md:text-3xl font-bold text-center mb-6 bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-sm">
                   {hBRW150Hdata.bulletsItems[0]?.title?.th || "ชื่อสินค้า"}
                 </h3>
-                <div className="flex flex-col md:flex-col items-center gap-4 md:gap-6">
-                  <div className="flex justify-center gap-4 md:gap-6 flex-wrap mb-4">
+                <div className="flex flex-col items-center gap-6">
+                  <div className="flex justify-center gap-6 flex-wrap mb-4">
                     {hBRW150Hdata.bulletsItems
                       .filter(item => item?.image)
                       .map((item, idx) => (
@@ -134,8 +157,7 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
               rel="noopener noreferrer"
               className="flex flex-col items-center group"
             >
-              {/* โลโก้ */}
-              <div className="p-3 rounded-2xl bg-white/70 backdrop-blur-md shadow-md shadow-blue-500/20 transition-transform duration-300 ">
+              <div className="p-3 rounded-2xl bg-white/70 backdrop-blur-md shadow-md shadow-blue-500/20 transition-transform duration-300">
                 <Image
                   src="/image/logo-helamin-rectangulaire-complexe-1.png"
                   alt="HELAMIN Logo"
@@ -144,16 +166,12 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
                   className="object-contain"
                 />
               </div>
-
-              {/* ลิงก์ */}
               <span className="mt-3 text-sm md:text-base font-medium text-gray-800 group-hover:text-blue-700 group-hover:underline transition">
                 https://www.helamin.com/
               </span>
             </Link>
           </div>
-
-
-        </div>
+        </motion.div>
       </div>
     </section>
   );

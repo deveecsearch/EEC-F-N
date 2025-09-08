@@ -199,13 +199,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* After Section */}
+      {/* After Section 
       <section className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
         <div className="relative z-10">
           <AfterSection data={sectionsData.afterdata} />
         </div>
-      </section>
+      </section>*/}
 
       {/* Tag Section */}
       <section className="relative">
