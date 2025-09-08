@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
-function ExpandableText({ text, maxHeight = 120 }) {
+function ExpandableText({ text, maxHeight = 150 }) {
     const [expanded, setExpanded] = useState(false);
 
     return (
@@ -46,7 +46,7 @@ export default function HowWorkSection({ data }) {
             transition: { duration: 2.5, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" },
         },
     };
-
+    
     return (
         <section className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex flex-col items-center justify-center overflow-hidden py-16 md:py-24">
 
@@ -61,7 +61,7 @@ export default function HowWorkSection({ data }) {
             <div className="relative z-30 flex flex-col items-center w-full">
 
                 {/* ภาพใหญ่ */}
-                <div className="inline-block bg-gradient-to-br from-white/70 via-blue-50/50 to-indigo-50/30 backdrop-blur-xl border-2 border-blue-200/40 rounded-3xl mb-12 overflow-hidden w-[80%] md:w-[900px] shadow-2xl shadow-blue-500/15 transition-all duration-300 hover:scale-102 hover:shadow-3xl hover:shadow-blue-500/25">
+                <div className="inline-block bg-gradient-to-br from-white/70 via-blue-50/50 to-indigo-50/30 backdrop-blur-xl border-2 border-blue-200/40 rounded-3xl mb-12 overflow-hidden w-[80%] md:w-[900px] shadow-2xl shadow-blue-500/15 transition-all duration-300 ">
                     {firstImage ? (
                         <img src={firstImage} alt="Diagram" className="w-full h-auto rounded-2xl" />
                     ) : (
@@ -71,17 +71,20 @@ export default function HowWorkSection({ data }) {
 
                 {/* การ์ดสองใบ */}
                 <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 px-6">
-
                     {/* การ์ดแรก */}
-                    <div className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-8 rounded-2xl border border-blue-200/40 shadow-2xl shadow-blue-500/15 transition-all duration-500 hover:scale-105 hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 hover:-translate-y-2">
-                        <h2 className="text-2xl md:text-4xl font-extrabold bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-lg mb-2 text-center">{mainTitle}</h2>
-                        <div className="w-40 sm:w-52 md:w-64 lg:w-72 xl:w-80 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mt-4 mb-6 rounded-full shadow-sm" />
+                    <div className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-8 rounded-2xl border border-blue-200/40 shadow-2xl shadow-blue-500/15 transition-all duration-500 ">
+                        <h2 className="text-2xl md:text-4xl font-extrabold bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-lg mb-2 text-center">
+                            {mainTitle}
+                        </h2>
+                        <div className="w-40 sm:w-52 md:w-64 lg:w-72 xl:w-80 h-2 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mt-4 mb-6 rounded-full shadow-sm" />
                         <ExpandableText text={firstCardText} maxHeight={120} />
                     </div>
 
                     {/* การ์ดสอง */}
-                    <div className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-8 rounded-2xl border border-blue-200/40 shadow-2xl shadow-blue-500/15 transition-all duration-500 hover:scale-105 hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 self-start hover:-translate-y-2">
-                        <h2 className="text-2xl md:text-4xl font-extrabold bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-lg mb-2 text-center">{mainTitle2}</h2>
+                    <div className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-8 rounded-2xl border border-blue-200/40 shadow-2xl shadow-blue-500/15 transition-all duration-500 ">
+                        <h2 className="text-2xl md:text-4xl font-extrabold bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-lg mb-2 text-center">
+                            {mainTitle2}
+                        </h2>
                         <div className="w-40 sm:w-52 md:w-64 lg:w-72 xl:w-80 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mt-4 mb-6 rounded-full shadow-sm" />
                         <ExpandableText text={secondCardText} maxHeight={120} />
                     </div>

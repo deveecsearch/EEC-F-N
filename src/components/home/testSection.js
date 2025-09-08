@@ -26,7 +26,8 @@ export default function TestSection({ data }) {
     const mainTitle = "ทดลอง";
 
     return (
-        <section className="relative pt-6 md:pt-8 pb-6 md:pb-8 overflow-hidden bg-gradient-to-br from-indigo-100 via-blue-50 to-slate-50">
+        <section className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex flex-col items-center justify-center overflow-hidden py-16 md:py-24">
+
 
 
             {/* Animated top line */}

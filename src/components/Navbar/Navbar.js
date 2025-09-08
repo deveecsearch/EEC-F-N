@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 font-prompt">
       <div className="bg-white border-b border-gray-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-1">
           <div className="flex items-center justify-between h-16">
             {/* โลโก้ */}
             <Link
@@ -25,8 +25,8 @@ const Navbar = () => {
                <Image
                 src={"/image/Logo_FN.png"}
                 alt="FN"
-                width={48}
-                height={48}
+                width={50}
+                height={50}
                 className="rounded-full object-cover"
                 loading="lazy"
               />

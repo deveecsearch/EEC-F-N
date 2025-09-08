@@ -97,7 +97,8 @@ export default function PolyamineSection({ data }) {
     const titleText = getTitle();
 
     return (
-        <section className="relative pt-6 md:pt-8 pb-6 md:pb-8 overflow-hidden bg-gradient-to-br from-indigo-100 via-blue-50 to-slate-50">
+        <section className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex flex-col items-center justify-center overflow-hidden py-16 md:py-24">
+
             {/* Animated top line */}
             <motion.div
                 className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[90%] h-1 bg-gradient-to-r from-transparent via-blue-500/80 to-transparent z-30 shadow-lg"
