@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function HeroSection({ data }) {
     const herodata1 = data?.herodata1;
@@ -19,7 +20,6 @@ export default function HeroSection({ data }) {
             }
         }
     };
-
     
 
     const itemVariants = {
@@ -200,7 +200,7 @@ export default function HeroSection({ data }) {
                             <div className="flex flex-col lg:flex-row items-center gap-6">
                                 {/* Image */}
                                 <div className="flex-shrink-0 w-full lg:w-1/3">
-                                    {herodata3?.bulletsItems[0]?.image ? (
+                                    {data?.herodata3?.bulletsItems[0]?.image ? (
                                         <img src={herodata3.bulletsItems[0].image} alt={herodata3.bulletsItems[0].title?.th || "Card 14 Image"} className="w-full h-full object-cover rounded-xl shadow-lg" />
                                     ) : (
                                         <div className="w-full h-48 lg:h-56 flex items-center justify-center bg-gray-100 text-gray-400 text-sm rounded-xl shadow-lg">
@@ -255,7 +255,7 @@ export default function HeroSection({ data }) {
                                 {/* Image Container - ขวา */}
                                 <div className="flex-shrink-0 w-full lg:w-1/3">
                                     <div className="bg-gray-100 rounded-xl overflow-hidden shadow-lg h-48 lg:h-56">
-                                        {herodata3?.bulletsItems[3]?.image ? (
+                                        {data?.herodata3?.bulletsItems[3]?.image ? (
                                             <img 
                                                 src={herodata3.bulletsItems[3].image} 
                                                 alt={herodata3.bulletsItems[3].title?.th || "Card 23 Image"} 
@@ -316,7 +316,7 @@ export default function HeroSection({ data }) {
                             <div className="flex flex-col lg:flex-row items-center gap-6">
                                 {/* Image */}
                                 <div className="flex-shrink-0 w-full lg:w-1/3">
-                                    {herodata3?.bulletsItems[6]?.image ? (
+                                    {data?.herodata3?.bulletsItems[6]?.image ? (
                                         <img src={herodata3.bulletsItems[6].image} alt={herodata3.bulletsItems[6].title?.th || "Card 29 Image"} className="w-full h-full object-cover rounded-xl shadow-lg" />
                                     ) : (
                                         <div className="w-full h-48 lg:h-56 flex items-center justify-center bg-gray-100 text-gray-400 text-sm rounded-xl shadow-lg">

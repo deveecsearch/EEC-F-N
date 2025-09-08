@@ -26,6 +26,20 @@ export default function TestSection({ data }) {
         })
     };
 
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                type: 'spring',
+                stiffness: 100,
+                damping: 12
+            }
+        }
+    };
+
     // Card scroll animation
     const cardVariants = {
         hidden: { opacity: 0, y: 50, scale: 0.9 },
@@ -81,10 +95,12 @@ export default function TestSection({ data }) {
             </div>
 
             <div className="flex flex-col items-center w-full">
-                {/* Section title */}
-                <h2 className="text-4xl md:text-5xl font-extrabold mt-4 pb-10 bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-lg">
-                    {mainTitle}
-                </h2>
+                {/* Section title with motion */}
+                <motion.div className="text-center mb-12" variants={itemVariants}>
+                    <h2 className="text-4xl md:text-5xl font-extrabold pb-3 bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-lg">
+                        {mainTitle}
+                    </h2>
+                </motion.div>
 
                 {/* Grid */}
                 <div className="flex flex-wrap justify-center items-center gap-6 max-w-[90%]">

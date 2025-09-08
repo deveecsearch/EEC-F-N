@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 function ExpandableText({ text, maxHeight = 150 }) {
     const [expanded, setExpanded] = useState(false);
 
+    
     return (
         <div className="relative">
             <motion.div

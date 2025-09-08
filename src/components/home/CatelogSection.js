@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Link from "next/link";
+
 
 export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -147,29 +147,6 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
                 </div>
               </>
             )}
-          </div>
-
-          {/* HELAMIN logo link */}
-          <div className="mt-8 flex flex-col items-center">
-            <Link
-              href="https://www.helamin.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-col items-center group"
-            >
-              <div className="p-3 rounded-2xl bg-white/70 backdrop-blur-md shadow-md shadow-blue-500/20 transition-transform duration-300">
-                <Image
-                  src="/image/logo-helamin-rectangulaire-complexe-1.png"
-                  alt="HELAMIN Logo"
-                  width={220}
-                  height={70}
-                  className="object-contain"
-                />
-              </div>
-              <span className="mt-3 text-sm md:text-base font-medium text-gray-800 group-hover:text-blue-700 group-hover:underline transition">
-                https://www.helamin.com/
-              </span>
-            </Link>
           </div>
         </motion.div>
       </div>
