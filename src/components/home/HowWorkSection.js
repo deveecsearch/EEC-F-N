@@ -142,7 +142,7 @@ export default function HowWorkSection({ data }) {
                         viewport={{ once: true, amount: 0.2 }}
                         custom={0.2}
                     >
-                        <h2 className="text-2xl md:text-4xl font-extrabold bg-gradient-to-r 
+                        <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r 
                    from-gray-800 via-blue-700 to-indigo-800 bg-clip-text 
                    text-transparent drop-shadow-lg mb-2 text-center">
                             {mainTitle}
@@ -163,7 +163,7 @@ export default function HowWorkSection({ data }) {
                         viewport={{ once: true, amount: 0.2 }}
                         custom={0.4}
                     >
-                        <h2 className="text-2xl md:text-4xl font-extrabold bg-gradient-to-r 
+                        <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r 
                    from-gray-800 via-blue-700 to-indigo-800 bg-clip-text 
                    text-transparent drop-shadow-lg mb-2 text-center">
                             {mainTitle2}
