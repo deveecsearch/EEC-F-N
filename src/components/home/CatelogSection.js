@@ -153,4 +153,4 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
     </section>
   );
 }
- 
+  
