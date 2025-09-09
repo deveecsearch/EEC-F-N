@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 font-prompt">
       <div className="bg-white border-b border-gray-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-1">
           <div className="flex items-center justify-between h-16">
             {/* โลโก้ */}
             <Link
@@ -23,10 +23,10 @@ const Navbar = () => {
               className="inline-flex items-center"
             >
                <Image
-                src={"/image/Logo_FN.png"}
+                src={"/image/new Logo F&N2.jpg"}
                 alt="FN"
-                width={48}
-                height={48}
+                width={200}
+                height={200}
                 className="rounded-full object-cover"
                 loading="lazy"
               />

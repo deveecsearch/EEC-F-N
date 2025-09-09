@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function HeroSection({ data }) {
     const herodata1 = data?.herodata1;
@@ -20,7 +21,6 @@ export default function HeroSection({ data }) {
         }
     };
 
-    
 
     const itemVariants = {
         hidden: { opacity: 0, y: 20 },
@@ -189,76 +189,129 @@ export default function HeroSection({ data }) {
                 {/* Container สำหรับทุกการ์ด */}
                 <div className="flex flex-col space-y-8 mt-6 max-w-6xl mx-auto">
 
-                    {/* Card 14 - มีรูปอยู่ซ้าย */}
+                    {/* Card 14 - Responsive: ภาพล่างมือถือ, ซ้าย tablet+desktop */}
                     {herodata1?.bulletsItems[14] && (
                         <motion.div
                             className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-6 rounded-2xl border border-blue-200/40 shadow-2xl shadow-blue-500/15
-                 transition-all duration-500 transform hover:scale-[1.02] hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 w-full"
+               transition-all duration-500 transform hover:scale-[1.02] hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 w-full"
                             variants={itemVariants}
                             whileHover={{ y: -5, transition: { type: "spring", stiffness: 300 } }}
                         >
-                            <div className="flex flex-col lg:flex-row items-center gap-6">
-                                {/* Image */}
+                            <div className="flex flex-col-reverse lg:flex-row items-center gap-6">
+
+                                {/* Image Container */}
                                 <div className="flex-shrink-0 w-full lg:w-1/3">
-                                    {herodata3?.bulletsItems[0]?.image ? (
-                                        <img src={herodata3.bulletsItems[0].image} alt={herodata3.bulletsItems[0].title?.th || "Card 14 Image"} className="w-full h-full object-cover rounded-xl shadow-lg" />
-                                    ) : (
-                                        <div className="w-full h-48 lg:h-56 flex items-center justify-center bg-gray-100 text-gray-400 text-sm rounded-xl shadow-lg">
-                                            Image Placeholder
-                                        </div>
-                                    )}
-                                    <h6 className="text-sm font-semibold text-gray-700 text-center mt-3">{herodata3?.bulletsItems[0]?.title?.th || "Card 14 Image Title"}</h6>
+                                    <div className="bg-gray-100 rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
+                                        {herodata3?.bulletsItems[0]?.image ? (
+                                            <img
+                                                src={herodata3.bulletsItems[0].image}
+                                                alt={herodata3.bulletsItems[0].title?.th || "Card 14 Image"}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        ) : (
+                                            <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+                                                Image Placeholder
+                                            </div>
+                                        )}
+                                    </div>
+                                    <h6 className="text-sm font-semibold text-gray-700 text-center mt-3">
+                                        {herodata3?.bulletsItems[0]?.title?.th || "Card 14 Image Title"}
+                                    </h6>
                                 </div>
 
-                                {/* Content */}
-                                <div className="flex-1 text-left">
-                                    <h3 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">{herodata1?.bulletsItems[14]?.description?.th}</h3>
-                                    <p className="text-sm sm:text-base text-gray-700 mb-3">{herodata1?.bulletsItems[15]?.description?.th}</p>
-                                    <p className="text-sm sm:text-base text-gray-700">{herodata1?.bulletsItems[16]?.description?.th}</p>
+                                {/* Content Container */}
+                                <div className="flex-1 text-left lg:pl-6 mt-4 lg:mt-0">
+                                    <h3 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">
+                                        {herodata1?.bulletsItems[14]?.description?.th}
+                                    </h3>
+                                    <p className="text-sm sm:text-base text-gray-700 mb-3">
+                                        {herodata1?.bulletsItems[15]?.description?.th}
+                                    </p>
+                                    <p className="text-sm sm:text-base text-gray-700">
+                                        {herodata1?.bulletsItems[16]?.description?.th}
+                                    </p>
                                 </div>
+
                             </div>
                         </motion.div>
                     )}
 
                     {/* Card 17 + 21 (ไม่มีรูป) - 2 คอลัมน์ */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {[17, 21].map(index => herodata1?.bulletsItems[index] && (
-                            <motion.div
-                                key={index}
-                                className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-6 rounded-2xl border border-blue-200/40 shadow-2xl shadow-blue-500/15
-                   transition-all duration-500 transform hover:scale-[1.02] hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 w-full"
-                                variants={itemVariants}
-                                whileHover={{ y: -5, transition: { type: "spring", stiffness: 300 } }}
-                            >
-                                <div className="flex flex-col">
-                                    <div className="flex-1 text-left">
-                                        <h3 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">{herodata1?.bulletsItems[index]?.description?.th}</h3>
-                                        <p className="text-sm sm:text-base text-gray-700">{herodata1?.bulletsItems[index + 1]?.description?.th}</p>
-                                        {herodata1?.bulletsItems[index + 2]?.description?.th && (
-                                            <p className="text-sm sm:text-base text-gray-700 mt-1">{herodata1?.bulletsItems[index + 2]?.description?.th}</p>
-                                        )}
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
 
-                     {/* Card 23 - รูปอยู่ขวา */}
-                    {herodata1?.bulletsItems[23] && (
+                        {/* Card 17 */}
                         <motion.div
+                            key="17"
                             className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-6 rounded-2xl border border-blue-200/40 shadow-2xl shadow-blue-500/15
-                             transition-all duration-500 transform hover:scale-[1.02] hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 w-full"
+    transition-all duration-500 transform hover:scale-[1.02] hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 w-full"
                             variants={itemVariants}
                             whileHover={{ y: -5, transition: { type: "spring", stiffness: 300 } }}
                         >
-                            <div className="flex flex-col lg:flex-row-reverse items-center gap-6">
-                                {/* Image Container - ขวา */}
-                                <div className="flex-shrink-0 w-full lg:w-1/3">
-                                    <div className="bg-gray-100 rounded-xl overflow-hidden shadow-lg h-48 lg:h-56">
+                            <div className="flex flex-col">
+                                <div className="flex-1 text-left">
+                                    {/* หัวข้อของการ์ด 17 */}
+                                    <h3 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">
+                                        {herodata1?.bulletsItems[17]?.description?.th}
+                                    </h3>
+
+                                    {/* รายละเอียด 18,19,20 */}
+                                    {[18, 19, 20].map((idx) => {
+                                        const item = herodata1?.bulletsItems[idx];
+                                        if (!item) return null;
+
+                                        return (
+                                            <p key={idx} className="text-sm sm:text-base text-gray-700 mt-1">
+                                                {item.description?.th}
+                                            </p>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* Card 21 */}
+                        <motion.div
+                            key="21"
+                            className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-6 rounded-2xl border border-blue-200/40 shadow-2xl shadow-blue-500/15
+    transition-all duration-500 transform hover:scale-[1.02] hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 w-full"
+                            variants={itemVariants}
+                            whileHover={{ y: -5, transition: { type: "spring", stiffness: 300 } }}
+                        >
+                            <div className="flex flex-col">
+                                <div className="flex-1 text-left">
+                                    {/* หัวข้อของการ์ด 21 */}
+                                    <h3 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">
+                                        {herodata1?.bulletsItems[21]?.description?.th}
+                                    </h3>
+
+                                    {/* รายละเอียด 22 */}
+                                    {herodata1?.bulletsItems[22] && (
+                                        <p className="text-sm sm:text-base text-gray-700 mt-1">
+                                            {herodata1.bulletsItems[22].description?.th}
+                                        </p>
+                                    )}
+                                </div>
+                            </div>
+                        </motion.div>
+
+                    </div>
+
+                    {/* Card 23 - Responsive: ภาพบนมือถือ ขวา tablet+desktop */}
+                    {herodata1?.bulletsItems[23] && (
+                        <motion.div
+                            className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-6 rounded-2xl border border-blue-200/40 shadow-2xl shadow-blue-500/15
+               transition-all duration-500 transform hover:scale-[1.02] hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 w-full"
+                            variants={itemVariants}
+                            whileHover={{ y: -5, transition: { type: "spring", stiffness: 300 } }}
+                        >
+                            <div className="flex flex-col-reverse md:flex-row-reverse items-center gap-6">
+                                {/* Image */}
+                                <div className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3">
+                                    <div className="bg-gray-100 rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
                                         {herodata3?.bulletsItems[3]?.image ? (
-                                            <img 
-                                                src={herodata3.bulletsItems[3].image} 
-                                                alt={herodata3.bulletsItems[3].title?.th || "Card 23 Image"} 
+                                            <img
+                                                src={herodata3.bulletsItems[3].image}
+                                                alt="Card 23 Image"
                                                 className="w-full h-full object-cover"
                                             />
                                         ) : (
@@ -271,19 +324,22 @@ export default function HeroSection({ data }) {
                                         {herodata3?.bulletsItems[3]?.title?.th || "Card 23 Image Title"}
                                     </h6>
                                 </div>
-                                
-                                {/* Content Container - ซ้าย */}
-                                <div className="flex-1 text-left">
-                                    <h3 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">
+
+                                {/* Content */}
+                                <div className="flex-1 text-left md:pr-6 mt-4 md:mt-0">
+                                    <h3 className="text-lg md:text-xl font-bold mb-4 text-gray-800">
                                         {herodata1?.bulletsItems[23]?.description?.th}
                                     </h3>
-                                    <p className="text-sm sm:text-base text-gray-700">
+                                    <p className="text-sm md:text-base text-gray-700">
                                         {herodata1?.bulletsItems[24]?.description?.th}
                                     </p>
                                 </div>
                             </div>
+
                         </motion.div>
                     )}
+
+
 
                     {/* Card 25 + 27 (ไม่มีรูป) - 2 คอลัมน์ */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -305,32 +361,46 @@ export default function HeroSection({ data }) {
                         ))}
                     </div>
 
-                    {/* Card 29 - มีรูปอยู่ซ้าย */}
+                    {/* Card 29 - Responsive: ภาพล่างมือถือ, ซ้าย tablet+desktop */}
                     {herodata1?.bulletsItems[29] && (
                         <motion.div
                             className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-6 rounded-2xl border border-blue-200/40 shadow-2xl shadow-blue-500/15
-                 transition-all duration-500 transform hover:scale-[1.02] hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 w-full"
+               transition-all duration-500 transform hover:scale-[1.02] hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 w-full"
                             variants={itemVariants}
                             whileHover={{ y: -5, transition: { type: "spring", stiffness: 300 } }}
                         >
-                            <div className="flex flex-col lg:flex-row items-center gap-6">
-                                {/* Image */}
+                            <div className="flex flex-col-reverse lg:flex-row items-center gap-6">
+
+                                {/* Image Container */}
                                 <div className="flex-shrink-0 w-full lg:w-1/3">
-                                    {herodata3?.bulletsItems[6]?.image ? (
-                                        <img src={herodata3.bulletsItems[6].image} alt={herodata3.bulletsItems[6].title?.th || "Card 29 Image"} className="w-full h-full object-cover rounded-xl shadow-lg" />
-                                    ) : (
-                                        <div className="w-full h-48 lg:h-56 flex items-center justify-center bg-gray-100 text-gray-400 text-sm rounded-xl shadow-lg">
-                                            Image Placeholder
-                                        </div>
-                                    )}
-                                    <h6 className="text-sm font-semibold text-gray-700 text-center mt-3">{herodata3?.bulletsItems[6]?.title?.th || "Card 29 Image Title"}</h6>
+                                    <div className="bg-gray-100 rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
+                                        {herodata3?.bulletsItems[6]?.image ? (
+                                            <img
+                                                src={herodata3.bulletsItems[6].image}
+                                                alt={herodata3.bulletsItems[6].title?.th || "Card 29 Image"}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        ) : (
+                                            <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+                                                Image Placeholder
+                                            </div>
+                                        )}
+                                    </div>
+                                    <h6 className="text-sm font-semibold text-gray-700 text-center mt-3">
+                                        {herodata3?.bulletsItems[6]?.title?.th || "Card 29 Image Title"}
+                                    </h6>
                                 </div>
 
-                                {/* Content */}
-                                <div className="flex-1 text-left">
-                                    <h3 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">{herodata1?.bulletsItems[29]?.description?.th}</h3>
-                                    <p className="text-sm sm:text-base text-gray-700">{herodata1?.bulletsItems[30]?.description?.th}</p>
+                                {/* Content Container */}
+                                <div className="flex-1 text-left lg:pl-6 mt-4 lg:mt-0">
+                                    <h3 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">
+                                        {herodata1?.bulletsItems[29]?.description?.th}
+                                    </h3>
+                                    <p className="text-sm sm:text-base text-gray-700">
+                                        {herodata1?.bulletsItems[30]?.description?.th}
+                                    </p>
                                 </div>
+
                             </div>
                         </motion.div>
                     )}

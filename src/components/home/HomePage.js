@@ -11,8 +11,10 @@ import { getCompanySections, getCompanyInfo } from "../lib/APIservice";
 import HowWorkSection from "./HowWorkSection";
 import TestSection from "./testSection";
 import BeforeSection from "./BeforeSection";
-import AfterSection from "./AFterSection";
-import PolyamineSection from "./polyamineSection";
+import TagSection from "./TagSection";
+import FloatingChat from "./FloatingChat";
+import VisitorCounter from "./ViewerSection";
+import AmineSection from "./AmineSection";
 
 // สร้าง object สำหรับเก็บ section IDs เพื่อไม่ให้ hardcode
 const SECTION_IDS = {
@@ -29,7 +31,9 @@ const SECTION_IDS = {
   howworkimage: "9c7e0a4e-4a3f-45bc-8006-2f23480d0863",
   howworkdata: "ee71dc36-5cd8-4a48-9346-e5c85722bbfe",
   howwokimage2: "ef287191-8f35-467e-abb7-86b84bd839e7",
-  newcatalog: "a016580b-16e2-494c-9873-e40c3dd6c4fa"
+  newcatalog: "a016580b-16e2-494c-9873-e40c3dd6c4fa",
+  tag: "9d604dfb-49fe-4ff8-986e-2adae3e59ac1",
+  nomoamine: "cfdf5536-dd78-4019-b741-2e47de31bc5c"
 };
 
 export default function HomePage() {
@@ -48,6 +52,8 @@ export default function HomePage() {
     howworkdata: null,
     howwokimage2: null,
     newcatalogdata: null,
+    tagdata: null,
+    monoaminedata: null
   });
   const [loading, setLoading] = useState(true);
   const COMPANY_ID = process.env.NEXT_PUBLIC_COMPANY_ID;
@@ -98,6 +104,13 @@ export default function HomePage() {
         const newcatalogdataSection = allSections.find(
           (section) => section.sectionId === SECTION_IDS.newcatalog
         );
+        const tagdataSection = allSections.find(
+          (section) => section.sectionId === SECTION_IDS.tag
+        );
+
+        const nomoamineSection = allSections.find(
+          (section) => section.sectionId === SECTION_IDS.nomoamine
+        );
 
         setSectionsData({
           herodata1: heroSection1?.data,
@@ -113,6 +126,8 @@ export default function HomePage() {
           howworkdata: howworkdataSection?.data,
           herodata3: howwokimage2Section?.data,
           newcatalogdata: newcatalogdataSection?.data,
+          tagdata: tagdataSection?.data,
+          monoaminedata: nomoamineSection?.data
         });
 
 
@@ -135,7 +150,7 @@ export default function HomePage() {
     <div className="bg-white text-black">
       {/* Banner Section */}
       <BannerSection images={bannerImages} />
- 
+
       {/* Hero Section + Overlay */}
       <section className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0081ca]/90 to-[#00b4f4]/90"></div>
@@ -150,6 +165,7 @@ export default function HomePage() {
           <CatelogSection hBRW150Hdata={sectionsData.hBRW150Hdata} newcatalogdata={sectionsData.newcatalogdata} />
         </div>
       </section>
+
       {/* Good Section + Overlay */}
       <section className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-200/80 to-white/80"></div>
@@ -157,14 +173,12 @@ export default function HomePage() {
           <GoodSection data={sectionsData.gooddata1} />
         </div>
       </section>
- 
-      {/* Polyamine Section */}
+
+      {/* Amine Section */}
       <section className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
         <div className="relative z-10">
-          <PolyamineSection data={sectionsData.polyaminedata}
-          />
-
+          <AmineSection monoaminedata={sectionsData.monoaminedata} polyaminedata={sectionsData.polyaminedata} />
         </div>
       </section>
 
@@ -192,14 +206,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* After Section */}
+      {/* Visitor Counter Section */}
       <section className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
         <div className="relative z-10">
-          <AfterSection data={sectionsData.afterdata} />
+          <VisitorCounter />
         </div>
       </section>
 
+      {/* Tag Section */}
+      <section className="relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
+        <div className="relative z-10">
+          <TagSection data={sectionsData.tagdata} />
+        </div>
+      </section>
+      <FloatingChat />
     </div>
+
   );
+
 }
