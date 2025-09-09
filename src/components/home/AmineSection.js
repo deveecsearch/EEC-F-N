@@ -109,7 +109,7 @@ export default function AmineSection({ monoaminedata, polyaminedata }) {
 
             {/* Image */}
             <motion.div
-                className="w-full"
+                className="w-fit max-w-5xl lg:max-w-10xl"
                 variants={imageVariants}
                 initial="hidden"
                 whileInView="visible"
