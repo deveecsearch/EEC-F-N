@@ -23,7 +23,7 @@ const Navbar = () => {
               className="inline-flex items-center"
             >
                <Image
-                src={"/image/new Logo F&N2.jpg"}
+                src={"/image/New-Logo-F-N2.jpg"}
                 alt="FN"
                 width={200}
                 height={200}
