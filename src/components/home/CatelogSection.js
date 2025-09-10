@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+
 export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const galleryItems = newcatalogdata?.galleryItems || [];
