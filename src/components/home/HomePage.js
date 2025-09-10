@@ -166,6 +166,8 @@ export default function HomePage() {
         </div>
       </section>
 
+
+
       {/* Good Section + Overlay */}
       <section className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-200/80 to-white/80"></div>

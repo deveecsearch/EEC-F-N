@@ -1,88 +1,69 @@
 'use client';
 import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
-import { RefreshCcw, Eye, ExternalLink, TrendingUp, Sparkles } from 'lucide-react';
+import { RefreshCcw, Eye, ExternalLink, TrendingUp } from 'lucide-react';
 import Link from "next/link";
 import { motion } from 'framer-motion';
 
 export default function VisitorCounter() {
     const [count, setCount] = useState(0);
-    const hasIncremented = useRef(false);
+    const hasFetched = useRef(false); // กัน fetch ซ้ำตอน mount
+
+    // ดึง count ตอน mount (ครั้งแรก)
+    const fetchVisitorCountOnce = async () => {
+        if (hasFetched.current) return;
+        hasFetched.current = true;
+
+        try {
+            const res = await fetch("https://eec-cms.vercel.app/api/track-visitor?id=f-n-techno-co-ltd-mf6p1vr5");
+            const data = await res.json();
+            setCount(data.count || data.views || 0);
+        } catch (err) {
+            console.error("ดึงข้อมูลล้มเหลว:", err);
+        }
+    };
+
+    // ดึง count ใหม่ (ใช้กับปุ่ม Refresh)
+    const refreshCount = async () => {
+        try {
+            const res = await fetch("https://eec-cms.vercel.app/api/track-visitor?id=f-n-techno-co-ltd-mf6p1vr5");
+            const data = await res.json();
+            setCount(data.count || data.views || 0);
+        } catch (err) {
+            console.error("รีเฟรชล้มเหลว:", err);
+        }
+    };
 
     useEffect(() => {
-        if (!hasIncremented.current && typeof window !== 'undefined') {
-            const currentCount = parseInt(localStorage.getItem('visitorCount'), 10) || 0;
-            const newCount = currentCount + 1;
-            setCount(newCount);
-            localStorage.setItem('visitorCount', newCount);
-            hasIncremented.current = true;
-        }
+        fetchVisitorCountOnce();
     }, []);
 
-    const refreshCount = () => {
-        if (typeof window !== 'undefined') {
-            const currentCount = parseInt(localStorage.getItem('visitorCount'), 10) || 0;
-            setCount(currentCount);
+    // Animation variants
+    const lineVariants = {
+        animate: {
+            scaleX: [0.7, 1, 0.7],
+            transition: { duration: 2, repeat: Infinity, ease: "easeInOut" }
         }
     };
 
-    // Top line animation
-    const lineVariants = {
-        animate: {
-            scaleX: [0.7, 1.2, 0.7],
-            opacity: [0.5, 1, 0.5],
-            transition: { duration: 2.5, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }
-        },
-    };
-
-    // Enhanced floating shapes animation with golden theme
     const floatingVariants = {
-        animate: (customDelay = 0) => ({
-            y: [-10, 10, -10],
+        animate: custom => ({
+            y: [0, 10, 0],
+            x: [0, 5 * custom, 0],
             rotate: [0, 5, -5, 0],
-            scale: [1, 1.05, 1],
-            transition: {
-                duration: 4,
-                ease: "easeInOut",
-                repeat: Infinity,
-                delay: customDelay
-            }
+            transition: { duration: 4 + custom, repeat: Infinity, ease: "easeInOut" }
         })
     };
 
-    // Card animations
     const counterCardVariants = {
-        hidden: { opacity: 0, y: 50, scale: 0.95 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            transition: {
-                duration: 0.8,
-                ease: "easeOut",
-                type: "spring",
-                stiffness: 100
-            }
-        }
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
     };
 
     const logoCardVariants = {
         hidden: { opacity: 0, y: 50, scale: 0.95 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            transition: {
-                duration: 0.8,
-                ease: "easeOut",
-                delay: 0.2,
-                type: "spring",
-                stiffness: 100
-            }
-        }
+        visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: "easeOut" } }
     };
-
-
 
     return (
         <section className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex flex-col items-center justify-center overflow-hidden py-16 md:py-24 px-4 sm:px-6 lg:px-12">
@@ -95,7 +76,7 @@ export default function VisitorCounter() {
                 animate="animate"
             />
 
-            {/* Enhanced floating golden shapes */}
+            {/* Floating decorative shapes */}
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <motion.div
                     className="absolute top-20 left-4 sm:left-10 w-16 sm:w-20 h-16 sm:h-20 rounded-2xl rotate-12"
@@ -125,14 +106,12 @@ export default function VisitorCounter() {
                     animate="animate"
                     custom={0.5}
                 />
-
-
             </div>
 
             {/* Main container */}
             <div className="relative z-10 flex flex-col items-center w-full max-w-[1200px]">
 
-                {/* Cards Container */}
+                {/* Cards container */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full px-2 sm:px-0">
 
                     {/* Visitor Counter Card */}
@@ -142,17 +121,12 @@ export default function VisitorCounter() {
                         initial="hidden"
                         animate="visible"
                     >
-                        {/* Card background with solid color */}
                         <div className="absolute inset-0 bg-blue-900/90 backdrop-blur-sm" />
-
-                        {/* Decorative elements */}
                         <div className="absolute top-0 right-0 w-40 h-40 bg-yellow-400/20 rounded-full blur-3xl" />
                         <div className="absolute bottom-0 left-0 w-32 h-32 bg-blue-400/20 rounded-full blur-2xl" />
 
                         <div className="relative z-10 p-6 lg:p-8">
                             <div className="flex flex-col items-center gap-4">
-
-                                {/* Header with icon and title */}
                                 <div className="flex items-center gap-3 w-full justify-center">
                                     <motion.div
                                         className="w-14 h-14 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg"
@@ -172,12 +146,10 @@ export default function VisitorCounter() {
                                     </div>
                                 </div>
 
-                                {/* Welcome message */}
                                 <p className="text-sm lg:text-base text-white/90 text-center leading-relaxed">
                                     ขอบคุณที่แวะเข้ามาเยี่ยมชมเว็บไซต์ของเรา
                                 </p>
 
-                                {/* Counter display */}
                                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 w-full border border-white/20 relative overflow-hidden">
                                     <div className="relative flex items-center justify-center gap-4">
                                         <motion.span
@@ -224,7 +196,6 @@ export default function VisitorCounter() {
                                 transition={{ duration: 0.3 }}
                             >
                                 <div className="relative z-10 flex flex-col items-center justify-center h-full">
-                                    {/* Logo container */}
                                     <div className="w-full max-w-[200px] mb-4 filter drop-shadow-lg">
                                         <motion.div
                                             whileHover={{ scale: 1.05 }}
@@ -239,8 +210,6 @@ export default function VisitorCounter() {
                                             />
                                         </motion.div>
                                     </div>
-
-                                    {/* Website link */}
                                     <div className="flex items-center gap-2 text-blue-900 transition-colors duration-300 mb-2">
                                         <span className="text-base font-semibold">www.helamin.com</span>
                                         <motion.div
@@ -251,8 +220,6 @@ export default function VisitorCounter() {
                                             <ExternalLink className="w-4 h-4" />
                                         </motion.div>
                                     </div>
-
-                                    {/* Call to action */}
                                     <motion.p
                                         className="text-xs text-blue-800 text-center px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                                         initial={{ y: 10 }}
