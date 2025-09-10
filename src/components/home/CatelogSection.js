@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-
 export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const galleryItems = newcatalogdata?.galleryItems || [];
@@ -29,6 +28,15 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
     },
   };
 
+  // --- Floating shapes ---
+  const floatingVariants = {
+    animate: {
+      y: [-10, 10, -10],
+      rotate: [0, 5, -5, 0],
+      transition: { duration: 4, ease: 'easeInOut', repeat: Infinity },
+    },
+  };
+
   // --- Fade-in up variant for scroll effect ---
   const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
@@ -36,19 +44,49 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-indigo-100 via-blue-50 to-slate-50 flex flex-col items-center justify-center overflow-hidden py-20 md:py-24">
+    <section className="relative pt-20 md:pt-24 pb-20 md:pb-24 overflow-hidden bg-gradient-to-br from-indigo-50 via-blue-50 to-slate-100 rounded-2xl">
 
       {/* Animated top line */}
       <motion.div
-        className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[90%] h-1 bg-gradient-to-r from-transparent via-blue-500/80 to-transparent z-30 shadow-lg"
+        className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[90%] h-1 
+                   bg-gradient-to-r from-transparent via-blue-500/80 to-transparent 
+                   z-30 shadow-lg"
         variants={lineVariants}
         initial="animate"
         animate="animate"
       />
 
+      {/* Floating shapes */}
+      <motion.div
+        className="absolute top-20 left-10 w-28 h-28 rounded-2xl rotate-12"
+        style={{ background: 'linear-gradient(45deg, #facc1b20, #fbd01e20)' }}
+        variants={floatingVariants}
+        animate="animate"
+      />
+      <motion.div
+        className="absolute top-40 right-16 w-24 h-24 rounded-full"
+        style={{ background: 'linear-gradient(45deg, #facc1b15, #fbcf1d15)' }}
+        variants={floatingVariants}
+        animate="animate"
+      />
+      <motion.div
+        className="absolute bottom-32 left-20 w-16 h-16 rounded-lg rotate-45"
+        style={{ background: 'linear-gradient(45deg, #facc1b25, #fac91825)' }}
+        variants={floatingVariants}
+        animate="animate"
+      />
+      <motion.div
+        className="absolute bottom-20 right-32 w-20 h-20 rounded-3xl -rotate-12"
+        style={{ background: 'linear-gradient(45deg, #facc1b10, #fbcd1c10)' }}
+        variants={floatingVariants}
+        animate="animate"
+      />
+
       {/* Title */}
       <motion.h2
-        className="text-4xl md:text-5xl font-extrabold pb-10 text-center bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-lg z-10"
+        className="text-4xl md:text-5xl font-extrabold pb-10 text-center 
+                   bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 
+                   bg-clip-text text-transparent drop-shadow-lg z-10 relative"
         variants={fadeInUp}
         initial="hidden"
         whileInView="visible"
@@ -58,10 +96,11 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
       </motion.h2>
 
       {/* Two-column layout */}
-      <div className="flex flex-col md:flex-row items-center justify-center gap-10 w-full max-w-6xl px-6">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-10 w-full max-w-6xl px-6 relative z-10">
+        
         {/* Left: Carousel */}
         <motion.div
-          className="w-full md:w-1/2 h-[40rem] relative overflow-hidden rounded-3xl"
+          className="w-full md:w-1/2 h-[40rem] relative overflow-hidden rounded-3xl shadow-xl shadow-blue-500/10 border border-blue-200/30 bg-white/70 backdrop-blur-sm"
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
@@ -80,13 +119,15 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
           {/* Navigation buttons */}
           <button
             onClick={prevSlide}
-            className="absolute top-1/2 left-3 transform -translate-y-1/2 p-3 rounded-full bg-white/80 backdrop-blur-md shadow hover:bg-white z-20"
+            className="absolute top-1/2 left-3 transform -translate-y-1/2 p-3 rounded-full 
+                       bg-white/80 backdrop-blur-md shadow hover:bg-white z-20"
           >
             <ChevronLeft size={28} />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute top-1/2 right-3 transform -translate-y-1/2 p-3 rounded-full bg-white/80 backdrop-blur-md shadow hover:bg-white z-20"
+            className="absolute top-1/2 right-3 transform -translate-y-1/2 p-3 rounded-full 
+                       bg-white/80 backdrop-blur-md shadow hover:bg-white z-20"
           >
             <ChevronRight size={28} />
           </button>
@@ -94,16 +135,20 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
 
         {/* Right: HELAMIN BRW150H details + logo */}
         <motion.div
-          className="w-full md:w-1/2 flex flex-col items-center"
+          className="w-full md:w-1/2 flex flex-col items-center relative z-10"
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <div className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl rounded-2xl p-6 md:p-8 shadow-2xl shadow-blue-500/15 border border-blue-200/40 transition-all duration-500 w-full">
+          <div className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl 
+                          rounded-2xl p-6 md:p-8 shadow-2xl shadow-blue-500/15 border border-blue-200/40 
+                          transition-all duration-500 w-full">
             {hBRW150Hdata?.bulletsItems?.length > 0 && (
               <>
-                <h3 className="text-2xl md:text-3xl font-bold text-center mb-6 bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-sm">
+                <h3 className="text-2xl md:text-3xl font-bold text-center mb-6 
+                               bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 
+                               bg-clip-text text-transparent drop-shadow-sm">
                   {hBRW150Hdata.bulletsItems[0]?.title?.th || "ชื่อสินค้า"}
                 </h3>
                 <div className="flex flex-col items-center gap-6">
@@ -113,7 +158,9 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
                       .map((item, idx) => (
                         <div
                           key={idx}
-                          className="w-36 h-36 md:w-40 md:h-40 overflow-hidden rounded-xl shadow-xl shadow-blue-500/10 flex-shrink-0 transition-transform duration-300 border border-blue-200/30"
+                          className="w-36 h-36 md:w-40 md:h-40 overflow-hidden rounded-xl shadow-xl 
+                                     shadow-blue-500/10 flex-shrink-0 transition-transform duration-300 
+                                     border border-blue-200/30 bg-white/70"
                         >
                           <Image
                             src={item.image}
@@ -153,4 +200,3 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
     </section>
   );
 }
-  
