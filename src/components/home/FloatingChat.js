@@ -43,7 +43,7 @@ export default function FloatingChat() {
                         {/* เบอร์ทั้งหมด */}
                         {contact.people.map((person, idx) => (
                             <p key={`phone-${idx}`} className="flex items-center gap-2 text-[#3b82f6] hover:text-blue-600">
-                                <a href={`tel:${person.phone}`} className="flex items-center gap-2">
+                                <a href={`tel:${person.phone}`} className="flex items-center gap-2 hover:underline">
                                     <Phone className="w-5 h-5" color={ICON_COLOR} />
                                     <span>{person.phone}</span>
                                 </a>
@@ -57,7 +57,7 @@ export default function FloatingChat() {
                                 key={`email-${idx}`}
                                 className="flex items-center gap-2 text-[#3b82f6] hover:text-blue-600"
                             >
-                                <a href={`mailto:${person.email}`} className="flex items-center gap-2">
+                                <a href={`mailto:${person.email}`} className="flex items-center gap-2 hover:underline">
                                     <Mail className="w-5 h-5" color={ICON_COLOR} />
                                     <span>{person.email}</span>
                                 </a>
@@ -70,7 +70,7 @@ export default function FloatingChat() {
                                 href={contact.facebook}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-2"
+                                className="flex items-center gap-2 hover:underline"
                             >
                                 <Facebook className="w-5 h-5" color={ICON_COLOR} />
                                 <span>F&amp;N Techno co.,ltd.</span>
