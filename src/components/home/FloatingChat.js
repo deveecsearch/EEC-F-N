@@ -23,7 +23,7 @@ export default function FloatingChat() {
         facebook: "https://www.facebook.com/profile.php?id=61562620145591#"
     };
 
-    const ICON_COLOR = "#3b82f6"; // น้ำเงิน
+    const ICON_COLOR = "#faac1c"; // น้ำเงิน
 
     return (
         <>
@@ -38,32 +38,44 @@ export default function FloatingChat() {
             {/* แชทบ็อก */}
             {open && (
                 <div className="fixed bottom-28 right-5 w-80 h-auto bg-white border border-gray-300 rounded-lg shadow-lg z-40 p-6 flex flex-col transform transition-all duration-300">
-                  <h4 className="font-bold text-lg mb-2 text-black-500">Contact Us</h4>
+                    <h4 className="font-bold text-lg mb-2 text-black-500">Contact Us</h4>
                     <div className="flex flex-col gap-2">
                         {/* เบอร์ทั้งหมด */}
                         {contact.people.map((person, idx) => (
-                            <p key={`phone-${idx}`} className="flex items-center gap-2 text-yellow-500 hover:text-yellow-600">
-                                <Phone className="w-5 h-5" color={ICON_COLOR} />
-                                <a href={`tel:${person.phone}`}>{person.phone}</a>
+                            <p key={`phone-${idx}`} className="flex items-center gap-2 text-[#3b82f6] hover:text-blue-600">
+                                <a href={`tel:${person.phone}`} className="flex items-center gap-2">
+                                    <Phone className="w-5 h-5" color={ICON_COLOR} />
+                                    <span>{person.phone}</span>
+                                </a>
                             </p>
+
                         ))}
 
                         {/* อีเมลทั้งหมด */}
                         {contact.people.map((person, idx) => (
-                            <p key={`email-${idx}`} className="flex items-center gap-2 text-yellow-500 hover:text-yellow-600">
-                                <Mail className="w-5 h-5" color={ICON_COLOR} />
-                                <a href={`mailto:${person.email}`}>{person.email}</a>
+                            <p
+                                key={`email-${idx}`}
+                                className="flex items-center gap-2 text-[#3b82f6] hover:text-blue-600"
+                            >
+                                <a href={`mailto:${person.email}`} className="flex items-center gap-2">
+                                    <Mail className="w-5 h-5" color={ICON_COLOR} />
+                                    <span>{person.email}</span>
+                                </a>
                             </p>
-                        ))}
 
+                        ))}
                         {/* Facebook */}
-                        <p className="flex items-center gap-2 text-yellow-500 hover:text-yellow-600">
-                            <Facebook className="w-5 h-5" color={ICON_COLOR} />
-                            <a href={contact.facebook} target="_blank" rel="noopener noreferrer">
-                                F&N Techno co.,ltd.
+                        <p className="flex items-center gap-2 text-[#3b82f6] hover:text-blue-600">
+                            <a
+                                href={contact.facebook}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2"
+                            >
+                                <Facebook className="w-5 h-5" color={ICON_COLOR} />
+                                <span>F&amp;N Techno co.,ltd.</span>
                             </a>
                         </p>
-
                     </div>
                 </div>
 

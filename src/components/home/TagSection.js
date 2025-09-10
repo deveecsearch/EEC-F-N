@@ -73,22 +73,12 @@ export default function TagSection({ data }) {
 
                         return (
                             <div key={idx}>
-                                {bullet.title?.th && (
-                                    <h2
-                                        className="mb-4 text-lg font-semibold border-b-2 inline-block pb-1"
-                                        style={{ color: '#0684ca', borderColor: '#0684ca', textAlign: 'left' }}
-                                    >
-                                        {bullet.title.th}
-                                    </h2>
-                                )}
-
                                 <div className="flex flex-wrap gap-3">
                                     {items.map((item, index) => (
                                         <div
                                             key={index}
                                             className="px-4 py-2 rounded-full text-sm shadow-md cursor-default transition-transform duration-300 hover:scale-105"
                                             style={{
-                                                background: 'linear-gradient(90deg, #fbcd5c, #ffe28a)', // โทนทองอ่อน
                                                 color: '#333333', // อ่านง่าย
                                             }}
                                         >

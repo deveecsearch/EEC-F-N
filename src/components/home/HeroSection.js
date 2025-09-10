@@ -203,9 +203,11 @@ export default function HeroSection({ data }) {
                                 <div className="flex-shrink-0 w-full lg:w-1/3">
                                     <div className="bg-gray-100 rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
                                         {herodata3?.bulletsItems[0]?.image ? (
-                                            <img
+                                            <Image
                                                 src={herodata3.bulletsItems[0].image}
                                                 alt={herodata3.bulletsItems[0].title?.th || "Card 14 Image"}
+                                                width={600}
+                                                height={450}
                                                 className="w-full h-full object-cover"
                                             />
                                         ) : (
@@ -214,6 +216,7 @@ export default function HeroSection({ data }) {
                                             </div>
                                         )}
                                     </div>
+
                                     <h6 className="text-sm font-semibold text-gray-700 text-center mt-3">
                                         {herodata3?.bulletsItems[0]?.title?.th || "Card 14 Image Title"}
                                     </h6>
@@ -309,9 +312,11 @@ export default function HeroSection({ data }) {
                                 <div className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3">
                                     <div className="bg-gray-100 rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
                                         {herodata3?.bulletsItems[3]?.image ? (
-                                            <img
+                                            <Image
                                                 src={herodata3.bulletsItems[3].image}
                                                 alt="Card 23 Image"
+                                                width={600}
+                                                height={450}
                                                 className="w-full h-full object-cover"
                                             />
                                         ) : (
@@ -320,6 +325,7 @@ export default function HeroSection({ data }) {
                                             </div>
                                         )}
                                     </div>
+
                                     <h6 className="text-sm font-semibold text-gray-700 text-center mt-3">
                                         {herodata3?.bulletsItems[3]?.title?.th || "Card 23 Image Title"}
                                     </h6>
@@ -375,9 +381,11 @@ export default function HeroSection({ data }) {
                                 <div className="flex-shrink-0 w-full lg:w-1/3">
                                     <div className="bg-gray-100 rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
                                         {herodata3?.bulletsItems[6]?.image ? (
-                                            <img
+                                            <Image
                                                 src={herodata3.bulletsItems[6].image}
                                                 alt={herodata3.bulletsItems[6].title?.th || "Card 29 Image"}
+                                                width={600}
+                                                height={450}
                                                 className="w-full h-full object-cover"
                                             />
                                         ) : (
@@ -386,6 +394,7 @@ export default function HeroSection({ data }) {
                                             </div>
                                         )}
                                     </div>
+
                                     <h6 className="text-sm font-semibold text-gray-700 text-center mt-3">
                                         {herodata3?.bulletsItems[6]?.title?.th || "Card 29 Image Title"}
                                     </h6>
