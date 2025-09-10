@@ -2,11 +2,12 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 function ExpandableText({ text, maxHeight = 150 }) {
     const [expanded, setExpanded] = useState(false);
 
-    
+
     return (
         <div className="relative">
             <motion.div
@@ -122,7 +123,13 @@ export default function HowWorkSection({ data }) {
                     custom={0}
                 >
                     {firstImage ? (
-                        <img src={firstImage} alt="Diagram" className="w-full h-auto rounded-2xl" />
+                        <Image
+                            src={firstImage}
+                            alt="Diagram"
+                            width={900}     // กำหนดขนาดสูงสุด
+                            height={600}    // กำหนดความสูงเพื่อให้มี aspect ratio
+                            className="w-full h-auto rounded-2xl"
+                        />
                     ) : (
                         <span className="text-gray-500 italic p-8 block text-center">ไม่พบภาพ</span>
                     )}
