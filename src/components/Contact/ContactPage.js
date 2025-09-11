@@ -1,38 +1,62 @@
-// ContactPageServer.js
+'use client';
+
+import { useEffect, useState } from "react";
+import LoadingOverlay from "@/components/LoadingOverlay";
 import { getCompanySections } from "../lib/APIservice";
 import Person1Section from "./Person1Section";
 import Person2Section from "./Person2Section";
 import ContactSection from "./ContactSection";
 import { motion } from "framer-motion";
 
-const lineVariants = {
-  animate: {
-    scaleX: [0.7, 1.2, 0.7],
-    opacity: [0.5, 1, 0.5],
-    transition: { duration: 2.5, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }
-  },
-};
+export default function ContactPage() {
+  const [loading, setLoading] = useState(true);
+  const [contactData, setContactData] = useState([]);
+  const [imageData, setImageData] = useState([]);
 
-const floatingVariants = {
-  animate: {
-    y: [-10, 10, -10],
-    rotate: [0, 5, -5, 0],
-    transition: { duration: 4, ease: "easeInOut", repeat: Infinity }
-  }
-};
+  const lineVariants = {
+    animate: {
+      scaleX: [0.7, 1.2, 0.7],
+      opacity: [0.5, 1, 0.5],
+      transition: { duration: 2.5, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }
+    },
+  };
 
-export default async function ContactPageServer() {
-  // fetch data ฝั่ง server
-  const allSections = await getCompanySections();
+  const floatingVariants = {
+    animate: {
+      y: [-10, 10, -10],
+      rotate: [0, 5, -5, 0],
+      transition: { duration: 4, ease: "easeInOut", repeat: Infinity }
+    }
+  };
 
-  const contactDataId = "ef0afe36-14c2-41ae-9a27-56bd5bee886b";
-  const imageSectionId = "48c0f54c-563b-4c08-b154-0f58ea527b44";
+  const titleVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
 
-  const contactData = allSections.filter(section => section.sectionId === contactDataId);
-  const imageData = allSections.filter(section => section.sectionId === imageSectionId);
+  useEffect(() => {
+    getCompanySections()
+      .then((allSections) => {
+        const contactDataId = "ef0afe36-14c2-41ae-9a27-56bd5bee886b";
+        const imageSectionId = "48c0f54c-563b-4c08-b154-0f58ea527b44";
+
+        const filteredContact = allSections.filter(
+          (section) => section.sectionId === contactDataId
+        );
+        const filteredImage = allSections.filter(
+          (section) => section.sectionId === imageSectionId
+        );
+        setContactData(filteredContact);
+        setImageData(filteredImage);
+
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <LoadingOverlay />;
 
   return (
-    <section className="relative py-10 overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <section className="relative py-10  overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
 
       {/* Animated top line */}
       <motion.div
@@ -54,24 +78,25 @@ export default async function ContactPageServer() {
           className="absolute top-40 right-16 w-16 h-16 rounded-full"
           variants={floatingVariants}
           animate="animate"
-          style={{ background: 'linear-gradient(45deg, #facc1b15, #fbcf1d15)' }}
+          style={{ animationDelay: '1s', background: 'linear-gradient(45deg, #facc1b15, #fbcf1d15)' }}
         />
         <motion.div
           className="absolute bottom-32 left-20 w-12 h-12 rounded-lg rotate-45"
           variants={floatingVariants}
           animate="animate"
-          style={{ background: 'linear-gradient(45deg, #facc1b25, #fac91825)' }}
+          style={{ animationDelay: '2s', background: 'linear-gradient(45deg, #facc1b25, #fac91825)' }}
         />
         <motion.div
           className="absolute bottom-20 right-32 w-24 h-24 rounded-3xl -rotate-12"
           variants={floatingVariants}
           animate="animate"
-          style={{ background: 'linear-gradient(45deg, #facc1b10, #fbcd1c10)' }}
+          style={{ animationDelay: '0.5s', background: 'linear-gradient(45deg, #facc1b10, #fbcd1c10)' }}
         />
       </div>
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center w-full px-4">
+        
         {/* Contact Section */}
         <ContactSection data={contactData} />
 
