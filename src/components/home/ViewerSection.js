@@ -146,9 +146,9 @@ export default function VisitorCounter() {
                                     </div>
                                 </div>
 
-                                <h3 className="text-sm lg:text-base text-white/90 text-center leading-relaxed">
+                                <p className="text-sm lg:text-base text-white/90 text-center leading-relaxed">
                                     ขอบคุณที่แวะเข้ามาเยี่ยมชมเว็บไซต์ของเรา
-                                </h3>
+                                </p>
 
                                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 w-full border border-white/20 relative overflow-hidden">
                                     <div className="relative flex items-center justify-center gap-4">
@@ -171,7 +171,7 @@ export default function VisitorCounter() {
                                             <RefreshCcw className="w-6 h-6" />
                                         </motion.button>
                                     </div>
-                                    <h4 className="text-center text-white/60 text-xs mt-3">Total Visitors</h4>
+                                    <p className="text-center text-white/60 text-xs mt-3">Total Visitors</p>
                                 </div>
                             </div>
                         </div>
