@@ -96,21 +96,7 @@ export default function ContactPage() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center w-full px-4">
-        {/* Section header */}
-        <div className="max-w-4xl text-center">
-          <motion.h2
-            className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-lg  pb-3  text-center z-10"
-            variants={titleVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            Contact Us
-          </motion.h2>
-          <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
-            ติดต่อเราได้ผ่านช่องทางด้านล่าง ทีมงานพร้อมตอบกลับคุณ
-          </p>
-        </div>
-
+        
         {/* Contact Section */}
         <ContactSection data={contactData} />
 
