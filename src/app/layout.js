@@ -21,8 +21,8 @@ const prompt = Prompt({
 });
 
 export const metadata = {
-  title: "F&N Techno Co., Ltd.",
-  description: "บริษัท เอฟแอนด์เอ็น เทคโน จำกัด",
+  title: "F&N Techno Co., Ltd. บริษัท เอฟแอนด์เอ็น เทคโน จำกัด",
+  description: "บริษัท เอฟแอนด์เอ็น เทคโน จำกัด ผู้นำเข้าชั้นนำของน้ำยา Helamin BRW150H ผลิตจากประเทศฝรั่งเศส นำเข้าจากประเทศสวิตเซอร์แลนด์ เป็นมิตรต่อสิ่งเเวดล้อม พร้อมเทคโนโลยีฟิล์มโพลีเอมีน",
   icons: {
     icon: '/image/Logo_FN.png',
   },
@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         {children}
         <Footer />
-        <CookieConsent /> {/* เพิ่มบรรทัดนี้แทน HTML เดิม */}
+        <CookieConsent />
       </body>
     </html>
   );
