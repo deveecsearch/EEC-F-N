@@ -93,9 +93,9 @@ export default function AmineSection({ monoaminedata, polyaminedata }) {
                                     {data.bulletsItems.map((item, idx) => (
                                         <li key={idx} className="flex items-start">
                                             <span className="w-3 h-3 rounded-full bg-[#fbab18] mt-2 mr-3 flex-shrink-0"></span>
-                                            <p className="text-lg lg:text-xl text-gray-700 leading-relaxed">
+                                            <h3 className="text-lg lg:text-xl text-gray-700 leading-relaxed">
                                                 {item?.description?.th || item?.description?.en || item?.description}
-                                            </p>
+                                            </h3>
                                         </li>
                                     ))}
                                 </ul>
