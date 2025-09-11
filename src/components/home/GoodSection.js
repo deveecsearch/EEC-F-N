@@ -61,16 +61,16 @@ function ContentCard({ headerItem, items }) {
                 {/* Header */}
                 {headerItem && (
                     <div className="mb-6 p-4 bg-gradient-to-r from-blue-100/50 to-indigo-100/50 rounded-xl border border-blue-200/30">
-                        <p className="text-base sm:text-lg font-medium text-gray-800 drop-shadow-sm">
+                        <h3 className="text-base sm:text-lg font-medium text-gray-800 drop-shadow-sm">
                             {headerItem?.description?.th}
-                        </p>
+                        </h3>
                     </div>
                 )}
 
                 {/* List items */}
                 <ul className="flex flex-col gap-3">
                     {items.map((item, index) => (
-                        <motion.li
+                        <motion.h4
                             key={index}
                             variants={{
                                 hidden: { opacity: 0, x: -20 },
@@ -80,7 +80,7 @@ function ContentCard({ headerItem, items }) {
                         >
                             <div className="w-3 h-3 bg-yellow-500 rounded-full flex-shrink-0 mt-2 mr-3 shadow-sm"></div>
                             {item?.description?.th}
-                        </motion.li>
+                        </motion.h4>
                     ))}
                 </ul>
             </div>
