@@ -19,9 +19,9 @@ function ExpandableText({ text, maxHeight = 150 }) {
                 }}
                 className="overflow-hidden"
             >
-                <p className="text-gray-700 text-base md:text-lg leading-relaxed font-medium whitespace-pre-line">
+                <h3 className="text-gray-700 text-base md:text-lg leading-relaxed font-medium whitespace-pre-line">
                     {text}
-                </p>
+                </h3>
             </motion.div>
             {text?.length > 100 && (
                 <button
