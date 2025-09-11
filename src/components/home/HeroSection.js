@@ -212,9 +212,9 @@ export default function HeroSection({ data }) {
                                         )}
                                     </div>
 
-                                    <h6 className="text-sm font-semibold text-gray-700 text-center mt-3">
+                                    <h4 className="text-sm font-semibold text-gray-700 text-center mt-3">
                                         {herodata3?.bulletsItems[0]?.title?.th || "Card 14 Image Title"}
-                                    </h6>
+                                    </h4>
                                 </div>
 
                                 {/* Content Container */}
@@ -318,9 +318,9 @@ export default function HeroSection({ data }) {
                                             </div>
                                         )}
                                     </div>
-                                    <h6 className="text-sm font-semibold text-gray-700 text-center mt-3">
+                                    <h4 className="text-sm font-semibold text-gray-700 text-center mt-3">
                                         {herodata3?.bulletsItems[3]?.title?.th || "Card 23 Image Title"}
-                                    </h6>
+                                    </h4>
                                 </div>
 
                                 {/* Content */}
@@ -387,9 +387,9 @@ export default function HeroSection({ data }) {
                                         )}
                                     </div>
 
-                                    <h6 className="text-sm font-semibold text-gray-700 text-center mt-3">
+                                    <h4 className="text-sm font-semibold text-gray-700 text-center mt-3">
                                         {herodata3?.bulletsItems[6]?.title?.th || "Card 29 Image Title"}
-                                    </h6>
+                                    </h4>
                                 </div>
 
                                 {/* Content Container */}
