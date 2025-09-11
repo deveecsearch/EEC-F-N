@@ -24,7 +24,8 @@ export const metadata = {
   title: "F&N Techno Co., Ltd. | ผู้นำเข้าน้ำยา Helamin BRW150H และฟิล์มโพลีเอมีน",
   description: "บริษัท เอฟแอนด์เอ็น เทคโน จำกัด (F&N Techno Co., Ltd.) ผู้นำเข้าน้ำยา Helamin BRW150H และสารเคมีบำบัดน้ำจากสวิตเซอร์แลนด์และฝรั่งเศส พร้อมเทคโนโลยีฟิล์มโพลีเอมีน ปลอดภัยต่อสิ่งแวดล้อม เหมาะสำหรับระบบอุตสาหกรรม",
   icons: {
-    icon: '/image/Logo_FN.png',
+    icon: "/image/Logo_FN.png",        
+    apple: "/image/Logo_FN.png",       
   },
 };
 
