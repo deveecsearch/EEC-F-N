@@ -96,10 +96,10 @@ export default function HeroSection({ data }) {
                 {/* Headline */}
                 <div className="flex flex-col items-center leading-tight bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-lg">
                   <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
-                    HELAMIN®
+                    HELAMIN® ฟิล์มโพลีเอมีน
                   </h1>
                   <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-snug">
-                    ฟิล์มโพลีเอมีนสำหรับบำบัดน้ำและไอน้ำในหม้อน้ำ
+                   สำหรับบำบัดน้ำและไอน้ำในหม้อน้ำ
                   </h2>
                 </div>
 
