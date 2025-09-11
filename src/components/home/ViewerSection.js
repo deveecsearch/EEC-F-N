@@ -136,9 +136,9 @@ export default function VisitorCounter() {
                                         <Eye className="w-7 h-7 text-blue-900" />
                                     </motion.div>
                                     <div className="text-center">
-                                        <h3 className="text-xl lg:text-2xl font-bold text-white">
+                                        <h2 className="text-xl lg:text-2xl font-bold text-white">
                                             จำนวนผู้เยี่ยมชม
-                                        </h3>
+                                        </h2>
                                         <p className="text-xs text-white/70 flex items-center gap-1 justify-center">
                                             <TrendingUp className="w-3 h-3 text-yellow-400" />
                                             Visitor Counter
@@ -146,9 +146,9 @@ export default function VisitorCounter() {
                                     </div>
                                 </div>
 
-                                <p className="text-sm lg:text-base text-white/90 text-center leading-relaxed">
+                                <h3 className="text-sm lg:text-base text-white/90 text-center leading-relaxed">
                                     ขอบคุณที่แวะเข้ามาเยี่ยมชมเว็บไซต์ของเรา
-                                </p>
+                                </h3>
 
                                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 w-full border border-white/20 relative overflow-hidden">
                                     <div className="relative flex items-center justify-center gap-4">
@@ -171,7 +171,7 @@ export default function VisitorCounter() {
                                             <RefreshCcw className="w-6 h-6" />
                                         </motion.button>
                                     </div>
-                                    <p className="text-center text-white/60 text-xs mt-3">Total Visitors</p>
+                                    <h4 className="text-center text-white/60 text-xs mt-3">Total Visitors</h4>
                                 </div>
                             </div>
                         </div>
