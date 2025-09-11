@@ -150,6 +150,17 @@ export default function HomePage() {
     <div className="bg-white text-black">
       {/* Banner Section */}
       <BannerSection images={bannerImages} />
+      
+      <h1
+        className="flex flex-col items-center leading-tight bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-lg pt-20 pb-20 text-center"
+      >
+        <span className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
+          HELAMIN®
+        </span>
+        <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-snug">
+          ฟิล์มโพลีเอมีนสำหรับบำบัดน้ำและไอน้ำในหม้อน้ำ
+        </span>
+      </h1>
 
       {/* Hero Section + Overlay */}
       <section className="relative">
