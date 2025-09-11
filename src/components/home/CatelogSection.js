@@ -152,22 +152,22 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
                       ))}
                   </div>
                   <div className="space-y-3 text-center text-gray-800">
-                    <h3 className="text-base md:text-lg font-medium">
+                    <p className="text-base md:text-lg font-medium">
                       {hBRW150Hdata.bulletsItems[0]?.description?.th || "รายละเอียดสินค้า"}
-                    </h3>
+                    </p>
                     <div className="pt-3 border-t border-blue-200/50">
-                      <h4 className="text-sm md:text-base text-gray-700">
+                      <p className="text-sm md:text-base text-gray-700">
                         ค่า pH :{" "}
                         <span className="font-semibold text-blue-700">
                           {hBRW150Hdata.bulletsItems[1]?.description?.th?.replace("ค่า pH: ", "") || "-"}
                         </span>
-                      </h4>
-                      <h4 className="text-sm md:text-base text-gray-700">
+                      </p>
+                      <p className="text-sm md:text-base text-gray-700">
                         ส่วนประกอบ :{" "}
                         <span className="font-semibold text-blue-700">
                           {hBRW150Hdata.bulletsItems[2]?.description?.th?.replace("ส่วนประกอบ: ", "") || "-"}
                         </span>
-                      </h4>
+                      </p>
                     </div>
                   </div>
                 </div>
