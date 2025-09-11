@@ -33,9 +33,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} ${prompt.variable} antialiased`}>
-        <h1 className="sr-only">
-          HELAMIN ฟิล์มโพลีเอมีนสำหรับบำบัดน้ำและไอน้ำในหม้อน้ำ
-        </h1>
+  
         <Navbar />
         {children}
         <Footer />
