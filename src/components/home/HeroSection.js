@@ -217,9 +217,9 @@ export default function HeroSection({ data }) {
 
                                 {/* Content Container */}
                                 <div className="flex-1 text-left lg:pl-6 mt-4 lg:mt-0">
-                                    <h2 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">
+                                    <h3 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">
                                         {herodata1?.bulletsItems[14]?.description?.th}
-                                    </h2>
+                                    </h3>
                                     <p className="text-sm sm:text-base text-gray-700 mb-3">
                                         {herodata1?.bulletsItems[15]?.description?.th}
                                     </p>
@@ -246,9 +246,9 @@ export default function HeroSection({ data }) {
                             <div className="flex flex-col">
                                 <div className="flex-1 text-left">
                                     {/* หัวข้อของการ์ด 17 */}
-                                    <h2 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">
+                                    <h3 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">
                                         {herodata1?.bulletsItems[17]?.description?.th}
-                                    </h2>
+                                    </h3>
 
                                     {/* รายละเอียด 18,19,20 */}
                                     {[18, 19, 20].map((idx) => {
@@ -276,9 +276,9 @@ export default function HeroSection({ data }) {
                             <div className="flex flex-col">
                                 <div className="flex-1 text-left">
                                     {/* หัวข้อของการ์ด 21 */}
-                                    <h2 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">
+                                    <h3 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">
                                         {herodata1?.bulletsItems[21]?.description?.th}
-                                    </h2>
+                                    </h3>
 
                                     {/* รายละเอียด 22 */}
                                     {herodata1?.bulletsItems[22] && (
@@ -323,9 +323,9 @@ export default function HeroSection({ data }) {
 
                                 {/* Content */}
                                 <div className="flex-1 text-left md:pr-6 mt-4 md:mt-0">
-                                    <h2 className="text-lg md:text-xl font-bold mb-4 text-gray-800">
+                                    <h3 className="text-lg md:text-xl font-bold mb-4 text-gray-800">
                                         {herodata1?.bulletsItems[23]?.description?.th}
-                                    </h2>
+                                    </h3>
                                     <p className="text-sm md:text-base text-gray-700">
                                         {herodata1?.bulletsItems[24]?.description?.th}
                                     </p>
@@ -349,7 +349,7 @@ export default function HeroSection({ data }) {
                             >
                                 <div className="flex flex-col">
                                     <div className="flex-1 text-left">
-                                        <h2 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">{herodata1?.bulletsItems[index]?.description?.th}</h2>
+                                        <h3 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">{herodata1?.bulletsItems[index]?.description?.th}</h3>
                                         <p className="text-sm sm:text-base text-gray-700">{herodata1?.bulletsItems[index + 1]?.description?.th}</p>
                                     </div>
                                 </div>
@@ -392,9 +392,9 @@ export default function HeroSection({ data }) {
 
                                 {/* Content Container */}
                                 <div className="flex-1 text-left lg:pl-6 mt-4 lg:mt-0">
-                                    <h2 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">
+                                    <h3 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">
                                         {herodata1?.bulletsItems[29]?.description?.th}
-                                    </h2>
+                                    </h3>
                                     <p className="text-sm sm:text-base text-gray-700">
                                         {herodata1?.bulletsItems[30]?.description?.th}
                                     </p>
