@@ -75,7 +75,7 @@ export default function TagSection({ data }) {
                             <div key={idx}>
                                 <div className="flex flex-wrap gap-3">
                                     {items.map((item, index) => (
-                                        <h3
+                                        <p
                                             key={index}
                                             className="px-4 py-2 rounded-full text-sm shadow-md cursor-default transition-transform duration-300 hover:scale-105"
                                             style={{
@@ -83,7 +83,7 @@ export default function TagSection({ data }) {
                                             }}
                                         >
                                             {item}
-                                        </h3>
+                                        </p>
                                     ))}
                                 </div>
                             </div>
