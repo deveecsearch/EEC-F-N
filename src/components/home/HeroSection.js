@@ -107,12 +107,12 @@ export default function HeroSection({ data }) {
 
                 {/* Feature Details */}
                 <motion.div className="flex flex-col gap-2 mt-4" variants={containerVariants}>
-                    <motion.h2 className="text-base sm:text-lg text-gray-700 font-medium drop-shadow-sm" variants={itemVariants}>
+                    <motion.p className="text-base sm:text-lg text-gray-700 font-medium drop-shadow-sm" variants={itemVariants}>
                         {herodata1?.bulletsItems[1]?.description?.th}
-                    </motion.h2>
-                    <motion.h2 className="text-base sm:text-lg text-gray-700 font-medium drop-shadow-sm" variants={itemVariants}>
+                    </motion.p>
+                    <motion.p className="text-base sm:text-lg text-gray-700 font-medium drop-shadow-sm" variants={itemVariants}>
                         {herodata1?.bulletsItems[2]?.description?.th}
-                    </motion.h2>
+                    </motion.p>
                 </motion.div>
 
                 {/* Highlight Points as a responsive grid */}
@@ -130,7 +130,7 @@ export default function HeroSection({ data }) {
                             <p className="text-3xl mb-2 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent font-bold">
                                 {item.title?.th}
                             </p>
-                            <h3 className="text-sm sm:text-base text-gray-700 font-medium">{item.description?.th}</h3>
+                            <p className="text-sm sm:text-base text-gray-700 font-medium">{item.description?.th}</p>
                         </motion.div>
                     ))}
                 </motion.div>
@@ -155,9 +155,9 @@ export default function HeroSection({ data }) {
                     </h2>
                 </motion.div>
 
-                <motion.h2 className="text-base sm:text-lg text-gray-700 font-medium drop-shadow-sm" variants={itemVariants}>
+                <motion.p className="text-base sm:text-lg text-gray-700 font-medium drop-shadow-sm" variants={itemVariants}>
                     {herodata1?.bulletsItems[4]?.description?.th}
-                </motion.h2>
+                </motion.p>
 
                 {/* Grid for 8 Bullet Points */}
                 <div className="flex justify-center">
@@ -174,7 +174,7 @@ export default function HeroSection({ data }) {
                                     whileHover={{ x: 5 }}
                                 >
                                     <div className="w-3 h-3 bg-yellow-500 rounded-full flex-shrink-0 shadow-sm group-hover:shadow-md transition-all duration-300"></div>
-                                    <h3 className="text-sm sm:text-base text-gray-700 font-medium group-hover:text-gray-800 transition-colors duration-300">{item.description?.th}</h3>
+                                    <p className="text-sm sm:text-base text-gray-700 font-medium group-hover:text-gray-800 transition-colors duration-300">{item.description?.th}</p>
                                 </motion.div>
                             ))}
                         </div>
@@ -200,7 +200,7 @@ export default function HeroSection({ data }) {
                                         {herodata3?.bulletsItems[0]?.image ? (
                                             <Image
                                                 src={herodata3.bulletsItems[0].image}
-                                                alt={herodata3.bulletsItems[0].title?.th || "Card 14 Image"}
+                                                alt={"ฟิล์มโพลีเอมีนล้างตะกรัน ชลบุรี"}
                                                 width={600}
                                                 height={450}
                                                 className="w-full h-full object-cover"
@@ -222,12 +222,12 @@ export default function HeroSection({ data }) {
                                     <h2 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">
                                         {herodata1?.bulletsItems[14]?.description?.th}
                                     </h2>
-                                    <h3 className="text-sm sm:text-base text-gray-700 mb-3">
+                                    <p className="text-sm sm:text-base text-gray-700 mb-3">
                                         {herodata1?.bulletsItems[15]?.description?.th}
-                                    </h3>
-                                    <h3 className="text-sm sm:text-base text-gray-700">
+                                    </p>
+                                    <p className="text-sm sm:text-base text-gray-700">
                                         {herodata1?.bulletsItems[16]?.description?.th}
-                                    </h3>
+                                    </p>
                                 </div>
 
                             </div>
@@ -258,9 +258,9 @@ export default function HeroSection({ data }) {
                                         if (!item) return null;
 
                                         return (
-                                            <h3 key={idx} className="text-sm sm:text-base text-gray-700 mt-1">
+                                            <p key={idx} className="text-sm sm:text-base text-gray-700 mt-1">
                                                 {item.description?.th}
-                                            </h3>
+                                            </p>
                                         );
                                     })}
                                 </div>
@@ -284,9 +284,9 @@ export default function HeroSection({ data }) {
 
                                     {/* รายละเอียด 22 */}
                                     {herodata1?.bulletsItems[22] && (
-                                        <h3 className="text-sm sm:text-base text-gray-700 mt-1">
+                                        <p className="text-sm sm:text-base text-gray-700 mt-1">
                                             {herodata1.bulletsItems[22].description?.th}
-                                        </h3>
+                                        </p>
                                     )}
                                 </div>
                             </div>
@@ -309,7 +309,7 @@ export default function HeroSection({ data }) {
                                         {herodata3?.bulletsItems[3]?.image ? (
                                             <img
                                                 src={herodata3.bulletsItems[3].image}
-                                                alt="Card 23 Image"
+                                                alt={herodata3?.bulletsItems[3]?.title?.th || "Card 23 Image"}
                                                 className="w-full h-full object-cover"
                                             />
                                         ) : (
@@ -328,9 +328,9 @@ export default function HeroSection({ data }) {
                                     <h2 className="text-lg md:text-xl font-bold mb-4 text-gray-800">
                                         {herodata1?.bulletsItems[23]?.description?.th}
                                     </h2>
-                                    <h3 className="text-sm md:text-base text-gray-700">
+                                    <p className="text-sm md:text-base text-gray-700">
                                         {herodata1?.bulletsItems[24]?.description?.th}
-                                    </h3>
+                                    </p>
                                 </div>
                             </div>
 
@@ -352,7 +352,7 @@ export default function HeroSection({ data }) {
                                 <div className="flex flex-col">
                                     <div className="flex-1 text-left">
                                         <h2 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">{herodata1?.bulletsItems[index]?.description?.th}</h2>
-                                        <h3 className="text-sm sm:text-base text-gray-700">{herodata1?.bulletsItems[index + 1]?.description?.th}</h3>
+                                        <p className="text-sm sm:text-base text-gray-700">{herodata1?.bulletsItems[index + 1]?.description?.th}</p>
                                     </div>
                                 </div>
                             </motion.div>
@@ -397,9 +397,9 @@ export default function HeroSection({ data }) {
                                     <h2 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">
                                         {herodata1?.bulletsItems[29]?.description?.th}
                                     </h2>
-                                    <h3 className="text-sm sm:text-base text-gray-700">
+                                    <p className="text-sm sm:text-base text-gray-700">
                                         {herodata1?.bulletsItems[30]?.description?.th}
-                                    </h3>
+                                    </p>
                                 </div>
 
                             </div>
