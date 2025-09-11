@@ -94,17 +94,7 @@ export default function HeroSection({ data }) {
                 animate="visible"
             >
                 {/* Headline */}
-                <h1
-                    className="flex flex-col items-center leading-tight bg-gradient-to-r from-gray-800 via-blue-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-lg"
-                >
-                    <span className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
-                        {herodata1?.bulletsItems[0]?.title?.th}
-                    </span>
-                    <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-snug">
-                        {herodata1?.bulletsItems[0]?.description?.th}
-                    </span>
-                </h1>
-
+                
                 {/* Feature Details */}
                 <motion.div className="flex flex-col gap-2 mt-4" variants={containerVariants}>
                     <motion.h2 className="text-base sm:text-lg text-gray-700 font-medium drop-shadow-sm" variants={itemVariants}>
