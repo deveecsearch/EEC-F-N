@@ -1,10 +1,9 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion } from 'framer-motion';
-
+import React, { useState } from "react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -12,14 +11,23 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
   const currentItem = galleryItems[currentIndex] || {};
   const imageUrl = currentItem?.image;
 
-  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % galleryItems.length);
-  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + galleryItems.length) % galleryItems.length);
+  const nextSlide = () =>
+    setCurrentIndex((prev) => (prev + 1) % galleryItems.length);
+  const prevSlide = () =>
+    setCurrentIndex(
+      (prev) => (prev - 1 + galleryItems.length) % galleryItems.length
+    );
 
   const lineVariants = {
     animate: {
       scaleX: [0.7, 1.2, 0.7],
       opacity: [0.5, 1, 0.5],
-      transition: { duration: 2.5, ease: 'easeInOut', repeat: Infinity, repeatType: 'reverse' },
+      transition: {
+        duration: 2.5,
+        ease: "easeInOut",
+        repeat: Infinity,
+        repeatType: "reverse",
+      },
     },
   };
 
@@ -27,18 +35,21 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
     animate: {
       y: [-10, 10, -10],
       rotate: [0, 5, -5, 0],
-      transition: { duration: 4, ease: 'easeInOut', repeat: Infinity },
+      transition: { duration: 4, ease: "easeInOut", repeat: Infinity },
     },
   };
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
   };
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center py-20 md:py-24 overflow-hidden bg-gradient-to-br from-indigo-50 via-blue-50 to-slate-100 rounded-2xl">
-
       {/* Animated top line */}
       <motion.div
         className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[90%] h-1 bg-gradient-to-r from-transparent via-blue-500/80 to-transparent z-30 shadow-lg"
@@ -50,25 +61,25 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
       {/* Floating shapes */}
       <motion.div
         className="absolute top-20 left-10 w-28 h-28 rounded-2xl rotate-12"
-        style={{ background: 'linear-gradient(45deg, #facc1b20, #fbd01e20)' }}
+        style={{ background: "linear-gradient(45deg, #facc1b20, #fbd01e20)" }}
         variants={floatingVariants}
         animate="animate"
       />
       <motion.div
         className="absolute top-40 right-16 w-24 h-24 rounded-full"
-        style={{ background: 'linear-gradient(45deg, #facc1b15, #fbcf1d15)' }}
+        style={{ background: "linear-gradient(45deg, #facc1b15, #fbcf1d15)" }}
         variants={floatingVariants}
         animate="animate"
       />
       <motion.div
         className="absolute bottom-32 left-20 w-16 h-16 rounded-lg rotate-45"
-        style={{ background: 'linear-gradient(45deg, #facc1b25, #fac91825)' }}
+        style={{ background: "linear-gradient(45deg, #facc1b25, #fac91825)" }}
         variants={floatingVariants}
         animate="animate"
       />
       <motion.div
         className="absolute bottom-20 right-32 w-20 h-20 rounded-3xl -rotate-12"
-        style={{ background: 'linear-gradient(45deg, #facc1b10, #fbcd1c10)' }}
+        style={{ background: "linear-gradient(45deg, #facc1b10, #fbcd1c10)" }}
         variants={floatingVariants}
         animate="animate"
       />
@@ -86,7 +97,6 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
 
       {/* Centered Two-column layout */}
       <div className="flex flex-col md:flex-row items-center justify-center gap-10 w-full max-w-6xl px-6 relative z-10">
-
         {/* Left: Carousel */}
         <motion.div
           className="w-full md:w-1/2 h-[40rem] relative overflow-hidden rounded-3xl  flex items-center justify-center"
@@ -98,7 +108,7 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
           {imageUrl && (
             <Image
               src={imageUrl}
-              alt={currentItem?.title?.th || 'Gallery Image'}
+              alt={currentItem?.title?.th || "Gallery Image"}
               fill
               className="object-contain"
               unoptimized
@@ -135,7 +145,7 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
                 <div className="flex flex-col items-center gap-6">
                   <div className="flex justify-center gap-6 flex-wrap mb-4">
                     {hBRW150Hdata.bulletsItems
-                      .filter(item => item?.image)
+                      .filter((item) => item?.image)
                       .map((item, idx) => (
                         <div
                           key={idx}
@@ -153,19 +163,26 @@ export default function CatelogSection({ hBRW150Hdata, newcatalogdata }) {
                   </div>
                   <div className="space-y-3 text-center text-gray-800">
                     <p className="text-base md:text-lg font-medium">
-                      {hBRW150Hdata.bulletsItems[0]?.description?.th || "รายละเอียดสินค้า"}
+                      {hBRW150Hdata.bulletsItems[0]?.description?.th ||
+                        "รายละเอียดสินค้า"}
                     </p>
                     <div className="pt-3 border-t border-blue-200/50">
                       <p className="text-sm md:text-base text-gray-700">
                         ค่า pH :{" "}
                         <span className="font-semibold text-blue-700">
-                          {hBRW150Hdata.bulletsItems[1]?.description?.th?.replace("ค่า pH: ", "") || "-"}
+                          {hBRW150Hdata.bulletsItems[1]?.description?.th?.replace(
+                            "ค่า pH: ",
+                            ""
+                          ) || "-"}
                         </span>
                       </p>
                       <p className="text-sm md:text-base text-gray-700">
                         ส่วนประกอบ :{" "}
                         <span className="font-semibold text-blue-700">
-                          {hBRW150Hdata.bulletsItems[2]?.description?.th?.replace("ส่วนประกอบ: ", "") || "-"}
+                          {hBRW150Hdata.bulletsItems[2]?.description?.th?.replace(
+                            "ส่วนประกอบ: ",
+                            ""
+                          ) || "-"}
                         </span>
                       </p>
                     </div>

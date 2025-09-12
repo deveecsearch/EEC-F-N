@@ -28,7 +28,7 @@ const SECTION_IDS = {
   howwokimage2: "ef287191-8f35-467e-abb7-86b84bd839e7",
   newcatalog: "a016580b-16e2-494c-9873-e40c3dd6c4fa",
   tag: "9d604dfb-49fe-4ff8-986e-2adae3e59ac1",
-  nomoamine: "cfdf5536-dd78-4019-b741-2e47de31bc5c"
+  nomoamine: "cfdf5536-dd78-4019-b741-2e47de31bc5c",
 };
 
 export default async function HomePageServer() {
@@ -36,21 +36,51 @@ export default async function HomePageServer() {
   const allSections = await getCompanySections();
   const companyInfo = await getCompanyInfo();
 
-  const heroSection1 = allSections.find((s) => s.sectionId === SECTION_IDS.hero1);
-  const heroSection2 = allSections.find((s) => s.sectionId === SECTION_IDS.hero2);
-  const goodSection1 = allSections.find((s) => s.sectionId === SECTION_IDS.good1);
-  const polyamineSection = allSections.find((s) => s.sectionId === SECTION_IDS.polyamine);
-  const testSection = allSections.find((s) => s.sectionId === SECTION_IDS.testSection);
-  const polyamineSection2 = allSections.find((s) => s.sectionId === SECTION_IDS.polyamine2);
-  const beforeSection = allSections.find((s) => s.sectionId === SECTION_IDS.before);
-  const afterSection = allSections.find((s) => s.sectionId === SECTION_IDS.after);
-  const HELAMIN_BRW150H_Section = allSections.find((s) => s.sectionId === SECTION_IDS.HELAMIN_BRW150H);
-  const howworkSection = allSections.find((s) => s.sectionId === SECTION_IDS.howworkimage);
-  const howworkdataSection = allSections.find((s) => s.sectionId === SECTION_IDS.howworkdata);
-  const howwokimage2Section = allSections.find((s) => s.sectionId === SECTION_IDS.howwokimage2);
-  const newcatalogdataSection = allSections.find((s) => s.sectionId === SECTION_IDS.newcatalog);
-  const tagdataSection = allSections.find((s) => s.sectionId === SECTION_IDS.tag);
-  const nomoamineSection = allSections.find((s) => s.sectionId === SECTION_IDS.nomoamine);
+  const heroSection1 = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.hero1
+  );
+  const heroSection2 = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.hero2
+  );
+  const goodSection1 = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.good1
+  );
+  const polyamineSection = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.polyamine
+  );
+  const testSection = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.testSection
+  );
+  const polyamineSection2 = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.polyamine2
+  );
+  const beforeSection = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.before
+  );
+  const afterSection = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.after
+  );
+  const HELAMIN_BRW150H_Section = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.HELAMIN_BRW150H
+  );
+  const howworkSection = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.howworkimage
+  );
+  const howworkdataSection = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.howworkdata
+  );
+  const howwokimage2Section = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.howwokimage2
+  );
+  const newcatalogdataSection = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.newcatalog
+  );
+  const tagdataSection = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.tag
+  );
+  const nomoamineSection = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.nomoamine
+  );
 
   const sectionsData = {
     herodata1: heroSection1?.data,
@@ -67,12 +97,11 @@ export default async function HomePageServer() {
     herodata3: howwokimage2Section?.data,
     newcatalogdata: newcatalogdataSection?.data,
     tagdata: tagdataSection?.data,
-    monoaminedata: nomoamineSection?.data
+    monoaminedata: nomoamineSection?.data,
   };
 
   return (
     <div className="bg-white text-black">
-
       {/* Banner Section */}
       <BannerSection images={companyInfo.bannerImage || []} />
 
@@ -83,17 +112,24 @@ export default async function HomePageServer() {
 
       {/* Catalog Section */}
       <section className="relative">
-        <CatelogSection hBRW150Hdata={sectionsData.hBRW150Hdata} newcatalogdata={sectionsData.newcatalogdata} />
+        <CatelogSection
+          hBRW150Hdata={sectionsData.hBRW150Hdata}
+          newcatalogdata={sectionsData.newcatalogdata}
+        />
       </section>
 
-      {/* Good Section */}
+      {/* Good Section + Overlay */}
+
       <section className="relative">
         <GoodSection data={sectionsData.gooddata1} />
       </section>
 
       {/* Amine Section */}
       <section className="relative">
-        <AmineSection monoaminedata={sectionsData.monoaminedata} polyaminedata={sectionsData.polyaminedata} />
+        <AmineSection
+          monoaminedata={sectionsData.monoaminedata}
+          polyaminedata={sectionsData.polyaminedata}
+        />
       </section>
 
       {/* How It Works Section */}
