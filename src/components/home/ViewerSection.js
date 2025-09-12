@@ -136,9 +136,9 @@ export default function VisitorCounter() {
                                         <Eye className="w-7 h-7 text-blue-900" />
                                     </motion.div>
                                     <div className="text-center">
-                                        <h3 className="text-xl lg:text-2xl font-bold text-white">
+                                        <h2 className="text-xl lg:text-2xl font-bold text-white">
                                             จำนวนผู้เยี่ยมชม
-                                        </h3>
+                                        </h2>
                                         <p className="text-xs text-white/70 flex items-center gap-1 justify-center">
                                             <TrendingUp className="w-3 h-3 text-yellow-400" />
                                             Visitor Counter

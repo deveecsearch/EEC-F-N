@@ -1,13 +1,8 @@
-// ไฟล์: HomePage.js
-"use client";
-
-import { useEffect, useState } from "react";
-import LoadingOverlay from "@/components/LoadingOverlay";
+// HomePageServer.js
 import BannerSection from "./BannerSection";
 import HeroSection from "./HeroSection";
 import GoodSection from "./GoodSection";
 import CatelogSection from "./CatelogSection";
-import { getCompanySections, getCompanyInfo } from "../lib/APIservice";
 import HowWorkSection from "./HowWorkSection";
 import TestSection from "./testSection";
 import BeforeSection from "./BeforeSection";
@@ -15,10 +10,10 @@ import TagSection from "./TagSection";
 import FloatingChat from "./FloatingChat";
 import VisitorCounter from "./ViewerSection";
 import AmineSection from "./AmineSection";
+import { getCompanySections, getCompanyInfo } from "../lib/APIservice";
 
-// สร้าง object สำหรับเก็บ section IDs เพื่อไม่ให้ hardcode
+// สร้าง object สำหรับเก็บ section IDs
 const SECTION_IDS = {
-  home: "ef0afe36-14c2-41ae-9a27-56bd5bee886b",
   hero1: "dbd075e5-72ab-4409-9ed7-69014b1f77a1",
   hero2: "d7cfae37-5142-4cf8-b9ef-ab1752500190",
   good1: "416071e4-a4aa-4faf-ba0f-ac8e857c33d3",
@@ -33,199 +28,136 @@ const SECTION_IDS = {
   howwokimage2: "ef287191-8f35-467e-abb7-86b84bd839e7",
   newcatalog: "a016580b-16e2-494c-9873-e40c3dd6c4fa",
   tag: "9d604dfb-49fe-4ff8-986e-2adae3e59ac1",
-  nomoamine: "cfdf5536-dd78-4019-b741-2e47de31bc5c"
+  nomoamine: "cfdf5536-dd78-4019-b741-2e47de31bc5c",
 };
 
-export default function HomePage() {
-  const [bannerImages, setBannerImages] = useState([]);
-  const [sectionsData, setSectionsData] = useState({
-    herodata1: null,
-    herodata2: null,
-    gooddata1: null,
-    polyaminedata: null,
-    testSection: null,
-    polyaminedata2: null,
-    beforedata: null,
-    afterdata: null,
-    hBRW150Hdata: null,
-    howworkimagedata: null,
-    howworkdata: null,
-    howwokimage2: null,
-    newcatalogdata: null,
-    tagdata: null,
-    monoaminedata: null
-  });
-  const [loading, setLoading] = useState(true);
-  const COMPANY_ID = process.env.NEXT_PUBLIC_COMPANY_ID;
+export default async function HomePageServer() {
+  // Fetch data ฝั่ง server
+  const allSections = await getCompanySections();
+  const companyInfo = await getCompanyInfo();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const allSections = await getCompanySections();
-        const companyInfo = await getCompanyInfo();
+  const heroSection1 = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.hero1
+  );
+  const heroSection2 = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.hero2
+  );
+  const goodSection1 = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.good1
+  );
+  const polyamineSection = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.polyamine
+  );
+  const testSection = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.testSection
+  );
+  const polyamineSection2 = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.polyamine2
+  );
+  const beforeSection = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.before
+  );
+  const afterSection = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.after
+  );
+  const HELAMIN_BRW150H_Section = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.HELAMIN_BRW150H
+  );
+  const howworkSection = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.howworkimage
+  );
+  const howworkdataSection = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.howworkdata
+  );
+  const howwokimage2Section = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.howwokimage2
+  );
+  const newcatalogdataSection = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.newcatalog
+  );
+  const tagdataSection = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.tag
+  );
+  const nomoamineSection = allSections.find(
+    (s) => s.sectionId === SECTION_IDS.nomoamine
+  );
 
-        const heroSection1 = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.hero1
-        );
-        const heroSection2 = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.hero2
-        );
-        const goodSection1 = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.good1
-        );
-        const polyamineSection = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.polyamine
-        );
-        const testSection = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.testSection
-        );
-
-        const polyamineSection2 = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.polyamine2
-        );
-        const beforeSection = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.before
-        );
-        const afterSection = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.after
-        );
-        const HELAMIN_BRW150H_Section = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.HELAMIN_BRW150H
-        );
-        const howworkSection = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.howworkimage
-        );
-        const howworkdataSection = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.howworkdata
-        );
-        const howwokimage2Section = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.howwokimage2
-        );
-        const newcatalogdataSection = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.newcatalog
-        );
-        const tagdataSection = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.tag
-        );
-
-        const nomoamineSection = allSections.find(
-          (section) => section.sectionId === SECTION_IDS.nomoamine
-        );
-
-        setSectionsData({
-          herodata1: heroSection1?.data,
-          herodata2: heroSection2?.data,
-          gooddata1: goodSection1?.data,
-          polyaminedata: polyamineSection?.data,
-          testSection: testSection?.data,
-          polyaminedata2: polyamineSection2?.data,
-          beforedata: beforeSection?.data,
-          afterdata: afterSection?.data,
-          hBRW150Hdata: HELAMIN_BRW150H_Section?.data,
-          howworkimagedata: howworkSection?.data,
-          howworkdata: howworkdataSection?.data,
-          herodata3: howwokimage2Section?.data,
-          newcatalogdata: newcatalogdataSection?.data,
-          tagdata: tagdataSection?.data,
-          monoaminedata: nomoamineSection?.data
-        });
-
-
-        if (companyInfo.companyId === COMPANY_ID) {
-          setBannerImages(companyInfo.bannerImage);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [COMPANY_ID]); // เพิ่ม COMPANY_ID เข้าไปใน dependency array
-
-  if (loading) return <LoadingOverlay />;
+  const sectionsData = {
+    herodata1: heroSection1?.data,
+    herodata2: heroSection2?.data,
+    gooddata1: goodSection1?.data,
+    polyaminedata: polyamineSection?.data,
+    testSection: testSection?.data,
+    polyaminedata2: polyamineSection2?.data,
+    beforedata: beforeSection?.data,
+    afterdata: afterSection?.data,
+    hBRW150Hdata: HELAMIN_BRW150H_Section?.data,
+    howworkimagedata: howworkSection?.data,
+    howworkdata: howworkdataSection?.data,
+    herodata3: howwokimage2Section?.data,
+    newcatalogdata: newcatalogdataSection?.data,
+    tagdata: tagdataSection?.data,
+    monoaminedata: nomoamineSection?.data,
+  };
 
   return (
     <div className="bg-white text-black">
       {/* Banner Section */}
-      <BannerSection images={bannerImages} />
+      <BannerSection images={companyInfo.bannerImage || []} />
 
-      {/* Hero Section + Overlay */}
+      {/* Hero Section */}
       <section className="relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0081ca]/90 to-[#00b4f4]/90"></div>
-        <div className="relative z-10">
-          <HeroSection data={sectionsData} />
-        </div>
+        <HeroSection data={sectionsData} />
       </section>
+
       {/* Catalog Section */}
       <section className="relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
-        <div className="relative z-10">
-          <CatelogSection hBRW150Hdata={sectionsData.hBRW150Hdata} newcatalogdata={sectionsData.newcatalogdata} />
-        </div>
+        <CatelogSection
+          hBRW150Hdata={sectionsData.hBRW150Hdata}
+          newcatalogdata={sectionsData.newcatalogdata}
+        />
       </section>
 
-
-
       {/* Good Section + Overlay */}
+
       <section className="relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-200/80 to-white/80"></div>
-        <div className="relative z-10">
-          <GoodSection data={sectionsData.gooddata1} />
-        </div>
+        <GoodSection data={sectionsData.gooddata1} />
       </section>
 
       {/* Amine Section */}
       <section className="relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
-        <div className="relative z-10">
-          <AmineSection monoaminedata={sectionsData.monoaminedata} polyaminedata={sectionsData.polyaminedata} />
-        </div>
+        <AmineSection
+          monoaminedata={sectionsData.monoaminedata}
+          polyaminedata={sectionsData.polyaminedata}
+        />
       </section>
 
       {/* How It Works Section */}
       <section className="relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
-        <div className="relative z-10">
-          <HowWorkSection data={sectionsData} />
-        </div>
+        <HowWorkSection data={sectionsData} />
       </section>
 
       {/* Test Section */}
       <section className="relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
-        <div className="relative z-10">
-          <TestSection data={sectionsData.testSection} />
-        </div>
+        <TestSection data={sectionsData.testSection} />
       </section>
 
       {/* Before Section */}
       <section className="relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
-        <div className="relative z-10">
-          <BeforeSection data={sectionsData.beforedata} />
-        </div>
+        <BeforeSection data={sectionsData.beforedata} />
       </section>
 
       {/* Visitor Counter Section */}
       <section className="relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
-        <div className="relative z-10">
-          <VisitorCounter />
-        </div>
+        <VisitorCounter />
       </section>
 
       {/* Tag Section */}
       <section className="relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#e6f7ff]/80 to-white/80"></div>
-        <div className="relative z-10">
-          <TagSection data={sectionsData.tagdata} />
-        </div>
+        <TagSection data={sectionsData.tagdata} />
       </section>
+
       <FloatingChat />
     </div>
-
   );
-
 }

@@ -119,7 +119,7 @@ const Footer = () => {
             </p>
 
             {/* Facebook */}
-            <p className="flex gap-2">
+            <h2 className="flex gap-2">
               <Facebook className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0`} />
               <a
                 href={content.contact.facebook}
@@ -129,7 +129,7 @@ const Footer = () => {
               >
                 F&N Techno co.,ltd.
               </a>
-            </p>
+            </h2>
           </div>
         </div>
 
