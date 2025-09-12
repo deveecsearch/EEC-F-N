@@ -20,6 +20,7 @@ const prompt = Prompt({
   weight: ["400", "500", "700", "800"],
 });
 
+// Using next generateMetadata nakub
 export async function generateMetadata() {
   const baseUrl = "https://www.fntechno.co.th";
 
