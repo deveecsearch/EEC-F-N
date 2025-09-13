@@ -5,6 +5,9 @@ import Footer from "@/components/Footer/Footer";
 import CookieConsent from "@/components/CookieConsent";
 import Script from "next/script";
 
+const baseUrl = "https://www.fntechno.co.th";
+const ogImage = "https://www.fntechno.co.th/image/New-Logo-F-N2.jpg";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -23,8 +26,6 @@ const prompt = Prompt({
 
 // Using next generateMetadata nakub
 export async function generateMetadata() {
-  const baseUrl = "https://www.fntechno.co.th";
-  const ogImage = "https://www.fntechno.co.th/image/New-Logo-F-N2.jpg";
 
   return {
     metadataBase: new URL(baseUrl),
@@ -61,6 +62,16 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+
+        {/* 🔒 Force LINE/FB/Twitter to use this image */}
+        <meta property="og:url" content={baseUrl} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:secure_url" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={ogImage} />
 
         {/* Google tag (gtag.js)  */}
         <Script
