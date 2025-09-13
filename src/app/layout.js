@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import CookieConsent from "@/components/CookieConsent";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -59,6 +60,22 @@ export async function generateMetadata() {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        
+        {/* Google tag (gtag.js)  */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-Y73WDQ4G86"
+        ></Script>
+        <Script id="google-analytics">
+          {`
+    window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Y73WDQ4G86');
+    `}
+        </Script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${prompt.variable} antialiased`}
       >
