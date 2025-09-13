@@ -1,4 +1,5 @@
 // HomePageServer.js
+// Importing React components for the home page layout.
 import BannerSection from "./BannerSection";
 import HeroSection from "./HeroSection";
 import GoodSection from "./GoodSection";
@@ -10,9 +11,11 @@ import TagSection from "./TagSection";
 import FloatingChat from "./FloatingChat";
 import VisitorCounter from "./ViewerSection";
 import AmineSection from "./AmineSection";
+// Importing server-side data fetching functions.
 import { getCompanySections, getCompanyInfo } from "../lib/APIservice";
 
-// สร้าง object สำหรับเก็บ section IDs
+// Define a single object to map descriptive names to section IDs.
+// This improves readability and maintainability.
 const SECTION_IDS = {
   hero1: "dbd075e5-72ab-4409-9ed7-69014b1f77a1",
   hero2: "d7cfae37-5142-4cf8-b9ef-ab1752500190",
@@ -32,72 +35,33 @@ const SECTION_IDS = {
 };
 
 export default async function HomePageServer() {
-  // Fetch data ฝั่ง server
+  // Fetch data on the server side to be passed to components.
   const allSections = await getCompanySections();
   const companyInfo = await getCompanyInfo();
 
-  const heroSection1 = allSections.find(
-    (s) => s.sectionId === SECTION_IDS.hero1
-  );
-  const heroSection2 = allSections.find(
-    (s) => s.sectionId === SECTION_IDS.hero2
-  );
-  const goodSection1 = allSections.find(
-    (s) => s.sectionId === SECTION_IDS.good1
-  );
-  const polyamineSection = allSections.find(
-    (s) => s.sectionId === SECTION_IDS.polyamine
-  );
-  const testSection = allSections.find(
-    (s) => s.sectionId === SECTION_IDS.testSection
-  );
-  const polyamineSection2 = allSections.find(
-    (s) => s.sectionId === SECTION_IDS.polyamine2
-  );
-  const beforeSection = allSections.find(
-    (s) => s.sectionId === SECTION_IDS.before
-  );
-  const afterSection = allSections.find(
-    (s) => s.sectionId === SECTION_IDS.after
-  );
-  const HELAMIN_BRW150H_Section = allSections.find(
-    (s) => s.sectionId === SECTION_IDS.HELAMIN_BRW150H
-  );
-  const howworkSection = allSections.find(
-    (s) => s.sectionId === SECTION_IDS.howworkimage
-  );
-  const howworkdataSection = allSections.find(
-    (s) => s.sectionId === SECTION_IDS.howworkdata
-  );
-  const howwokimage2Section = allSections.find(
-    (s) => s.sectionId === SECTION_IDS.howwokimage2
-  );
-  const newcatalogdataSection = allSections.find(
-    (s) => s.sectionId === SECTION_IDS.newcatalog
-  );
-  const tagdataSection = allSections.find(
-    (s) => s.sectionId === SECTION_IDS.tag
-  );
-  const nomoamineSection = allSections.find(
-    (s) => s.sectionId === SECTION_IDS.nomoamine
-  );
+  // Helper function to find a section by its ID,
+  // making the data retrieval part more concise and reusable.
+  const getSectionData = (id) => {
+    const section = allSections.find((s) => s.sectionId === id);
+    return section?.data || null; // Return null if data is not found
+  };
 
   const sectionsData = {
-    herodata1: heroSection1?.data,
-    herodata2: heroSection2?.data,
-    gooddata1: goodSection1?.data,
-    polyaminedata: polyamineSection?.data,
-    testSection: testSection?.data,
-    polyaminedata2: polyamineSection2?.data,
-    beforedata: beforeSection?.data,
-    afterdata: afterSection?.data,
-    hBRW150Hdata: HELAMIN_BRW150H_Section?.data,
-    howworkimagedata: howworkSection?.data,
-    howworkdata: howworkdataSection?.data,
-    herodata3: howwokimage2Section?.data,
-    newcatalogdata: newcatalogdataSection?.data,
-    tagdata: tagdataSection?.data,
-    monoaminedata: nomoamineSection?.data,
+    herodata1: getSectionData(SECTION_IDS.hero1),
+    herodata2: getSectionData(SECTION_IDS.hero2),
+    gooddata1: getSectionData(SECTION_IDS.good1),
+    polyaminedata: getSectionData(SECTION_IDS.polyamine),
+    testSection: getSectionData(SECTION_IDS.testSection),
+    polyaminedata2: getSectionData(SECTION_IDS.polyamine2),
+    beforedata: getSectionData(SECTION_IDS.before),
+    afterdata: getSectionData(SECTION_IDS.after),
+    hBRW150Hdata: getSectionData(SECTION_IDS.HELAMIN_BRW150H),
+    howworkimagedata: getSectionData(SECTION_IDS.howworkimage),
+    howworkdata: getSectionData(SECTION_IDS.howworkdata),
+    herodata3: getSectionData(SECTION_IDS.howwokimage2),
+    newcatalogdata: getSectionData(SECTION_IDS.newcatalog),
+    tagdata: getSectionData(SECTION_IDS.tag),
+    monoaminedata: getSectionData(SECTION_IDS.nomoamine),
   };
 
   return (
@@ -107,6 +71,7 @@ export default async function HomePageServer() {
 
       {/* Hero Section */}
       <section className="relative">
+        {/* Pass individual hero data instead of the whole object */}
         <HeroSection data={sectionsData} />
       </section>
 
@@ -119,7 +84,6 @@ export default async function HomePageServer() {
       </section>
 
       {/* Good Section + Overlay */}
-
       <section className="relative">
         <GoodSection data={sectionsData.gooddata1} />
       </section>

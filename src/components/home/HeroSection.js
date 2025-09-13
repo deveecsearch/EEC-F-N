@@ -231,7 +231,7 @@ export default function HeroSection({ data }) {
               <div className="flex flex-col-reverse lg:flex-row items-center gap-6">
                 {/* Image Container */}
                 <div className="flex-shrink-0 w-full lg:w-1/3">
-                  <div className="bg-gray-100 rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
+                  <div className="bg-gray-100 rounded-xl overflow-hidden shadow-lg aspect-[4/3] relative">
                     {herodata3?.bulletsItems[0]?.image ? (
                       <Image
                         src={herodata3.bulletsItems[0].image}
@@ -338,54 +338,75 @@ export default function HeroSection({ data }) {
             </motion.div>
           </div>
 
-          {/* Card 23 - Responsive: ภาพบนมือถือ ขวา tablet+desktop */}
-          {herodata1?.bulletsItems[23] && (
-            <motion.div
-              className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-6 rounded-2xl border border-blue-200/40 shadow-2xl shadow-blue-500/15
-               transition-all duration-500 transform hover:scale-[1.02] hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 w-full"
-              variants={itemVariants}
-              whileHover={{
-                y: -5,
-                transition: { type: "spring", stiffness: 300 },
-              }}
-            >
-              <div className="flex flex-col-reverse md:flex-row-reverse items-center gap-6">
-                {/* Image */}
-                <div className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3">
-                  <div className="bg-gray-100 rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
-                    {herodata3?.bulletsItems[3]?.image ? (
-                      <img
-                        src={herodata3.bulletsItems[3].image}
-                        alt={
-                          herodata3?.bulletsItems[3]?.title?.th ||
-                          "Card 23 Image"
-                        }
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
-                        Image Placeholder
-                      </div>
-                    )}
-                  </div>
-                  <h4 className="text-sm font-semibold text-gray-700 text-center mt-3">
-                    {herodata3?.bulletsItems[3]?.title?.th ||
-                      "Card 23 Image Title"}
-                  </h4>
-                </div>
+         {/* Card 23 - Responsive: bullet 1, 2, 24, 25 */}
+{herodata1?.bulletsItems[23] && (
+  <motion.div
+    className="bg-gradient-to-br from-white/80 via-blue-50/60 to-indigo-50/40 backdrop-blur-xl p-6 rounded-2xl border border-blue-200/40 shadow-2xl shadow-blue-500/15
+     transition-all duration-500 transform hover:scale-[1.02] hover:shadow-3xl hover:shadow-blue-500/25 hover:border-blue-300/60 w-full"
+    variants={itemVariants}
+    whileHover={{
+      y: -5,
+      transition: { type: "spring", stiffness: 300 },
+    }}
+  >
+    {/* Title */}
+    <h3 className="text-lg md:text-xl font-bold text-gray-800 text-center mb-6">
+      {herodata1?.bulletsItems[23]?.title?.th || "Card 23 Title"}
+    </h3>
 
-                {/* Content */}
-                <div className="flex-1 text-left md:pr-6 mt-4 md:mt-0">
-                  <h3 className="text-lg md:text-xl font-bold mb-4 text-gray-800">
-                    {herodata1?.bulletsItems[23]?.description?.th}
-                  </h3>
-                  <p className="text-sm md:text-base text-gray-700">
-                    {herodata1?.bulletsItems[24]?.description?.th}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+    <div className="flex flex-col md:flex-row items-center gap-6">
+      {/* Image 1 + Description */}
+      <div className="flex-1 text-center">
+        <div className="bg-gray-100 rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
+          {herodata1?.bulletsItems[0]?.image ? (
+            <Image
+              src={herodata1.bulletsItems[0].image}
+              alt="Card 23 Image 1"
+              width={600}
+              height={450}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+              Image Placeholder
+            </div>
           )}
+        </div>
+        <div className="flex items-start justify-center mt-3">
+          <span className="w-2 h-2 rounded-full bg-yellow-400 mt-2 mr-2 flex-shrink-0"></span>
+          <p className="text-sm md:text-base text-gray-700 text-left max-w-xs">
+            {herodata1?.bulletsItems[23]?.description?.th}
+          </p>
+        </div>
+      </div>
+
+      {/* Image 2 + Description */}
+      <div className="flex-1 text-center">
+        <div className="bg-gray-100 rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
+          {herodata1?.bulletsItems[1]?.image ? (
+            <Image
+              src={herodata1.bulletsItems[1].image}
+              alt="Card 23 Image 2"
+              width={600}
+              height={450}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+              Image Placeholder
+            </div>
+          )}
+        </div>
+        <div className="flex items-start justify-center mt-3">
+          <span className="w-2 h-2 rounded-full bg-yellow-400 mt-2 mr-2 flex-shrink-0"></span>
+          <p className="text-sm md:text-base text-gray-700 text-left max-w-xs">
+            {herodata1?.bulletsItems[24]?.description?.th}
+          </p>
+        </div>
+      </div>
+    </div>
+  </motion.div>
+)}
 
           {/* Card 25 + 27 (ไม่มีรูป) - 2 คอลัมน์ */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -432,11 +453,11 @@ export default function HeroSection({ data }) {
                 {/* Image Container */}
                 <div className="flex-shrink-0 w-full lg:w-1/3">
                   <div className="bg-gray-100 rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
-                    {herodata3?.bulletsItems[6]?.image ? (
+                    {herodata3?.bulletsItems[3]?.image ? (
                       <Image
-                        src={herodata3.bulletsItems[6].image}
+                        src={herodata3.bulletsItems[3].image}
                         alt={
-                          herodata3.bulletsItems[6].title?.th || "Card 29 Image"
+                          herodata3.bulletsItems[3].title?.th || "Card 29 Image"
                         }
                         width={600}
                         height={450}
@@ -450,7 +471,7 @@ export default function HeroSection({ data }) {
                   </div>
 
                   <h4 className="text-sm font-semibold text-gray-700 text-center mt-3">
-                    {herodata3?.bulletsItems[6]?.title?.th ||
+                    {herodata3?.bulletsItems[3]?.title?.th ||
                       "Card 29 Image Title"}
                   </h4>
                 </div>
