@@ -6,7 +6,7 @@ import CookieConsent from "@/components/CookieConsent";
 import Script from "next/script";
 
 const baseUrl = "https://www.fntechno.co.th";
-const ogImage = "https://www.fntechno.co.th/image/New-Logo-F-N2.jpg";
+const ogImage = "https://www.fntechno.co.th/image/mata-image-fn.jpg";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
