@@ -24,27 +24,19 @@ const prompt = Prompt({
 // Using next generateMetadata nakub
 export async function generateMetadata() {
   const baseUrl = "https://www.fntechno.co.th";
+  const ogImage = "https://www.fntechno.co.th/image/New-Logo-F-N2.jpg";
 
   return {
     metadataBase: new URL(baseUrl),
     title: "F&N Techno Co., Ltd.",
     description: "บริษัท เอฟแอนด์เอ็น เทคโน จำกัด",
-    icons: {
-      icon: "/image/Logo_FN.png",
-    },
+    icons: { icon: "/image/Logo_FN.png" },
     openGraph: {
       title: "F&N Techno Co., Ltd.",
       description: "บริษัท เอฟแอนด์เอ็น เทคโน จำกัด",
       url: baseUrl,
       siteName: "F&N Techno Co., Ltd.",
-      images: [
-        {
-          url: "https://www.fntechno.co.th/image/New-Logo-F-N2.jpg",
-          width: 1200,
-          height: 630,
-          alt: "F&N Techno Co., Ltd.",
-        },
-      ],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: "F&N Techno Co., Ltd." }],
       locale: "th_TH",
       type: "website",
     },
@@ -52,16 +44,24 @@ export async function generateMetadata() {
       card: "summary_large_image",
       title: "F&N Techno Co., Ltd.",
       description: "บริษัท เอฟแอนด์เอ็น เทคโน จำกัด",
-      images: ["https://www.fntechno.co.th/image/New-Logo-F-N2.jpg"],
+      images: [ogImage],
+    },
+    other: {
+      "og:image": ogImage,
+      "og:image:secure_url": ogImage,
+      "og:image:width": "1200",
+      "og:image:height": "630",
+      "twitter:image": ogImage,
     },
   };
 }
+
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        
+
         {/* Google tag (gtag.js)  */}
         <Script
           async
