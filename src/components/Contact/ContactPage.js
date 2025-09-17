@@ -109,7 +109,7 @@ export default function ContactPage() {
             <Person2Section image={imageData} data={contactData} />
           </div>
         </div>
-
+ 
         <div className="h-6 md:h-10"></div>
       </div>
     </section>
