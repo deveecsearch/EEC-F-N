@@ -95,5 +95,3 @@ export default function TagSection({ data }) {
         </section>
     );
 }
-
-
