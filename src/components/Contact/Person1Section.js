@@ -23,6 +23,14 @@ export default function Person1Section({ image, data }) {
     return null;
   };
 
+  const getLink = (title, description) => {
+    if (!title || !description) return "#";
+    title = title.toLowerCase();
+    if (title.includes("tell")) return `tel:${description}`;
+    if (title.includes("e-mail") || title.includes("email")) return `mailto:${description}`;
+    return "#";
+  };
+
   return (
     <div className="flex flex-col justify-center items-center gap-8 p-8 rounded-3xl shadow-2xl bg-white border border-[#0081c9] max-w-md mx-auto ">
 
@@ -45,8 +53,9 @@ export default function Person1Section({ image, data }) {
       {/* ข้อมูลติดต่อ */}
       <div className="flex flex-col gap-5 w-full max-w-sm">
         {items.map((item, idx) => (
-          <div
+          <a
             key={idx}
+            href={getLink(item.title.th, item.description.th)}
             className={`flex items-center space-x-4 p-5 bg-[#f0f8ff] rounded-2xl shadow-md border-l-4 border-[#0684ca] transform transition-all duration-700 ease-out
               ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
               hover:scale-105 hover:shadow-xl`}
@@ -62,7 +71,7 @@ export default function Person1Section({ image, data }) {
                 {item.description.th}
               </p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>

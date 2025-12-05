@@ -1,6 +1,6 @@
 "use client";
 
-import { MapPin, Phone, Mail, Globe, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Globe, Facebook } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import navItemsMap from "../Navbar/navItemsMap";
@@ -9,7 +9,7 @@ const ACCENT = "#fbab18"; // สีขีดและ hover
 
 const Footer = () => {
   const content = {
-    about: "บริษัท เอฟแอนด์เอ็น เทคโน จำกัด \n ผู้นำเข้าชั้นนำของน้ำยา Helamin BRW150H จากประเทศฝรั่งเศส \n เป็นมิตรต่อสิ่งเเวดล้อม พร้อมเทคโนโลยีฟิล์มโพลีเอมีนเฉพาะตัว ",
+    about: "บริษัท เอฟแอนด์เอ็น เทคโน จำกัด \n ผู้นำเข้าชั้นนำของน้ำยา Helamin BRW150H \n ผลิตจากประเทศฝรั่งเศส \n นำเข้าจากประเทศสวิตเซอร์แลนด์ \n \nเป็นมิตรต่อสิ่งเเวดล้อม \n พร้อมเทคโนโลยีฟิล์มโพลีเอมีน",
     contact: {
       address: "123/45 หมู่ที่ 8 ตำบลห้วยใหญ่ อำเภอบางละมุง จังหวัดชลบุรี 20150",
       people: [
@@ -24,7 +24,8 @@ const Footer = () => {
           email: "f.berghaeuser@gmail.com",
         },
       ],
-      website: "https://www.helamin.com/"
+      website: "https://www.helamin.com/",
+      facebook: "https://www.facebook.com/profile.php?id=61562620145591#"
     },
   };
 
@@ -32,7 +33,7 @@ const Footer = () => {
     <footer className="bg-white text-gray-800 px-6 md:px-20 lg:px-32 py-16">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
         {/* คอลัมน์ 1: โลโก้ + Social */}
-        <div className="flex flex-col items-center justify-center gap-6 text-center">
+        <div className="flex flex-col items-center justify-center gap-2 text-center">
           <Image
             src={"/image/Logo_FN.png"}
             alt="FN Logo"
@@ -40,37 +41,13 @@ const Footer = () => {
             height={180}
             className="object-contain rounded-full"
           />
-          <div className="flex space-x-6">
-            <a
-              href="https://www.facebook.com/profile.php?id=100041323733259"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center gap-2 transition duration-300 hover:text-[${ACCENT}] hover:scale-110`}
-            >
-              <Image
-                src={"/image/Facebook_icon.png"}
-                alt="Facebook"
-                width={24}
-                height={24}
-              />
-              Facebook
-            </a>
-            <a
-              href="https://line.me/ti/p/[LINE_ID]"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center gap-2 transition duration-300 hover:text-[${ACCENT}] hover:scale-110`}
-            >
-              <Image
-                src={"/image/LINE_icon.png"}
-                alt="Line"
-                width={24}
-                height={24}
-              />
-              Line
-            </a>
-          </div>
+          {/* ข้อความ F&N Techno Co., Ltd. */}
+          <p className="font-bold text-[#fbab18] text-base md:text-lg">
+            F&N Techno Co., Ltd.
+          </p>
+
         </div>
+
 
         {/* คอลัมน์ 2: เกี่ยวกับเรา */}
         <div>
@@ -140,6 +117,19 @@ const Footer = () => {
                 {content.contact.website.replace(/^https?:\/\//, '')}
               </a>
             </p>
+
+            {/* Facebook */}
+            <h2 className="flex gap-2">
+              <Facebook className={`w-4 h-4 text-[${ACCENT}] flex-shrink-0`} />
+              <a
+                href={content.contact.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`hover:underline hover:text-[${ACCENT}] transition-colors`}
+              >
+                F&N Techno co.,ltd.
+              </a>
+            </h2>
           </div>
         </div>
 
@@ -147,11 +137,11 @@ const Footer = () => {
         {/* คอลัมน์ 4: เมนูหลัก */}
         <div>
           <h3
-            className="text-lg font-bold inline-block pb-1 mb-4"
-            style={{ borderBottom: `2px solid ${ACCENT}` }}
+            className={`text-lg font-bold border-b-2 border-[${ACCENT}] inline-block pb-1 mb-4 text-black`}
           >
             เมนูหลัก
           </h3>
+
           <ul className="space-y-2 text-sm">
             {navItemsMap.th
               .filter(
@@ -163,13 +153,14 @@ const Footer = () => {
                   <Link
                     href={item.href}
                     title={item.title}
-                    className="transition duration-300 inline-block"
+                    className="transition duration-300 inline-block hover:underline"
                     style={{ color: "#333" }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = ACCENT)}
                     onMouseLeave={(e) => (e.currentTarget.style.color = "#333")}
                   >
                     {item.label}
                   </Link>
+
                 </li>
               ))}
           </ul>
