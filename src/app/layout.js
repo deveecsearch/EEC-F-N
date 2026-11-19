@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import CookieConsent from "@/components/CookieConsent";
+import PageViewTracker from "@/components/PageViewTracker";
 import Script from "next/script";
 
 const baseUrl = "https://www.fntechno.co.th";
@@ -94,6 +95,7 @@ export default function RootLayout({ children }) {
         {children}
         <Footer />
         <CookieConsent />
+        <PageViewTracker />
       </body>
     </html>
   );

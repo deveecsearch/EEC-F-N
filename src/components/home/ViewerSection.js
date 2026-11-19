@@ -5,6 +5,8 @@ import { RefreshCcw, Eye, ExternalLink, TrendingUp } from 'lucide-react';
 import Link from "next/link";
 import { motion } from 'framer-motion';
 
+const TRACK_VISITOR_URL = `${process.env.NEXT_PUBLIC_HUB_API_URL}/api/track-visitor?id=${process.env.NEXT_PUBLIC_COMPANY_ID}`;
+
 export default function VisitorCounter() {
     const [count, setCount] = useState(0);
     const hasFetched = useRef(false); // กัน fetch ซ้ำตอน mount
@@ -15,7 +17,7 @@ export default function VisitorCounter() {
         hasFetched.current = true;
 
         try {
-            const res = await fetch("https://eec-cms.vercel.app/api/track-visitor?id=f-n-techno-co-ltd-mf6p1vr5");
+            const res = await fetch(TRACK_VISITOR_URL);
             const data = await res.json();
             setCount(data.count || data.views || 0);
         } catch (err) {
@@ -26,7 +28,7 @@ export default function VisitorCounter() {
     // ดึง count ใหม่ (ใช้กับปุ่ม Refresh)
     const refreshCount = async () => {
         try {
-            const res = await fetch("https://eec-cms.vercel.app/api/track-visitor?id=f-n-techno-co-ltd-mf6p1vr5");
+            const res = await fetch(TRACK_VISITOR_URL);
             const data = await res.json();
             setCount(data.count || data.views || 0);
         } catch (err) {
